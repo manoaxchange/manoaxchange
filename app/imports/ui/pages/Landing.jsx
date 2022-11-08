@@ -1,21 +1,45 @@
 import React from 'react';
-import { Col, Container, Image, Row } from 'react-bootstrap';
+import { Carousel } from 'react-bootstrap';
 
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
-  <Container id="landing-page" fluid className="py-3">
-    <Row className="align-middle text-center">
-      <Col xs={4}>
-        <Image roundedCircle src="/images/meteor-logo.png" width="150px" />
-      </Col>
-
-      <Col xs={8} className="d-flex flex-column justify-content-center">
-        <h1>Welcome to this template</h1>
-        <p>Now get to work and modify this app!</p>
-      </Col>
-
-    </Row>
-  </Container>
+  <Carousel>
+    <Carousel.Item interval={1000}>
+      <img
+        className="d-block w-100"
+        src="https://via.placeholder.com/1920x1080.png?text=Placeholder"
+        alt="First slide"
+      />
+      <Carousel.Caption>
+        <h3>First slide label</h3>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </Carousel.Caption>
+    </Carousel.Item>
+    <Carousel.Item interval={500}>
+      <img
+        className="d-block w-100"
+        src="https://via.placeholder.com/1920x1080.png?text=Placeholder"
+        alt="Second slide"
+      />
+      <Carousel.Caption>
+        <h3>Second slide label</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </Carousel.Caption>
+    </Carousel.Item>
+    <Carousel.Item>
+      <img
+        className="d-block w-100"
+        src="https://via.placeholder.com/1920x1080.png?text=Placeholder"
+        alt="Third slide"
+      />
+      <Carousel.Caption>
+        <h3>Third slide label</h3>
+        <p>
+          Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+        </p>
+      </Carousel.Caption>
+    </Carousel.Item>
+  </Carousel>
 );
 
 export default Landing;
