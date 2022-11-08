@@ -1,5 +1,5 @@
 import React from 'react';
-import { Carousel } from 'react-bootstrap';
+import { Button, Carousel } from 'react-bootstrap';
 
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
@@ -13,6 +13,7 @@ const Landing = () => (
       <Carousel.Caption>
         <h3>First slide label</h3>
         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        <Button className="mb-2" variant="dark" href="#">View</Button>
       </Carousel.Caption>
     </Carousel.Item>
     <Carousel.Item interval={500}>
@@ -24,6 +25,7 @@ const Landing = () => (
       <Carousel.Caption>
         <h3>Second slide label</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <Button className="mb-2" variant="dark" href="#">View</Button>
       </Carousel.Caption>
     </Carousel.Item>
     <Carousel.Item>
@@ -37,6 +39,7 @@ const Landing = () => (
         <p>
           Praesent commodo cursus magna, vel scelerisque nisl consectetur.
         </p>
+        <Button className="mb-2" variant="dark" href="#">View</Button>
       </Carousel.Caption>
     </Carousel.Item>
   </Carousel>
