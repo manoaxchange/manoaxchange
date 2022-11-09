@@ -4,7 +4,7 @@ import { Button, Carousel } from 'react-bootstrap';
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
   <Carousel>
-    <Carousel.Item interval={1000}>
+    <Carousel.Item interval={2000}>
       <img
         className="d-block w-100"
         src="https://via.placeholder.com/1920x1080.png?text=Placeholder"
@@ -16,7 +16,7 @@ const Landing = () => (
         <Button className="mb-2" variant="dark" href="#">View</Button>
       </Carousel.Caption>
     </Carousel.Item>
-    <Carousel.Item interval={500}>
+    <Carousel.Item interval={2000}>
       <img
         className="d-block w-100"
         src="https://via.placeholder.com/1920x1080.png?text=Placeholder"
@@ -28,7 +28,7 @@ const Landing = () => (
         <Button className="mb-2" variant="dark" href="#">View</Button>
       </Carousel.Caption>
     </Carousel.Item>
-    <Carousel.Item>
+    <Carousel.Item interval={2000}>
       <img
         className="d-block w-100"
         src="https://via.placeholder.com/1920x1080.png?text=Placeholder"
