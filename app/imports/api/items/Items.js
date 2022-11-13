@@ -18,7 +18,6 @@ class ItemsCollection {
       description: String,
       name: String,
       owner: String,
-      rating: Number,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
