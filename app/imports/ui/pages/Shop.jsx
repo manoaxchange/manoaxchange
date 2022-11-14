@@ -3,7 +3,7 @@ import { Container, Row, Col, Card } from 'react-bootstrap';
 import SidebarFull from '../components/sidebar/SidebarFull';
 
 const Item = () => (
-  <Col xs={12} lg={4} className="d-flex my-3">
+  <Col xs={12} lg={4} xl={3} className="d-flex my-3">
     <Card className="w-100">
       <Card.Body>
         test
@@ -24,11 +24,11 @@ const testingCols = () => {
 };
 
 const Shop = () => (
-  <div className="d-flex overflow-auto">
+  <div className="d-flex">
     {/* temporarily set the background to dark to test padding */}
     <SidebarFull />
     <Container fluid>
-      <Row className="overflow-auto">
+      <Row>
         {testingCols().map(col => col)}
       </Row>
     </Container>
