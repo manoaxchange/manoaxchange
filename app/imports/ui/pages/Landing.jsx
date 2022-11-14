@@ -5,11 +5,10 @@ import ItemsCarousel from '../components/ItemsCarousel';
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
   <>
-    <ItemsCarousel />
-    <div className="py-3" style={{ height: 'fit-content' }}>
+    <section className="pb-3" style={{ height: 'fit-content' }}>
       <Container
         fluid
-        className="d-flex flex-column align-items-center justify-content-center py-3"
+        className="d-flex flex-column align-items-center justify-content-center pb-3"
         style={{ height: '600px' }}
       >
         <br />
@@ -25,7 +24,7 @@ const Landing = () => (
             </p>
           </Col>
         </Row>
-        <Button variant="dark" className="my-3" style={{ width: '180px' }} href="/shop">
+        <Button variant="dark" className="mt-3" style={{ width: '180px' }} href="/shop">
           <div
             className="h3 w-100 h-100 d-flex align-items-center justify-content-center"
             style={{ fontWeight: 'lighter' }}
@@ -33,9 +32,39 @@ const Landing = () => (
             Shop Now
           </div>
         </Button>
-        <br />
       </Container>
-    </div>
+    </section>
+    <section
+      className="py-3 ocean-background text-white"
+      style={{ height: 'fit-content', borderTop: 'solid 3px gray' }}
+    >
+      <Container
+        fluid
+        className="d-flex flex-column align-items-center justify-content-center py-3"
+        style={{ height: '600px' }}
+      >
+        <h1 className="text-center display-2">Don&apos;t Have an Account?</h1>
+        <div className="w-100 px-3 text-center" style={{ wordSpacing: '2px', lineHeight: 1.8, letterSpacing: '0.4px' }}>
+          Sign up with your UH email! Students, faculty, and alumni are all welcome.
+        </div>
+        <Button className="mt-3 mb-2" style={{ width: '180px' }} href="/signup">
+          <div
+            className="h3 w-100 h-100 d-flex align-items-center justify-content-center"
+            style={{ fontWeight: 'lighter' }}
+          >
+            Sign Up
+          </div>
+        </Button>
+        <a
+          href="/signin"
+          className="w-100 px-3 text-center text-white"
+          style={{ wordSpacing: '2px', lineHeight: 1.8, letterSpacing: '0.4px' }}
+        >
+          Returning user? Sign in here.
+        </a>
+      </Container>
+    </section>
+    <ItemsCarousel />
   </>
 );
 

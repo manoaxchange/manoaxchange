@@ -26,3 +26,11 @@ body {
   padding-top: 10px;
   padding-bottom: 20px;
 }
+
+.ocean-background {
+  background: linear-gradient(
+      rgb(0, 0, 0, 0.6),
+      rgb(0, 0, 0, 0.6)
+  ), url("images/uhmanoa.jpeg") no-repeat fixed center center;
+  background-size: cover;
+}
