@@ -1,6 +1,18 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import ItemsCarousel from '../components/ItemsCarousel';
+
+const show = {
+  height: 'fit-content',
+  borderTop: 'solid 3px gray',
+};
+
+const hidden = {
+  height: 'fit-content',
+  borderTop: 'solid 3px gray',
+  display: 'none',
+};
 
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
@@ -37,7 +49,7 @@ const Landing = () => (
     </section>
     <section
       className="py-3 ocean-background text-white"
-      style={{ height: 'fit-content', borderTop: 'solid 3px gray' }}
+      style={Meteor.user() ? hidden : show}
     >
       <Container
         fluid
