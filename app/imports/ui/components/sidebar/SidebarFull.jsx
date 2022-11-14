@@ -3,7 +3,10 @@ import { Button, Form, InputGroup, Nav } from 'react-bootstrap';
 import { Bicycle, Book, Keyboard, LampFill, Mortarboard, PuzzleFill, Search } from 'react-bootstrap-icons';
 
 const SidebarFull = () => (
-  <div className="px-3 py-3 bg-dark text-white min-vh-100" style={{ width: '300px' }}>
+  <div
+    className="px-3 py-3 bg-dark text-white vh-100 sticky-top"
+    style={{ width: '300px' }}
+  >
     <Nav className="d-flex flex-column">
       <Nav.Item key="searchbox">
         <InputGroup className="mb-3">
