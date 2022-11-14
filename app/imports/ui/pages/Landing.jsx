@@ -3,43 +3,67 @@ import { Button, Carousel } from 'react-bootstrap';
 
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
-  <Carousel>
+  <Carousel fade>
     <Carousel.Item interval={2000}>
       <img
         className="d-block w-100"
-        src="https://via.placeholder.com/1920x1080.png?text=Placeholder"
+        src="images/macbook.jpg"
         alt="First slide"
+        style={{ height: '600px', objectFit: 'cover' }}
       />
       <Carousel.Caption>
-        <h3>First slide label</h3>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        <Button className="mb-2" variant="dark" href="#">View</Button>
+        <Button
+          className="mb-2"
+          variant="dark"
+          href="/shop"
+          style={{ width: '150px', height: '50px' }}
+        >
+          <div className="w-100 h-100 d-flex align-items-center justify-content-center">
+            Shop Now
+          </div>
+        </Button>
+      </Carousel.Caption>
+    </Carousel.Item>
+    <Carousel.Item interval={2000}>
+      <div className="bg-dark class">
+        <img
+          className="d-block w-100"
+          src="images/clrs.jpeg"
+          alt="Second slide"
+          style={{ height: '600px', objectFit: 'cover'}}
+        />
+      </div>
+      <Carousel.Caption>
+        <Button
+          className="mb-2"
+          variant="dark"
+          href="/shop"
+          style={{ width: '150px', height: '50px' }}
+        >
+          <div className="w-100 h-100 d-flex align-items-center justify-content-center">
+            Shop Now
+          </div>
+        </Button>
       </Carousel.Caption>
     </Carousel.Item>
     <Carousel.Item interval={2000}>
       <img
         className="d-block w-100"
-        src="https://via.placeholder.com/1920x1080.png?text=Placeholder"
-        alt="Second slide"
-      />
-      <Carousel.Caption>
-        <h3>Second slide label</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <Button className="mb-2" variant="dark" href="#">View</Button>
-      </Carousel.Caption>
-    </Carousel.Item>
-    <Carousel.Item interval={2000}>
-      <img
-        className="d-block w-100"
-        src="https://via.placeholder.com/1920x1080.png?text=Placeholder"
+        src="images/moped.jpeg"
         alt="Third slide"
+        style={{ height: '600px', objectFit: 'cover'}}
       />
       <Carousel.Caption>
-        <h3>Third slide label</h3>
-        <p>
-          Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-        </p>
-        <Button className="mb-2" variant="dark" href="#">View</Button>
+        <Button
+          className="mb-2"
+          variant="dark"
+          href="/shop"
+          style={{ width: '150px', height: '50px' }}
+        >
+          <div className="w-100 h-100 d-flex align-items-center justify-content-center">
+            Shop Now
+          </div>
+        </Button>
       </Carousel.Caption>
     </Carousel.Item>
   </Carousel>
