@@ -12,6 +12,7 @@ const addData = (data) => {
 
 const addDefaultItems = (data) => {
   console.log(`  Adding: ${data.name} (${data.owner})`);
+  Items.collection.insert(data);
 };
 
 // Initialize the StuffsCollection if empty.
