@@ -14,7 +14,7 @@ const ReportsAdmin = ({ item }) => {
       <td>{item.owner}</td>
       <td>{item.name} (item.itemId)</td>
       <td>{item.report}</td>
-      <td><Button variant="danger" onClick={() => removeItem(item._id)} /><XCircleFill /></td>
+      <td><Button variant="danger" onClick={() => removeItem(item._id)}><XCircleFill /></Button></td>
     </tr>
   );
 };

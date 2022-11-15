@@ -40,7 +40,7 @@ const ListReportsAdmin = () => {
               </tr>
             </thead>
             <tbody>
-              {items.map((item) => <ReportsAdmin key={item._id} item={item} reports={reports.filter(report => (report.itemId === item._id))} collection={Items.collection} />)}
+              {items.map((item) => <ReportsAdmin key={item._id} item={item} reports={reports.filter(report => (report.itemId === item._id))} />)}
             </tbody>
           </Table>
         </Col>
