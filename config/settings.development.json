@@ -14,9 +14,10 @@
   "defaultItems": [
     { "name": "Organic Chemistry 7th Edition", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Books" },
     { "name": "Keyboard", "image": "https://via.placeholder.com/500.png?text=Item", "price":  30.00, "owner": "admin@foo.com", "description":  "Brand new, all keys are functional.", "category": "Electronics" },
-    { "name": "Transportation", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Books" },
-    { "name": "Organic Chemistry 7th Edition", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Books" },
-    { "name": "Organic Chemistry 7th Edition", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Books" }
+    { "name": "Bike", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Transportation" },
+    { "name": "Dish", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Housewares" },
+    { "name": "Tshirt", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Clothing" },
+    { "name": "Some random stuff", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Misc" }
   ],
 
   "defaultProfiles": [
