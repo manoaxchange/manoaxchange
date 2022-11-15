@@ -12,8 +12,11 @@
   ],
 
   "defaultItems": [
-    { "name": "Organic Chemistry 7th Edition", "image":  "#", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "books" },
-    { "name": "Keyboard", "image": "#", "price":  30.00, "owner": "admin@foo.com", "description":  "Brand new, all keys are functional.", "category": "electronics" }
+    { "name": "Organic Chemistry 7th Edition", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Books" },
+    { "name": "Keyboard", "image": "https://via.placeholder.com/500.png?text=Item", "price":  30.00, "owner": "admin@foo.com", "description":  "Brand new, all keys are functional.", "category": "Electronics" },
+    { "name": "Transportation", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Books" },
+    { "name": "Organic Chemistry 7th Edition", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Books" },
+    { "name": "Organic Chemistry 7th Edition", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Books" }
   ],
 
   "defaultProfiles": [

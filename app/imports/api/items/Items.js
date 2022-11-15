@@ -5,7 +5,7 @@ import { Tracker } from 'meteor/tracker';
 /**
  * The ItemsCollection. It encapsulates state and variable values for items.
  */
-export const CATEGORIES = ['books', 'electronics', 'clothing', 'housewares', 'transportation', 'misc'];
+export const CATEGORIES = ['Books', 'Electronics', 'Clothing', 'Housewares', 'Transportation', 'Misc'];
 
 class ItemsCollection {
   constructor() {
