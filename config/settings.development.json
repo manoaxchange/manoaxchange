@@ -14,5 +14,11 @@
   "defaultItems": [
     { "name": "Organic Chemistry 7th Edition", "image":  "#", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "books" },
     { "name": "Keyboard", "image": "#", "price":  30.00, "owner": "admin@foo.com", "description":  "Brand new, all keys are functional.", "category": "electronics" }
+  ],
+
+  "defaultProfiles": [
+    { "email": "kawn@hawaii.edu", "firstName": "Nicholas", "lastName": "Kaw", "bio": "Econ Major, Ics Minor", "picture": "", "owner": "admin@foo.com" },
+    { "email": "ttran2@hawaii.edu", "firstName": "Giorgio", "lastName": "Tran", "bio": "Kinesiology Graduate, Ics MD", "picture": "", "owner": "admin@foo.com" },
+    { "email": "gtp@hawaii.edu", "firstName": "Gian", "lastName": "Portillo", "bio": "Ics Major", "picture": "", "owner": "admin@foo.com" }
   ]
 }
