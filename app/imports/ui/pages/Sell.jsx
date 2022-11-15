@@ -1,11 +1,11 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, LongTextField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { Stuffs } from '../../api/stuff/Stuff';
+import { CATEGORIES, Items } from '../../api/items/Items';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -13,8 +13,10 @@ const formSchema = new SimpleSchema({
   price: Number,
   description: String,
   name: String,
-  owner: String,
-  category: {type}
+  category: {
+    type: String,
+    allowedValues: CATEGORIES,
+  },
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -23,15 +25,15 @@ const Sell = () => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { image, price, description, name } = data;
+    const { image, price, description, name, category } = data;
     const owner = Meteor.user().username;
-    Stuffs.collection.insert(
-      { image, price, description, name, owner },
+    Items.collection.insert(
+      { image, price, description, name, owner, category },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
         } else {
-          swal('Success', 'Item added successfully', 'success');
+          swal('Success', 'Item is now in the shop!', 'success');
           formRef.reset();
         }
       },
@@ -47,7 +49,11 @@ const Sell = () => {
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <Card>
               <Card.Body>
-
+                <TextField name="name" />
+                <NumField name="price" decimal />
+                <LongTextField name="description" />
+                <TextField name="image" />
+                <SelectField name="category" />
                 <SubmitField value="Submit" />
                 <ErrorsField />
               </Card.Body>
