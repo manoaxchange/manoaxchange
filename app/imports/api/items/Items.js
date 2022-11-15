@@ -5,6 +5,8 @@ import { Tracker } from 'meteor/tracker';
 /**
  * The ItemsCollection. It encapsulates state and variable values for items.
  */
+export const CATEGORIES = ['books', 'electronics', 'clothing', 'housewares', 'transportation', 'misc'];
+
 class ItemsCollection {
   constructor() {
     // The name of this collection.
@@ -18,6 +20,7 @@ class ItemsCollection {
       description: String,
       name: String,
       owner: String,
+      category: { type: String, allowedValues: CATEGORIES },
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
