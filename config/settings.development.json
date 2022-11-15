@@ -12,7 +12,7 @@
   ],
 
   "defaultItems": [
-    { "name": "Organic Chemistry 7th Edition", "image":  "#", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester." },
-    { "name": "Keyboard", "image": "#", "price":  30.00, "owner": "admin@foo.com", "description":  "Brand new, all keys are functional." }
+    { "name": "Organic Chemistry 7th Edition", "image":  "#", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "books" },
+    { "name": "Keyboard", "image": "#", "price":  30.00, "owner": "admin@foo.com", "description":  "Brand new, all keys are functional.", "category": "electronics" }
   ]
 }
