@@ -14,6 +14,12 @@ Meteor.publish(Stuffs.userPublicationName, function () {
   return this.ready();
 });
 
+// publish all items
+Meteor.publish(null, function () {
+  return Items.collection.find();
+});
+
+// publish items owned
 Meteor.publish(Items.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
@@ -41,20 +47,6 @@ Meteor.publish(Items.adminPublicationName, function () {
 Meteor.publish(Reports.adminPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return Reports.collection.find();
-  }
-  return this.ready();
-});
-
-// publish all items
-Meteor.publish(null, function () {
-  return Items.collection.find();
-});
-
-// publish items owned
-Meteor.publish(Items.userPublicationName, function () {
-  if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Items.collection.find({ owner: username });
   }
   return this.ready();
 });
