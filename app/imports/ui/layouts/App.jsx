@@ -17,6 +17,7 @@ import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
 import ListReportsAdmin from '../pages/ListReportsAdmin';
 import Shop from '../pages/Shop';
+import UserProfile from '../pages/UserProfile';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -33,6 +34,7 @@ const App = () => (
         <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
         <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
         <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
+        <Route path="/User-Profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
         <Route path="/admin" element={<AdminProtectedRoute><ListReportsAdmin /></AdminProtectedRoute>} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />
