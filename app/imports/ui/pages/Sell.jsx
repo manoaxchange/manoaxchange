@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { CATEGORIES, Items } from '../../api/items/Items';
+import { CATEGORIES_ARRAY, Items } from '../../api/items/Items';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -15,7 +15,7 @@ const formSchema = new SimpleSchema({
   name: String,
   category: {
     type: String,
-    allowedValues: CATEGORIES,
+    allowedValues: CATEGORIES_ARRAY,
   },
 });
 
