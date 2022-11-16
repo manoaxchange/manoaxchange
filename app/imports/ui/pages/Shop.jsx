@@ -20,6 +20,7 @@ const Shop = () => {
 
   useEffect(() => {
     console.log('rendered');
+    document.title = 'ManoaXchange - Shop';
     if (categoryType === ALL) {
       setShowItems(items);
     } else {
