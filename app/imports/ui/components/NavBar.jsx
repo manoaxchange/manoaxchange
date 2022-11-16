@@ -15,7 +15,7 @@ const NavBar = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand as={NavLink} to="/">
+        <Navbar.Brand as={NavLink} to="/home">
           <h2>ManoaXchange</h2>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -23,6 +23,7 @@ const NavBar = () => {
           <Nav className="me-auto justify-content-start">
             <Nav.Link id="add-stuff-nav" as={NavLink} to="/add" key="add">Shop</Nav.Link>
             <Nav.Link id="list-stuff-nav" as={NavLink} to="/list" key="list">Categories</Nav.Link>
+            <Nav.Link id="list-stuff-nav" as={NavLink} to="/item" key="item">item testing page</Nav.Link>
             {currentUser ? ([
               <Nav.Link id="add-stuff-nav" as={NavLink} to="" key="">Buy</Nav.Link>,
               <Nav.Link id="list-stuff-nav" as={NavLink} to="" key="">Sell</Nav.Link>,
