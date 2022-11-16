@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import SidebarFull from '../components/sidebar/SidebarFull';
+import SidebarFull from '../components/shop/SidebarFull';
 import { Items } from '../../api/items/Items';
 import Item from '../components/shop/Item';
 
