@@ -16,7 +16,7 @@ const Item = () => (
             <Button className="px-5 buttonspace" variant="danger"> Report </Button>
           </div>
           <div className="rounded border">
-            <p className="textspace"> The essence of Arendt’s idea was in the fact that the power of many would not become something substantial over the course of time, as the core of Jefferson’s ward system was the power of everyone and the personal competencies of every civilian (254). This turned out to be a...</p>
+            <p className="textspace"> The essence of Arendt’s idea was in the fact that the power of many would not become something substantial over the course of time, as the core of Jefferson’s ward system was the power </p>
           </div>
           <div className="parent py-3">
             <div className="child">
