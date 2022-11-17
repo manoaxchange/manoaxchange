@@ -1,5 +1,4 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
 import { Button, Container, Row, Col, Image } from 'react-bootstrap';
 
 const Item = () => (
