@@ -4,7 +4,7 @@ import { Bicycle, Book, Keyboard, LampFill, Mortarboard, PuzzleFill, Search, Sho
 import PropTypes from 'prop-types';
 import { CATEGORIES } from '../../../api/items/Items';
 
-const SidebarFull = ({ handleCategoryType }) => {
+const SidebarFull = ({ handleCategoryType, handleSearch }) => {
   const [filter, setFilter] = useState('');
   return (
     <div
@@ -13,17 +13,23 @@ const SidebarFull = ({ handleCategoryType }) => {
     >
       <Nav className="d-flex flex-column">
         <Nav.Item key="searchbox">
-          <InputGroup className="mb-3">
-            <Form.Control
-              placeholder="Search"
-              aria-label="Search"
-              aria-describedby="basic-addon2"
-              onChange={(event) => setFilter(event.target.value)}
-            />
-            <Button variant="outline-secondary" id="button-addon2" onClick={() => console.log(filter)}>
-              <Search />
-            </Button>
-          </InputGroup>
+          <form onSubmit={(event) => {
+            event.preventDefault();
+            return handleSearch(filter.trim());
+          }}
+          >
+            <InputGroup className="mb-3" onSubmit={() => handleSearch(filter.trim())}>
+              <Form.Control
+                placeholder="Search"
+                aria-label="Search"
+                aria-describedby="basic-addon2"
+                onChange={(event) => setFilter(event.target.value)}
+              />
+              <Button variant="outline-secondary" id="button-addon2" type="submit">
+                <Search />
+              </Button>
+            </InputGroup>
+          </form>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link
@@ -95,6 +101,7 @@ const SidebarFull = ({ handleCategoryType }) => {
 
 SidebarFull.propTypes = {
   handleCategoryType: PropTypes.func.isRequired,
+  handleSearch: PropTypes.func.isRequired,
 };
 
 export default SidebarFull;
