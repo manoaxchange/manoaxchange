@@ -5,18 +5,28 @@ import { Col, Container } from 'react-bootstrap';
 const Footer = () => (
   <footer className="mt-auto py-3 bg-light">
     <Container>
-      <Col className="text-center">
-        Department of Information and Computer Sciences
-        {' '}
+      <Col className="text-center py-3">
+        Built with &hearts; by:&nbsp;
+        <a href="https://github.com/nickkaw" target="_blank" rel="noreferrer noopener">
+          Nick Kaw
+        </a>,
+       &nbsp;
+        <a href="https://github.com/giorgio-tran" target="_blank" rel="noreferrer noopener">
+          Giorgio Tran
+        </a>,
+        &nbsp;
+        <a href="https://github.com/Geeean" target="_blank" rel="noreferrer noopener">
+          Gian Portillo
+        </a>
+
         <br />
-        University of Hawaii
-        <br />
-        Honolulu, HI 96822
-        {' '}
-        <br />
-        <a href="http://ics-software-engineering.github.io/meteor-application-template-react">
-          Template Home
-          Page
+        <a
+          href="https://github.com/manoaxchange"
+          target="_blank"
+          rel="noreferrer noopener"
+          className="text-decoration-none"
+        >
+          ManoaXchange &copy; 2022
         </a>
       </Col>
     </Container>
