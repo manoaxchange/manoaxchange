@@ -21,14 +21,13 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
-            <Nav.Link id="add-stuff-nav" as={NavLink} to="/add" key="add">Shop</Nav.Link>
+            <Nav.Link id="add-stuff-nav" as={NavLink} to="/shop" key="shop">Shop</Nav.Link>
             <Nav.Link id="list-stuff-nav" as={NavLink} to="/list" key="list">Categories</Nav.Link>
-            <Nav.Link id="list-stuff-nav" as={NavLink} to="/item" key="item">item testing page</Nav.Link>
             {currentUser ? ([
-              <Nav.Link id="add-stuff-nav" as={NavLink} to="" key="">Buy</Nav.Link>,
-              <Nav.Link id="list-stuff-nav" as={NavLink} to="" key="">Sell</Nav.Link>,
+              <Nav.Link id="list-stuff-nav" as={NavLink} to="/sell" key="sell">Sell</Nav.Link>,
             ]) : ''}
             {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+              <Nav.Link id="list-stuff-nav" as={NavLink} to="/item" key="item">item testing page</Nav.Link>,
               <Nav.Link id="list-stuff-admin-nav" as={NavLink} to="/admin" key="admin">Admin</Nav.Link>
             ) : ''}
           </Nav>
