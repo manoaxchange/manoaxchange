@@ -77,7 +77,7 @@ const Landing = () => (
         </a>
       </Container>
     </section>
-    <ItemsCarousel />
+    <ItemsCarousel style={Meteor.user() ? show : hidden} />
   </>
 );
 
