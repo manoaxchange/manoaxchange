@@ -9,13 +9,13 @@ const ALL = 'All';
 
 const Shop = () => {
   const [showItems, setShowItems] = useState([]);
-  const [categoryType, setCategoryType] = useState(ALL);
+  const [title, setTitle] = useState(ALL);
   const [search, setSearch] = useState('');
 
   const handleSearch = (input) => { setSearch(`${input}`); };
   const handleCategoryType = (category) => {
     handleSearch('');
-    setCategoryType(`${category}`);
+    setTitle(`${category}`);
   };
 
   const { items } = useTracker(() => {
@@ -30,25 +30,26 @@ const Shop = () => {
     document.title = 'ManoaXchange - Shop';
     if (search.length > 0) {
       setShowItems(items.filter(item => item.name.toLowerCase().includes(search)));
-    } else if (categoryType === ALL) {
+      setTitle(ALL);
+    } else if (title === ALL) {
       setShowItems(items);
     } else {
-      setShowItems(items.filter(item => item.category === categoryType));
+      setShowItems(items.filter(item => item.category === title));
     }
-  }, [items.length, categoryType, search]);
+  }, [items.length, title, search]);
 
-  console.log('categoryType:', categoryType);
+  console.log('title:', title);
   console.log('search:', search);
   return (
     <div className="d-flex">
       {/* temporarily set the background to dark to test padding */}
       <SidebarFull handleCategoryType={handleCategoryType} handleSearch={handleSearch} />
       <Container fluid className="min-vh-100">
-        <h1 className="py-2">{`${categoryType}`}</h1>
+        <h1 className="py-2">{`${title}`}</h1>
         <Row>
           {showItems.length > 0
             ? showItems.map(item => <Item key={item._id} item={item} />)
-            : <div> No items </div>}
+            : <div> No items found </div>}
         </Row>
       </Container>
     </div>
