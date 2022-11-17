@@ -27,6 +27,34 @@ body {
   padding-bottom: 20px;
 }
 
+.imagefix{
+  height: 500px;
+  width: 500px;
+}
+
+.itemdes{
+  margin-left: 20%;
+}
+
+.buttonspace{
+  margin: 5%;
+}
+
+.textspace{
+  margin: 2%;
+}
+
+.parent{
+  display: flex;
+}
+
+.child{
+  margin: auto;
+}
+
+.descmargin{
+  margin-top: 15%;
+}
 .ocean-background {
   background: linear-gradient(
       rgb(0, 0, 0, 0.6),
