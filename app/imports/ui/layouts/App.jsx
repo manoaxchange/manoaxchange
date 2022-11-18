@@ -19,6 +19,7 @@ import ListReportsAdmin from '../pages/ListReportsAdmin';
 import Shop from '../pages/Shop';
 import Sell from '../pages/Sell';
 import Item from '../pages/Item';
+import MyItems from '../pages/MyItems';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -32,6 +33,7 @@ const App = () => (
         <Route path="/signout" element={<SignOut />} />
         <Route path="/item" element={<Item />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/myitems" element={<MyItems />} />
         <Route path="/sell" element={<ProtectedRoute><Sell /></ProtectedRoute>} />
         <Route path="/item" element={<ProtectedRoute><Item /></ProtectedRoute>} />
         <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
