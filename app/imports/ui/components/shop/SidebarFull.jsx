@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Button, Form, InputGroup, Nav } from 'react-bootstrap';
-import { Bicycle, Book, Keyboard, LampFill, Mortarboard, PuzzleFill, Search, Shop } from 'react-bootstrap-icons';
+import React from 'react';
+import { Nav } from 'react-bootstrap';
+import { Bicycle, Book, Keyboard, LampFill, Mortarboard, PuzzleFill, Shop } from 'react-bootstrap-icons';
 import PropTypes from 'prop-types';
 import { CATEGORIES } from '../../../api/items/Items';
+import SearchBar from '../SearchBar';
 
 const SidebarFull = ({ handleCategoryType, handleSearch }) => {
-  const [filter, setFilter] = useState('');
   return (
     <div
       className="px-3 py-3 bg-dark text-white vh-100 sticky-top"
@@ -13,23 +13,7 @@ const SidebarFull = ({ handleCategoryType, handleSearch }) => {
     >
       <Nav className="d-flex flex-column">
         <Nav.Item key="searchbox">
-          <form onSubmit={(event) => {
-            event.preventDefault();
-            return handleSearch(filter.trim());
-          }}
-          >
-            <InputGroup className="mb-3" onSubmit={() => handleSearch(filter.trim())}>
-              <Form.Control
-                placeholder="Search"
-                aria-label="Search"
-                aria-describedby="basic-addon2"
-                onChange={(event) => setFilter(event.target.value)}
-              />
-              <Button variant="outline-secondary" id="button-addon2" type="submit">
-                <Search />
-              </Button>
-            </InputGroup>
-          </form>
+          <SearchBar handleSearch={handleSearch} />
         </Nav.Item>
         <Nav.Item>
           <Nav.Link

@@ -1,7 +1,7 @@
-import React from 'react';
-import { Button, Container, Form, InputGroup, Row, Col } from 'react-bootstrap';
-import { Search } from 'react-bootstrap-icons';
+import React, { useState } from 'react';
+import { Container, Row } from 'react-bootstrap';
 import MyItem from '../components/MyItem';
+import SearchBar from '../components/SearchBar';
 
 const randomItems = () => {
   const arr = [];
@@ -12,22 +12,14 @@ const randomItems = () => {
 };
 
 const MyItems = () => {
+  const [search, setSearch] = useState('');
+  console.log('search:', search);
+
+  const handleSearch = (input) => { setSearch(`${input}`); };
+
   return (
     <Container className="py-3">
-      <Row>
-        <Col>
-          <InputGroup className="mb-3">
-            <Form.Control
-              placeholder="Search"
-              aria-label="Search"
-              aria-describedby="basic-addon2"
-            />
-            <Button variant="outline-secondary" id="button-addon2" type="submit">
-              <Search />
-            </Button>
-          </InputGroup>
-        </Col>
-      </Row>
+      <SearchBar handleSearch={handleSearch} />
       <Row>
         {randomItems().map(item => item)}
       </Row>
