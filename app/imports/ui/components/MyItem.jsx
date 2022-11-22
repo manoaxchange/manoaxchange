@@ -23,7 +23,7 @@ const MyItem = ({ item }) => (
       </Card.Body>
       <Card.Footer className="d-flex justify-content-between gap-2">
         <a className="text-decoration-none text-dark" href="/#"><b>{`${item.name}`}</b></a>
-        <b>{`${item.price}`}</b>
+        <b>{`$${item.price}`}</b>
       </Card.Footer>
     </Card>
   </Col>
