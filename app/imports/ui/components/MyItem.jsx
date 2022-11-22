@@ -19,7 +19,7 @@ const MyItem = ({ item }) => (
         <Button style={blackButton}><Trash3Fill /></Button>
       </Card.Header>
       <Card.Body className="d-flex align-items-center">
-        <Image width="100%" height="100%" src="#" style={{ objectFit: 'contain' }} />
+        <Image width="100%" height="100%" src={item.image} style={{ objectFit: 'contain' }} />
       </Card.Body>
       <Card.Footer className="d-flex justify-content-between gap-2">
         <a className="text-decoration-none text-dark" href="/#"><b>{`${item.name}`}</b></a>
@@ -33,6 +33,7 @@ MyItem.propTypes = {
   item: PropTypes.shape({
     name: PropTypes.string,
     price: PropTypes.number,
+    image: PropTypes.string,
   }).isRequired,
 };
 
