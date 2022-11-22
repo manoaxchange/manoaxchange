@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 import { Link, Navigate } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
 import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
+import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField } from 'uniforms-bootstrap5';
+import swal from 'sweetalert';
+import { Profiles } from '../../api/profiles/Profiles';
 
 /**
  * SignUp component is similar to signin component, but we create a new user instead.
@@ -17,12 +20,15 @@ const SignUp = ({ location }) => {
   const schema = new SimpleSchema({
     email: String,
     password: String,
+    firstName: String,
+    lastName: String,
+    bio: String,
   });
   const bridge = new SimpleSchema2Bridge(schema);
 
   /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
-  const submit = (doc) => {
-    const { email, password } = doc;
+  const submit = (doc1, doc2) => {
+    const { email, password } = doc1;
     Accounts.createUser({ email, username: email, password }, (err) => {
       if (err) {
         setError(err.reason);
@@ -31,10 +37,22 @@ const SignUp = ({ location }) => {
         setRedirectToRef(true);
       }
     });
+    const { firstName, lastName, bio } = doc2;
+    const owner = Meteor.user().username;
+    Profiles.collection.insert(
+      { username: email, firstName, lastName, bio, owner },
+      (error2) => {
+        if (error2) {
+          swal('Error', error2.message, 'error');
+        } else {
+          swal('Success', 'Item added successfully', 'success');
+        }
+      },
+    );
   };
 
   /* Display the signup form. Redirect to add page after successful registration and login. */
-  const { from } = location?.state || { from: { pathname: '/add' } };
+  const { from } = location?.state || { from: { pathname: '/' } };
   // if correct authentication, redirect to from: page instead of signup screen
   if (redirectToReferer) {
     return <Navigate to={from} />;
@@ -49,8 +67,11 @@ const SignUp = ({ location }) => {
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
             <Card>
               <Card.Body>
+                <TextField name="firstName" placeholder="First name" />
+                <TextField name="lastName" placeholder="Last name" />
                 <TextField name="email" placeholder="E-mail address" />
                 <TextField name="password" placeholder="Password" type="password" />
+                <LongTextField name="bio" placeholder="Biography" />
                 <ErrorsField />
                 <SubmitField />
               </Card.Body>
