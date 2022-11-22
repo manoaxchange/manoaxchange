@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card, Col, Image, Modal } from 'react-bootstrap';
+import { Button, Card, Col, Image } from 'react-bootstrap';
 import { CurrencyDollar, PencilSquare, Trash3Fill } from 'react-bootstrap-icons';
 import PropTypes from 'prop-types';
 import DeleteModal from './myItem/DeleteModal';
@@ -42,7 +42,7 @@ const MyItem = ({ item }) => {
           <b>{`$${item.price}`}</b>
         </Card.Footer>
       </Card>
-      <DeleteModal handleClose={handleCloseDelete} show={showDelete} />
+      <DeleteModal handleClose={handleCloseDelete} show={showDelete} item={item} />
       <EditModal handleClose={handleCloseEdit} show={showEdit} />
       <SoldModal handleClose={handleCloseSold} show={showSold} />
     </Col>

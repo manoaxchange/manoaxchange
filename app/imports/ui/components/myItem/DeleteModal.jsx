@@ -1,19 +1,26 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { Items } from '../../../api/items/Items';
 
-const DeleteModal = ({ show, handleClose }) => (
+const DeleteModal = ({ show, handleClose, item }) => (
   <Modal show={show} onHide={handleClose}>
     <Modal.Header closeButton>
-      <Modal.Title>Modal heading</Modal.Title>
+      <Modal.Title>Delete</Modal.Title>
     </Modal.Header>
-    <Modal.Body>DELETE</Modal.Body>
+    <Modal.Body>{`Are you sure you want to delete ${item.name}?`}</Modal.Body>
     <Modal.Footer>
-      <Button variant="secondary" onClick={handleClose}>
-        Close
+      <Button
+        variant="danger"
+        onClick={() => {
+          Items.collection.remove(item._id);
+          handleClose();
+        }}
+      >
+        Delete
       </Button>
-      <Button variant="primary" onClick={handleClose}>
-        Save Changes
+      <Button variant="secondary" onClick={handleClose}>
+        Cancel
       </Button>
     </Modal.Footer>
   </Modal>
@@ -22,6 +29,10 @@ const DeleteModal = ({ show, handleClose }) => (
 DeleteModal.propTypes = {
   show: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
+  item: PropTypes.shape({
+    name: PropTypes.string,
+    _id: PropTypes.string,
+  }).isRequired,
 };
 
 export default DeleteModal;
