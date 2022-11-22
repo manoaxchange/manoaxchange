@@ -20,6 +20,7 @@ import Shop from '../pages/Shop';
 import Sell from '../pages/Sell';
 import Item from '../pages/Item';
 import MyItems from '../pages/MyItems';
+import UserProfile from '../pages/UserProfile';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -36,6 +37,7 @@ const App = () => (
         <Route path="/myitems" element={<ProtectedRoute><MyItems /></ProtectedRoute>} />
         <Route path="/sell" element={<ProtectedRoute><Sell /></ProtectedRoute>} />
         <Route path="/item" element={<ProtectedRoute><Item /></ProtectedRoute>} />
+        <Route path="/profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
         <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
         <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
         <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
