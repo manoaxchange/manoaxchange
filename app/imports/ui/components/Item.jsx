@@ -7,7 +7,7 @@ const Item = ({ item }) => (
     <Row>
       <Col>
         <h2 className> {`${item.name}`} </h2>
-        <Image src="https://images.pexels.com/photos/12211/pexels-photo-12211.jpeg?cs=srgb&dl=pexels-tetyana-kovyrina-12211.jpg&fm=jpg" className="imagefix" />
+        <Image className="imagefix" /> {`${item.image}`}
       </Col>
       <Col>
         <div className="descmargin">
@@ -35,6 +35,7 @@ Item.propTypes = {
     name: PropTypes.string,
     price: PropTypes.number,
     description: PropTypes.string,
+    image: PropTypes.string,
   }).isRequired,
 };
 
