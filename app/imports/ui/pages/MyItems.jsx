@@ -7,14 +7,6 @@ import SearchBar from '../components/SearchBar';
 import { Items } from '../../api/items/Items';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-const randomItems = () => {
-  const arr = [];
-  for (let x = 0; x < 20; x++) {
-    arr.push(<MyItem />);
-  }
-  return arr;
-};
-
 const MyItems = () => {
   const [search, setSearch] = useState('');
 
@@ -43,7 +35,7 @@ const MyItems = () => {
     <Container className="py-3">
       <SearchBar handleSearch={handleSearch} />
       <Row>
-        {randomItems().map(item => item)}
+        {items.map(item => <MyItem item={item} />)}
       </Row>
     </Container>
   ) : <LoadingSpinner />);
