@@ -7,7 +7,6 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField } from 'uniforms-bootstrap5';
-import swal from 'sweetalert';
 import { Profiles } from '../../api/profiles/Profiles';
 
 /**
@@ -29,26 +28,23 @@ const SignUp = ({ location }) => {
   /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
   const submit = (doc1, doc2) => {
     const { email, password } = doc1;
-    Accounts.createUser({ email, username: email, password }, (err) => {
-      if (err) {
-        setError(err.reason);
-      } else {
-        setError('');
-        setRedirectToRef(true);
-      }
-    });
-    const { firstName, lastName, bio } = doc2;
-    const owner = Meteor.user().username;
-    Profiles.collection.insert(
-      { username: email, firstName, lastName, bio, owner },
-      (error2) => {
-        if (error2) {
-          swal('Error', error2.message, 'error');
+    if (email.endsWith('@hawaii.edu')) {
+      Accounts.createUser({ email, username: email, password }, (err) => {
+        if (err) {
+          setError(err.reason);
         } else {
-          swal('Success', 'Item added successfully', 'success');
+          setError('');
+          setRedirectToRef(true);
         }
-      },
-    );
+      });
+      const { firstName, lastName, bio } = doc2;
+      const owner = Meteor.user().username;
+      Profiles.collection.insert(
+        { username: email, firstName, lastName, bio, owner },
+      );
+    } else {
+      setError('Invalid email address.');
+    }
   };
 
   /* Display the signup form. Redirect to add page after successful registration and login. */
