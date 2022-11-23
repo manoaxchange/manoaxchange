@@ -30,8 +30,10 @@ const MyItem = ({ item }) => {
     <Col xs={12} lg={4} xl={3} className="d-flex my-3">
       <Card className="w-100" style={{ minHeight: '300px' }}>
         <Card.Header className="d-flex justify-content-end align-items-center gap-2">
-          <Button onClick={handleShowEdit} style={blackButton}><PencilSquare /></Button>
-          <Button onClick={handleShowSold} style={blackButton}><CurrencyDollar /></Button>
+          {item.sold
+            ? ''
+            : [<Button onClick={handleShowEdit} style={blackButton}><PencilSquare /></Button>,
+              <Button onClick={handleShowSold} style={blackButton}><CurrencyDollar /></Button>]}
           <Button onClick={handleShowDelete} style={blackButton}><Trash3Fill /></Button>
         </Card.Header>
         <Card.Body className="d-flex align-items-center">
@@ -39,7 +41,9 @@ const MyItem = ({ item }) => {
         </Card.Body>
         <Card.Footer className="d-flex justify-content-between gap-2">
           <a className="text-decoration-none text-dark" href="/#"><b>{`${item.name}`}</b></a>
-          <b>{`$${item.price}`}</b>
+          {item.sold
+            ? <b className="text-danger">SOLD</b>
+            : <b>{`$${item.price}`}</b>}
         </Card.Footer>
       </Card>
       <DeleteModal handleClose={handleCloseDelete} show={showDelete} item={item} />
@@ -54,6 +58,7 @@ MyItem.propTypes = {
     name: PropTypes.string,
     price: PropTypes.number,
     image: PropTypes.string,
+    sold: PropTypes.bool,
   }).isRequired,
 };
 
