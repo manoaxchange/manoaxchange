@@ -5,7 +5,6 @@ import { AutoForm, ErrorsField, LongTextField, NumField, SelectField, SubmitFiel
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
 import { Items } from '../../../api/items/Items';
-import LoadingSpinner from '../LoadingSpinner';
 
 const bridge = new SimpleSchema2Bridge(Items.schema);
 
