@@ -30,7 +30,7 @@ ProfileDisplay.propTypes = {
     lastName: PropTypes.string,
     bio: PropTypes.string,
     picture: PropTypes.string,
-    _id: PropTypes.string
+    _id: PropTypes.string,
   }).isRequired,
 };
 
