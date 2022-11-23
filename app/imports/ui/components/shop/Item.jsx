@@ -23,7 +23,7 @@ const Item = ({ item }) => {
         <Card.Header><Button style={blackButton} onClick={handleShowReport}><Flag /></Button></Card.Header>
         <Card.Body className="d-flex align-items-center">
           <Link to={`/item/${item._id}`}>
-            <Image width="100%" height="100%" src={item.image} style={{ objectFit: 'contain' }}/>
+            <Image width="100%" height="100%" src={item.image} style={{ objectFit: 'contain' }} />
           </Link>
         </Card.Body>
         <Card.Footer className="d-flex justify-content-between gap-2">
