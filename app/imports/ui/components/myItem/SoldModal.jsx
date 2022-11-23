@@ -11,6 +11,7 @@ const bridge = new SimpleSchema2Bridge(Items.schema);
 const SoldModal = ({ show, handleClose, item }) => {
   const submit = (data) => {
     const { sold } = data;
+    handleClose();
     Items.collection.update(item._id, { $set: { sold } }, (error) => (
       error
         ? swal('Error', error.message, 'error')

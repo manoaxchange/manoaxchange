@@ -11,6 +11,7 @@ const bridge = new SimpleSchema2Bridge(Items.schema);
 const EditModal = ({ show, handleClose, item }) => {
   const submit = (data) => {
     const { name, image, description, price } = data;
+    handleClose();
     Items.collection.update(item._id, { $set: { name, image, description, price } }, (error) => (
       error
         ? swal('Error', error.message, 'error')
