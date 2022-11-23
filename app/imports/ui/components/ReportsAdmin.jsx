@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import { XCircleFill } from 'react-bootstrap-icons';
+import { Items } from '../../api/items/Items';
 
 /** Renders a single row in the List Stuff (Admin) table. See pages/ListStuffAdmin.jsx. */
 const ReportsAdmin = ({ report }) => {
   const removeItem = (docID) => {
-    console.log(`Removing item with an ID of ${docID}`);
-    // collection.remove(docID);
+    Items.collection.remove(docID);
   };
   return (
     <tr>
