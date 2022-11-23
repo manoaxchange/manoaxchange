@@ -35,7 +35,7 @@ const MyItems = () => {
     <Container className="py-3">
       <SearchBar handleSearch={handleSearch} />
       <Row>
-        {items.map(item => <MyItem key={item._id} item={item} />)}
+        {items.map(item => <MyItem key={`item-${item._id}`} item={item} />)}
       </Row>
     </Container>
   ) : <LoadingSpinner />);

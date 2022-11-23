@@ -32,9 +32,9 @@ const MyItem = ({ item }) => {
         <Card.Header className="d-flex justify-content-end align-items-center gap-2">
           {item.sold
             ? ''
-            : [<Button onClick={handleShowEdit} style={blackButton}><PencilSquare /></Button>,
-              <Button onClick={handleShowSold} style={blackButton}><CurrencyDollar /></Button>]}
-          <Button onClick={handleShowDelete} style={blackButton}><Trash3Fill /></Button>
+            : [<Button key="edit" onClick={handleShowEdit} style={blackButton}><PencilSquare /></Button>,
+              <Button key="sold" onClick={handleShowSold} style={blackButton}><CurrencyDollar /></Button>]}
+          <Button key="delete" onClick={handleShowDelete} style={blackButton}><Trash3Fill /></Button>
         </Card.Header>
         <Card.Body className="d-flex align-items-center">
           <Image width="100%" height="100%" src={item.image} style={{ objectFit: 'contain' }} />
@@ -48,7 +48,7 @@ const MyItem = ({ item }) => {
       </Card>
       <DeleteModal handleClose={handleCloseDelete} show={showDelete} item={item} />
       <EditModal handleClose={handleCloseEdit} show={showEdit} item={item} />
-      <SoldModal handleClose={handleCloseSold} show={showSold} />
+      <SoldModal handleClose={handleCloseSold} show={showSold} item={item} />
     </Col>
   );
 };

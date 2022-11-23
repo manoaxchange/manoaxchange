@@ -33,10 +33,10 @@ const EditModal = ({ show, handleClose, item }) => {
           <ErrorsField />
         </Modal.Body>
         <Modal.Footer>
+          <SubmitField value="Save" />
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <SubmitField value="Submit" />
           <ErrorsField />
         </Modal.Footer>
       </AutoForm>
@@ -48,11 +48,11 @@ EditModal.propTypes = {
   show: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
   item: PropTypes.shape({
-    image: String,
-    price: Number,
-    description: String,
-    name: String,
-    _id: String,
+    image: PropTypes.string,
+    price: PropTypes.number,
+    description: PropTypes.string,
+    name: PropTypes.string,
+    _id: PropTypes.string,
   }).isRequired,
 };
 
