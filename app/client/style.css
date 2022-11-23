@@ -62,3 +62,7 @@ body {
   ), url("images/uhmanoa.jpeg") no-repeat fixed center center;
   background-size: cover;
 }
+
+textarea#uniforms-0000-0002.form-control {
+  height: 200px;
+}

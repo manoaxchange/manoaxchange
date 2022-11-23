@@ -43,7 +43,7 @@ const MyItem = ({ item }) => {
         </Card.Footer>
       </Card>
       <DeleteModal handleClose={handleCloseDelete} show={showDelete} item={item} />
-      <EditModal handleClose={handleCloseEdit} show={showEdit} />
+      <EditModal handleClose={handleCloseEdit} show={showEdit} item={item} />
       <SoldModal handleClose={handleCloseSold} show={showSold} />
     </Col>
   );
