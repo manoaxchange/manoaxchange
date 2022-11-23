@@ -17,7 +17,7 @@
     { "name": "Bike", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Transportation" },
     { "name": "Dish", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Housewares" },
     { "name": "Tshirt", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Clothing" },
-    { "name": "Some random stuff", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Clothing" }
+    { "name": "Some random stuff", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Miscellaneous" }
   ],
 
   "defaultProfiles": [

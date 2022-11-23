@@ -1,12 +1,14 @@
-import React from 'react';
-import { Container } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Container, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import Item from '../components/Item';
+import MyItem from '../components/MyItem';
+import SearchBar from '../components/SearchBar';
 import { Items } from '../../api/items/Items';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-const Itempages = () => {
+const MyItems = () => {
+  const [search, setSearch] = useState('');
 
   const { items } = useTracker(() => {
     const user = Meteor.user();
@@ -25,12 +27,18 @@ const Itempages = () => {
   const itemsReady = () => !!items;
 
   console.log('items:', items);
+  console.log('search:', search);
+
+  const handleSearch = (input) => { setSearch(`${input}`); };
 
   return (itemsReady() ? (
     <Container className="py-3">
-      {items.map(item => <Item item={item} />)}
+      <SearchBar handleSearch={handleSearch} />
+      <Row>
+        {items.map(item => <MyItem item={item} />)}
+      </Row>
     </Container>
   ) : <LoadingSpinner />);
 };
 
-export default Itempages;
+export default MyItems;
