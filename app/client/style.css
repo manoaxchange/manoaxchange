@@ -63,6 +63,6 @@ body {
   background-size: cover;
 }
 
-textarea#uniforms-0000-0002.form-control {
+textarea.form-control {
   height: 200px;
 }
