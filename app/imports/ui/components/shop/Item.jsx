@@ -13,7 +13,7 @@ const Item = ({ item }) => (
       </Card.Body>
       <Card.Footer className="d-flex justify-content-between gap-2">
         <a className="text-decoration-none text-dark" href="/#"><b>{item.name}</b></a>
-        <b>${item.price}</b>
+        {item.sold ? <b className="text-secondary">SOLD</b> : <b>${item.price}</b> }
       </Card.Footer>
     </Card>
   </Col>
@@ -25,6 +25,7 @@ Item.propTypes = {
     name: PropTypes.string,
     price: PropTypes.number,
     image: PropTypes.string,
+    sold: PropTypes.bool,
     _id: PropTypes.string,
   }).isRequired,
 };
