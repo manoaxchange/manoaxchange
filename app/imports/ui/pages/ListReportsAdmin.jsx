@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Col, Container, Row, Table } from 'react-bootstrap';
 import { Reports } from '../../api/reports/Reports';
-import ReportsAdmin from '../components/ReportsAdmin';
+import ReportsAdmin from '../components/reports/ReportsAdmin';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 /* Renders a table containing all of the Stuff documents. Use <StuffItemAdmin> to render each row. */
