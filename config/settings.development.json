@@ -1,33 +1,27 @@
 {
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
-    { "email": "john@foo.com", "password": "changeme" },
-    { "email": "kawn@hawaii.edu", "password": "changeme", "role": "admin" }
-  ],
+    { "email": "kawn@hawaii.edu", "password": "changeme", "role": "admin" },
+    { "email": "gtp@hawaii.edu", "password": "changeme", "role": "admin" },
+    { "email": "ttran2@hawaii.edu", "password": "changeme" }
 
-  "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
   ],
 
   "defaultItems": [
-    { "name": "Organic Chemistry 7th Edition", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Books",
+    { "name": "Organic Chemistry 7th Edition", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "kawn@hawaii.edu", "description":  "Brand new, only used for one semester.", "category": "Books",
       "sold": false
     },
-    { "name": "Keyboard", "image": "https://via.placeholder.com/500.png?text=Item", "price":  30.00, "owner": "admin@foo.com", "description":  "Brand new, all keys are functional.", "category": "Electronics",
+    { "name": "Keyboard", "image": "https://via.placeholder.com/500.png?text=Item", "price":  30.00, "owner": "kawn@hawaii.edu", "description":  "Brand new, all keys are functional.", "category": "Electronics",
       "sold": true
     },
-    { "name": "Bike", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Transportation", "sold": false },
-    { "name": "Dish", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Housewares", "sold": true },
-    { "name": "Tshirt", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Clothing", "sold": false },
-    { "name": "Some random stuff", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "john@foo.com", "description":  "Brand new, only used for one semester.", "category": "Miscellaneous", "sold": false }
+    { "name": "Bike", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "gtp@hawaii.edu", "description":  "Brand new, only used for one semester.", "category": "Transportation", "sold": false },
+    { "name": "Dish", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "gtp@hawaii.edu", "description":  "Brand new, only used for one semester.", "category": "Housewares", "sold": true },
+    { "name": "Tshirt", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "ttran2@hawaii.edu", "description":  "Brand new, only used for one semester.", "category": "Clothing", "sold": false },
+    { "name": "Some random stuff", "image":  "https://via.placeholder.com/500.png?text=Item", "price":  20.00, "owner": "ttran2@hawaii.edu", "description":  "Brand new, only used for one semester.", "category": "Miscellaneous", "sold": false }
   ],
 
   "defaultProfiles": [
     { "email": "kawn@hawaii.edu", "firstName": "Nicholas", "lastName": "Kaw", "bio": "Econ Major, Ics Minor", "picture": "https://github.com/nickkaw.png", "owner": "kawn@hawaii.edu" },
-    { "email": "ttran2@hawaii.edu", "firstName": "Giorgio", "lastName": "Tran", "bio": "Kinesiology Graduate, Ics MD", "picture": "", "owner": "admin@foo.com" },
-    { "email": "gtp@hawaii.edu", "firstName": "Gian", "lastName": "Portillo", "bio": "Ics Major", "picture": "", "owner": "admin@foo.com" }
+    { "email": "ttran2@hawaii.edu", "firstName": "Giorgio", "lastName": "Tran", "bio": "Kinesiology Graduate, Ics MD", "picture": "https://github.com/.png", "owner": "ttran2@hawaii.edu" },
+    { "email": "gtp@hawaii.edu", "firstName": "Gian", "lastName": "Portillo", "bio": "Ics Major", "picture": "https://github.com/.png", "owner": "gtp@hawaii.edu" }
   ]
 }
