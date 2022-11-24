@@ -21,17 +21,19 @@ const ReportModal = ({ show, handleClose, item }) => {
     const itemId = item._id;
     const owner = item.owner;
     const createdAt = new Date();
+    const closed = false;
     Reports.collection.insert(
-      { report, itemName, itemId, owner, createdAt },
+      { report, itemName, itemId, owner, createdAt, closed },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
         } else {
-          swal('Success', 'Item is now in the shop!', 'success');
+          swal('Success', 'Report has been submitted', 'success');
           formRef.reset();
         }
       },
     );
+    handleClose();
   };
 
   let fRef = null;

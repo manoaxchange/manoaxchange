@@ -15,7 +15,13 @@ const ReportsAdmin = ({ report }) => {
       <td>{report.owner}</td>
       <td>{report.itemName}</td>
       <td>{report.report}</td>
-      <td><Button variant="danger" onClick={handleShow}><XCircleFill /></Button></td>
+      <td>
+        {
+          report.closed
+            ? <strong className="text-danger">CLOSED</strong>
+            : <Button variant="danger" onClick={handleShow}><XCircleFill /></Button>
+        }
+      </td>
       <ItemRemoveModal handleClose={handleClose} report={report} show={showReport} />
     </tr>
   );
@@ -28,6 +34,7 @@ ReportsAdmin.propTypes = {
     itemName: PropTypes.string,
     itemId: PropTypes.string,
     report: PropTypes.string,
+    closed: PropTypes.bool,
   }).isRequired,
 };
 

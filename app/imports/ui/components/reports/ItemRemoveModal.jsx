@@ -2,30 +2,45 @@ import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { Flag } from 'react-bootstrap-icons';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert';
+import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import { AutoForm, ErrorsField, HiddenField, SubmitField } from 'uniforms-bootstrap5';
 import { Items } from '../../../api/items/Items';
+import { Reports } from '../../../api/reports/Reports';
 
-const ItemRemoveModal = ({ show, handleClose, report }) => (
-  <Modal show={show} onHide={handleClose}>
-    <Modal.Header closeButton>
-      <Modal.Title><Flag /></Modal.Title>
-    </Modal.Header>
-    <Modal.Body>{`Are you sure you want to delete ${report.itemName}?`}</Modal.Body>
-    <Modal.Footer>
-      <Button
-        variant="danger"
-        onClick={() => {
-          Items.collection.remove(report.itemId);
-          handleClose();
-        }}
-      >
-        Delete
-      </Button>
-      <Button variant="secondary" onClick={handleClose}>
-        Cancel
-      </Button>
-    </Modal.Footer>
-  </Modal>
-);
+const bridge = new SimpleSchema2Bridge(Reports.schema);
+
+const ItemRemoveModal = ({ show, handleClose, report }) => {
+  const submit = (data) => {
+    const { closed } = data;
+    Items.collection.remove(report.itemId);
+    Reports.collection.update(report._id, { $set: { closed } }, (error) => (
+      error
+        ? swal('Error', error.message, 'error')
+        : swal('Success', 'Report has been resolved', 'success')
+    ));
+    handleClose();
+  };
+
+  return (
+    <Modal show={show} onHide={handleClose}>
+      <AutoForm schema={bridge} onSubmit={(data) => submit(data)} model={report}>
+        <Modal.Header closeButton>
+          <Modal.Title><Flag /></Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{`Are you sure you want to delete ${report.itemName}?`}</Modal.Body>
+        <HiddenField name="closed" value="true" />
+        <ErrorsField />
+        <Modal.Footer>
+          <SubmitField value="Remove" />
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+        </Modal.Footer>
+      </AutoForm>
+    </Modal>
+  );
+};
 
 ItemRemoveModal.propTypes = {
   show: PropTypes.bool.isRequired,
@@ -33,6 +48,7 @@ ItemRemoveModal.propTypes = {
   report: PropTypes.shape({
     itemName: PropTypes.string,
     itemId: PropTypes.string,
+    _id: PropTypes.string,
   }).isRequired,
 };
 
