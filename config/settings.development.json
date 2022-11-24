@@ -20,8 +20,8 @@
   ],
 
   "defaultProfiles": [
-    { "email": "kawn@hawaii.edu", "firstName": "Nicholas", "lastName": "Kaw", "bio": "Econ Major, Ics Minor", "picture": "https://github.com/nickkaw.png", "owner": "kawn@hawaii.edu" },
-    { "email": "ttran2@hawaii.edu", "firstName": "Giorgio", "lastName": "Tran", "bio": "Kinesiology Graduate, Ics MD", "picture": "https://github.com/.png", "owner": "ttran2@hawaii.edu" },
-    { "email": "gtp@hawaii.edu", "firstName": "Gian", "lastName": "Portillo", "bio": "Ics Major", "picture": "https://github.com/.png", "owner": "gtp@hawaii.edu" }
+    { "firstName": "Nicholas", "lastName": "Kaw", "bio": "Econ Major, Ics Minor", "picture": "https://github.com/nickkaw.png", "owner": "kawn@hawaii.edu" },
+    { "firstName": "Giorgio", "lastName": "Tran", "bio": "Kinesiology Graduate, Ics MD", "picture": "https://github.com/giorgio-tran.png", "owner": "ttran2@hawaii.edu" },
+    { "firstName": "Gian", "lastName": "Portillo", "bio": "Ics Major", "picture": "https://github.com/Geeean.png", "owner": "gtp@hawaii.edu" }
   ]
 }

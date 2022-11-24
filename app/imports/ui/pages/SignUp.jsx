@@ -21,6 +21,7 @@ const SignUp = ({ location }) => {
     password: String,
     firstName: String,
     lastName: String,
+    picture: String,
     bio: String,
   });
   const bridge = new SimpleSchema2Bridge(schema);
@@ -37,10 +38,10 @@ const SignUp = ({ location }) => {
           setRedirectToRef(true);
         }
       });
-      const { firstName, lastName, bio } = doc2;
+      const { firstName, lastName, picture, bio } = doc2;
       const owner = Meteor.user().username;
       Profiles.collection.insert(
-        { username: email, firstName, lastName, bio, owner },
+        { username: firstName, lastName, picture, bio, owner },
       );
     } else {
       setError('Invalid email address.');
@@ -67,6 +68,7 @@ const SignUp = ({ location }) => {
                 <TextField name="lastName" placeholder="Last name" />
                 <TextField name="email" placeholder="E-mail address" />
                 <TextField name="password" placeholder="Password" type="password" />
+                <TextField name="picture" placeholder="Image URL" />
                 <LongTextField name="bio" placeholder="Biography" />
                 <ErrorsField />
                 <SubmitField />

@@ -19,7 +19,8 @@ const ProfileDisplay = ({ profile }) => (
           Overall Rating: [User Rating]
         </Card.Text>
       </Card.Body>
-      <Link to={`/edit/${profile._id}`}>Edit Profile</Link>
+      if (
+      <Link to={`/profile/edit/${profile._id}`}>Edit Profile</Link>
     </Card>
   </Col>
 );
