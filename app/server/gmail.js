@@ -1,7 +1,6 @@
 import { WebApp } from 'meteor/webapp';
 import express from 'express';
 import cors from 'cors';
-import { sendMail } from './gmail_essentials/controllers';
 import router from './gmail_essentials/routes';
 
 const app = express();
