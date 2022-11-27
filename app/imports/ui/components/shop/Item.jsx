@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Flag } from 'react-bootstrap-icons';
 import ReportModal from '../ReportModal';
-
 const blackButton = {
   background: 'none',
   color: 'black',
@@ -16,7 +15,6 @@ const Item = ({ item }) => {
   const [showReport, setShowReport] = useState(false);
   const handleShowReport = () => setShowReport(true);
   const handleCloseReport = () => setShowReport(false);
-
   return (
     <Col xs={12} lg={4} xl={3} className="d-flex my-3">
       <Card className="w-100" style={{ minHeight: '300px' }}>
@@ -27,7 +25,9 @@ const Item = ({ item }) => {
           </Link>
         </Card.Body>
         <Card.Footer className="d-flex justify-content-between gap-2">
-          <a className="text-decoration-none text-dark" href="/#"><b>{item.name}</b></a>
+          <Link className="text-decoration-none" to={`/item/:_id${item._id}`}>
+            <a className="text-decoration-none text-dark" href="/item/"><b>{item.name}</b></a>
+          </Link>
           {item.sold ? <b className="text-danger">SOLD</b> : <b>${item.price}</b>}
         </Card.Footer>
       </Card>

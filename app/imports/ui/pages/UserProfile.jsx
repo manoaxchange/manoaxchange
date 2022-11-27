@@ -33,7 +33,7 @@ const UserProfile = () => {
       </Row>
       <Container className="d-flex justify-content-evenly py-3">
         <Button className="d-inline-block">Message</Button>
-        <Button variant="success" className="d-inline-block">Selling Page</Button>
+        <Button variant="success" className="d-inline-block" href="/sellers">Selling Page</Button>
         <Button variant="danger" className="d-inline-block">Report</Button>
       </Container>
     </Container>
