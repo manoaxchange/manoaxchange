@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Flag } from 'react-bootstrap-icons';
 import ReportModal from '../ReportModal';
+
 const blackButton = {
   background: 'none',
   color: 'black',
