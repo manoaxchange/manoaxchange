@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
-import { XCircleFill } from 'react-bootstrap-icons';
+import { ExclamationCircleFill, XCircleFill } from 'react-bootstrap-icons';
 import ItemRemoveModal from './ItemRemoveModal';
+import DismissModal from './DismissModal';
 
 /** Renders a single row in the List Stuff (Admin) table. See pages/ListStuffAdmin.jsx. */
 const ReportsAdmin = ({ report }) => {
   const [showReport, setShowReport] = useState(false);
   const handleClose = () => setShowReport(false);
   const handleShow = () => setShowReport(true);
+
+  const [showDismiss, setShowDismiss] = useState(false);
+  const handleDismissClose = () => setShowDismiss(false);
+  const handleDismissOpen = () => setShowDismiss(true);
 
   return (
     <tr>
@@ -19,10 +24,16 @@ const ReportsAdmin = ({ report }) => {
         {
           report.closed
             ? <strong className="text-danger">CLOSED</strong>
-            : <Button variant="danger" onClick={handleShow}><XCircleFill /></Button>
+            : <Button variant="danger" onClick={handleShow}><ExclamationCircleFill /></Button>
         }
       </td>
+      <td>
+        <Button onClick={handleDismissOpen}>
+          <XCircleFill />
+        </Button>
+      </td>
       <ItemRemoveModal handleClose={handleClose} report={report} show={showReport} />
+      <DismissModal handleClose={handleDismissClose} report={report} show={showDismiss} />
     </tr>
   );
 };
