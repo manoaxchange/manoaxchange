@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Form, Image } from 'react-bootstrap';
 import axios from 'axios';
-import messageService from '../../services/gmail';
 import CloudImg from '../components/CloudImg';
 
 const Playground = () => {
@@ -9,16 +8,20 @@ const Playground = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [image, setImage] = useState(null);
   const [imgId, setImgId] = useState('');
-  const sendMessage = (event) => {
+  const sendMessage = async (event) => {
     event.preventDefault();
     const mailOptions = {
       to: ['tran.giorgio@gmail.com', 'ttran2@hawaii.edu'],
       subject: 'name of the item',
       text: 'I am interested in this item.',
     };
-    messageService
-      .create(mailOptions)
-      .then(console.log('message sent, check email'));
+
+    try {
+      const result = await axios.post('/api/mail/send', mailOptions);
+      console.log(result.status);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const previewFile = (file) => {
