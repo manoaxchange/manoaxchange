@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Card, Col, Image } from 'react-bootstrap';
 import { CurrencyDollar, PencilSquare, Trash3Fill } from 'react-bootstrap-icons';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import DeleteModal from './myItem/DeleteModal';
 import EditModal from './myItem/EditModal';
 import SoldModal from './myItem/SoldModal';
@@ -40,7 +41,9 @@ const MyItem = ({ item }) => {
           <Image width="100%" height="100%" src={item.image} style={{ objectFit: 'contain' }} />
         </Card.Body>
         <Card.Footer className="d-flex justify-content-between gap-2">
-          <a className="text-decoration-none text-dark" href="/#"><b>{`${item.name}`}</b></a>
+          <Link className="text-decoration-none" to={`/item/${item._id}`}>
+            <a className="text-decoration-none text-dark" href="/item"><b>{`${item.name}`}</b></a>
+          </Link>
           {item.sold
             ? <b className="text-danger">SOLD</b>
             : <b>{`$${item.price}`}</b>}
@@ -59,6 +62,7 @@ MyItem.propTypes = {
     price: PropTypes.number,
     image: PropTypes.string,
     sold: PropTypes.bool,
+    _id: PropTypes.string,
   }).isRequired,
 };
 

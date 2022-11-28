@@ -1,36 +1,37 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import { Container } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Meteor } from 'meteor/meteor';
-import Item from '../components/Item';
-import { Items } from '../../api/items/Items';
+import { useParams } from 'react-router';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { Items } from '../../api/items/Items';
+import Item from '../components/Item';
 
-const Itempages = () => {
-
-  const { items } = useTracker(() => {
-    const user = Meteor.user();
-    if (user) {
-      const itemItems = Items.collection.find({ owner: user.username }).fetch();
-      console.log(user.username);
-      return {
-        items: itemItems,
-      };
-    }
+/* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
+const ListItem = () => {
+  const { _id } = useParams();
+  // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
+  const { ready, items } = useTracker(() => {
+    // Note that this subscription will get cleaned up
+    // when your component is unmounted or deps change.
+    // Get access to Stuff documents.
+    const subscription = Meteor.subscribe(Items.userPublicationName);
+    // Determine if the subscription is ready
+    const rdy = subscription.ready();
+    // Get the Stuff documents
+    const itemsItems = Items.collection.find({ _id: _id }).fetch();
+    console.log(itemsItems, itemsItems);
+    console.log('_id', _id);
     return {
-      items: null,
+      items: itemsItems,
+      ready: rdy,
     };
-  });
-
-  const itemsReady = () => !!items;
-
-  console.log('items:', items);
-
-  return (itemsReady() ? (
+  }, [_id]);
+  return (ready ? (
     <Container className="py-3">
-      {items.map(item => <Item item={item} />)}
+      {items.map((item) => <Item key={`item-${item._id}`} item={item} />)}
     </Container>
   ) : <LoadingSpinner />);
 };
 
-export default Itempages;
+export default ListItem;
