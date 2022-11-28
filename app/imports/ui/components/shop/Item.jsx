@@ -26,7 +26,7 @@ const Item = ({ item }) => {
           </Link>
         </Card.Body>
         <Card.Footer className="d-flex justify-content-between gap-2">
-          <Link className="text-decoration-none" to={`/item/:_id${item._id}`}>
+          <Link className="text-decoration-none" to={`/item/${item._id}`}>
             <a className="text-decoration-none text-dark" href="/item/"><b>{item.name}</b></a>
           </Link>
           {item.sold ? <b className="text-danger">SOLD</b> : <b>${item.price}</b>}
