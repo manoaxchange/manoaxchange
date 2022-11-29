@@ -8,6 +8,7 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Profiles } from '../../api/profiles/Profiles';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 const bridge = new SimpleSchema2Bridge(Profiles.schema);
 
@@ -23,7 +24,6 @@ const EditUserProfile = () => {
     const rdy = subscription.ready();
     // Get the Stuff documents
     const document = Profiles.collection.findOne(_id);
-    console.log(document);
     return {
       doc: document,
       ready: rdy,
@@ -38,7 +38,7 @@ const EditUserProfile = () => {
   };
 
   return (ready ? (
-    <Container id="edit-profile-page" className="py-3">
+    <Container id={PAGE_IDS.EDIT_USER_PROFILE} className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center">

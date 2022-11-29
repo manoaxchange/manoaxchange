@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import ItemsCarousel from '../components/ItemsCarousel';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 const show = {
   height: 'fit-content',
@@ -19,7 +20,7 @@ const Landing = () => {
 
   return (
     <>
-      <section className="pb-3" style={{ height: 'fit-content' }}>
+      <section id={PAGE_IDS.LANDING} className="pb-3" style={{ height: 'fit-content' }}>
         {console.log(Meteor.user())}
         <Container
           fluid

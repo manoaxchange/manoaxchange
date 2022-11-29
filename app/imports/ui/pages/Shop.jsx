@@ -4,6 +4,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import SidebarFull from '../components/shop/SidebarFull';
 import { Items } from '../../api/items/Items';
 import Item from '../components/shop/Item';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 const ALL = 'All';
 
@@ -41,7 +42,7 @@ const Shop = () => {
   console.log('title:', title);
   console.log('search:', search);
   return (
-    <div className="d-flex">
+    <div id={PAGE_IDS.SHOP} className="d-flex">
       {/* temporarily set the background to dark to test padding */}
       <SidebarFull handleCategoryType={handleCategoryType} handleSearch={handleSearch} />
       <Container fluid className="min-vh-100">

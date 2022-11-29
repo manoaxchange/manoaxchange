@@ -6,6 +6,7 @@ import { useParams } from 'react-router';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Items } from '../../api/items/Items';
 import Item from '../components/Item';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 /* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 const ListItem = () => {
@@ -28,7 +29,7 @@ const ListItem = () => {
     };
   }, [_id]);
   return (ready ? (
-    <Container className="py-3">
+    <Container id={PAGE_IDS.ITEM} className="py-3">
       {items.map((item) => <Item key={`item-${item._id}`} item={item} />)}
     </Container>
   ) : <LoadingSpinner />);

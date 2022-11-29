@@ -1,4 +1,5 @@
 import { Selector } from 'testcafe';
+import { COMPONENT_IDS } from '../imports/ui/utilities/ComponentIDs';
 
 class NavBar {
 
@@ -17,8 +18,8 @@ class NavBar {
     if (!visible) {
       await testController.click('button.navbar-toggler');
     }
-    await testController.click('#login-dropdown');
-    await testController.click('#login-dropdown-sign-in');
+    await testController.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN}`);
+    await testController.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGNIN}`);
   }
 
   /** Check that the specified user is currently logged in. */
@@ -27,7 +28,7 @@ class NavBar {
     if (!visible) {
       await testController.click('button.navbar-toggler');
     }
-    const loggedInUser = Selector('#navbar-current-user').innerText;
+    const loggedInUser = Selector(`#${COMPONENT_IDS.NAVBAR_USER_DROPDOWN}`).innerText;
     await testController.expect(loggedInUser).eql(username);
   }
 
@@ -37,9 +38,9 @@ class NavBar {
     if (!visible) {
       await testController.click('button.navbar-toggler');
     }
-    await testController.expect(Selector('#navbar-current-user').exists).ok();
-    await testController.click('#navbar-current-user');
-    await testController.click('#navbar-sign-out');
+    await testController.expect(Selector(`#${COMPONENT_IDS.NAVBAR_USER_DROPDOWN}`).exists).ok();
+    await testController.click(`#${COMPONENT_IDS.NAVBAR_USER_DROPDOWN}`);
+    await testController.click(`#${COMPONENT_IDS.NAVBAR_USER_DROPDOWN_SIGNOUT}`);
   }
 
   /** Pull down login menu, go to sign up page. */
@@ -49,8 +50,29 @@ class NavBar {
     if (!visible) {
       await testController.click('button.navbar-toggler');
     }
-    await testController.click('#login-dropdown');
-    await testController.click('#login-dropdown-sign-up');
+    await testController.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN}`);
+    await testController.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGNUP}`);
+  }
+
+  /** Pull down login menu, go to sign up page. */
+  async gotoShopPage(testController) {
+    await testController.click(`#${COMPONENT_IDS.NAVBAR_SHOP}`);
+  }
+
+  /** Pull down login menu, go to sign up page. */
+  async gotoMyItemsPage(testController) {
+    await testController.click(`#${COMPONENT_IDS.NAVBAR_MY_ITEMS}`);
+  }
+
+  /** Pull down login menu, go to sign up page. */
+  async gotoReportsAdminPage(testController) {
+    await testController.click(`#${COMPONENT_IDS.NAVBAR_ADMIN}`);
+  }
+
+  /** Pull down login menu, go to sign up page. */
+  async gotoUserProfilePage(testController) {
+    await testController.click(`#${COMPONENT_IDS.NAVBAR_USER_DROPDOWN}`);
+    await testController.click(`#${COMPONENT_IDS.NAVBAR_USER_DROPDOWN_MY_PROFILE}`);
   }
 }
 

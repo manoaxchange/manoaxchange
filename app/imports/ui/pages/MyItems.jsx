@@ -6,6 +6,7 @@ import MyItem from '../components/MyItem';
 import SearchBar from '../components/SearchBar';
 import { Items } from '../../api/items/Items';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 const MyItems = () => {
   const [search, setSearch] = useState('');
@@ -32,7 +33,7 @@ const MyItems = () => {
   const handleSearch = (input) => { setSearch(`${input}`); };
 
   return (itemsReady() ? (
-    <Container className="py-3">
+    <Container id={PAGE_IDS.MY_ITEMS} className="py-3">
       <SearchBar handleSearch={handleSearch} />
       <Row>
         {items.map(item => <MyItem key={`item-${item._id}`} item={item} />)}

@@ -8,6 +8,7 @@ import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField } from 'uniforms-bootstrap5';
 import { Profiles } from '../../api/profiles/Profiles';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 /**
  * SignUp component is similar to signin component, but we create a new user instead.
@@ -55,7 +56,7 @@ const SignUp = ({ location }) => {
     return <Navigate to={from} />;
   }
   return (
-    <Container id="signup-page" className="py-3">
+    <Container id={PAGE_IDS.SIGNUP} className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center">

@@ -2,6 +2,7 @@
 export const COMPONENT_IDS = {
   NAVBAR_LOGO: 'navbar-logo',
   NAVBAR_SHOP: 'navbar-shop',
+  NAVBAR_SELL: 'navbar-sell',
   NAVBAR_MY_ITEMS: 'navbar-my-items',
   NAVBAR_ADMIN: 'navbar-admin',
   NAVBAR_LOGIN_DROPDOWN: 'navbar-login-dropdown',

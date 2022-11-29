@@ -5,6 +5,7 @@ import { Col, Container, Row, Table } from 'react-bootstrap';
 import { Reports } from '../../api/reports/Reports';
 import ReportsAdmin from '../components/reports/ReportsAdmin';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 /* Renders a table containing all of the Stuff documents. Use <StuffItemAdmin> to render each row. */
 const ListReportsAdmin = () => {
@@ -22,7 +23,7 @@ const ListReportsAdmin = () => {
     };
   }, []);
   return (ready ? (
-    <Container className="py-3">
+    <Container id={PAGE_IDS.REPORTS_ADMIN} className="py-3">
       <Row className="justify-content-center">
         <Col md={7}>
           <Col className="text-center"><h2>Reported Items</h2></Col>

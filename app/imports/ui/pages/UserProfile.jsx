@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Profiles } from '../../api/profiles/Profiles';
 import ProfileDisplay from '../components/ProfileDisplay';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 const UserProfile = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -24,7 +25,7 @@ const UserProfile = () => {
     };
   }, []);
   return (ready ? (
-    <Container className="py-3">
+    <Container id={PAGE_IDS.USER_PROFILE} className="py-3">
       <Row className="justify-content-center">
         <Col md={7}>
           <Col className="text-center">

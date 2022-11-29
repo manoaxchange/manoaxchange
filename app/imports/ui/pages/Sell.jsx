@@ -6,6 +6,7 @@ import swal from 'sweetalert';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { CATEGORIES_ARRAY, Items } from '../../api/items/Items';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -42,7 +43,7 @@ const Sell = () => {
 
   let fRef = null;
   return (
-    <Container className="py-3">
+    <Container id={PAGE_IDS.SELL} className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center"><h2>Sell Item</h2></Col>
