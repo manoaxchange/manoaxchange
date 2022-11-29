@@ -3,11 +3,19 @@
   "private": true,
   "dependencies": {
     "@babel/runtime": "^7.20.1",
+    "@cloudinary/react": "^1.6.0",
+    "@cloudinary/url-gen": "^1.8.6",
+    "axios": "^1.2.0",
     "bootstrap": "^5.2.2",
     "classnames": "^2.3.2",
+    "cloudinary": "^1.32.0",
     "core-js": "^3.26.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "googleapis": "^109.0.1",
     "graphql": "^16.6.0",
     "meteor-node-stubs": "^1.2.5",
+    "nodemailer": "^6.8.0",
     "prop-types": "^15.7.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
@@ -36,7 +44,7 @@
     "testcafe": "^2.0.2"
   },
   "scripts": {
-    "start": "meteor --no-release-check --exclude-archs web.browser.legacy,web.cordova --settings ../config/settings.development.json",
+    "start": "meteor --no-release-check --exclude-archs web.browser.legacy,web.cordova --settings ../config/settings.devauth.json",
     "lint": "eslint --quiet --ext .jsx --ext .js ./imports && eslint --quiet --ext .js ./tests",
     "lint-fix": "eslint --quiet --fix --ext .jsx --ext .js ./imports && eslint --quiet --ext .js ./tests",
     "testcafe": "testcafe chrome tests/*.testcafe.js",

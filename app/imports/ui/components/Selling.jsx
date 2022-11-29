@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Card, Col, Image } from 'react-bootstrap';
-import { CurrencyDollar, PencilSquare, Trash3Fill } from 'react-bootstrap-icons';
+import { CurrencyDollar } from 'react-bootstrap-icons';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import DeleteModal from './myItem/DeleteModal';
-import EditModal from './myItem/EditModal';
+
 import SoldModal from './myItem/SoldModal';
 
 const blackButton = {
@@ -14,14 +13,7 @@ const blackButton = {
   padding: 0,
 };
 
-const MyItem = ({ item }) => {
-  const [showDelete, setShowDelete] = useState(false);
-  const handleShowDelete = () => setShowDelete(true);
-  const handleCloseDelete = () => setShowDelete(false);
-
-  const [showEdit, setShowEdit] = useState(false);
-  const handleShowEdit = () => setShowEdit(true);
-  const handleCloseEdit = () => setShowEdit(false);
+const Sellers = ({ item }) => {
 
   const [showSold, setShowSold] = useState(false);
   const handleShowSold = () => setShowSold(true);
@@ -33,9 +25,8 @@ const MyItem = ({ item }) => {
         <Card.Header className="d-flex justify-content-end align-items-center gap-2">
           {item.sold
             ? ''
-            : [<Button key="edit" onClick={handleShowEdit} style={blackButton}><PencilSquare /></Button>,
+            : [
               <Button key="sold" onClick={handleShowSold} style={blackButton}><CurrencyDollar /></Button>]}
-          <Button key="delete" onClick={handleShowDelete} style={blackButton}><Trash3Fill /></Button>
         </Card.Header>
         <Card.Body className="d-flex align-items-center">
           <Image width="100%" height="100%" src={item.image} style={{ objectFit: 'contain' }} />
@@ -49,14 +40,12 @@ const MyItem = ({ item }) => {
             : <b>{`$${item.price}`}</b>}
         </Card.Footer>
       </Card>
-      <DeleteModal handleClose={handleCloseDelete} show={showDelete} item={item} />
-      <EditModal handleClose={handleCloseEdit} show={showEdit} item={item} />
       <SoldModal handleClose={handleCloseSold} show={showSold} item={item} />
     </Col>
   );
 };
 
-MyItem.propTypes = {
+Sellers.propTypes = {
   item: PropTypes.shape({
     name: PropTypes.string,
     price: PropTypes.number,
@@ -66,4 +55,4 @@ MyItem.propTypes = {
   }).isRequired,
 };
 
-export default MyItem;
+export default Sellers;

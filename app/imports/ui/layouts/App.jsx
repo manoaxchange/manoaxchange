@@ -22,6 +22,8 @@ import Item from '../pages/Item';
 import MyItems from '../pages/MyItems';
 import UserProfile from '../pages/UserProfile';
 import EditUserProfile from '../pages/EditUserProfile';
+import Playground from '../pages/Playground';
+import Sellings from '../pages/Sellings';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -33,16 +35,18 @@ const App = () => (
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signout" element={<SignOut />} />
-        <Route path="/item" element={<Item />} />
+        <Route path="/item/:_id" element={<Item />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/myitems" element={<ProtectedRoute><MyItems /></ProtectedRoute>} />
         <Route path="/sell" element={<ProtectedRoute><Sell /></ProtectedRoute>} />
         <Route path="/item" element={<ProtectedRoute><Item /></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
+        <Route path="/sellings" element={<ProtectedRoute><Sellings /></ProtectedRoute>} />
         <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
         <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
         <Route path="/profile/edit/:_id" element={<ProtectedRoute><EditUserProfile /></ProtectedRoute>} />
         <Route path="/admin" element={<AdminProtectedRoute><ListReportsAdmin /></AdminProtectedRoute>} />
+        <Route path="/play" element={<Playground />} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

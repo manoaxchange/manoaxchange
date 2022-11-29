@@ -33,6 +33,7 @@ const ListReportsAdmin = () => {
                 <th>Item Name</th>
                 <th>Report Reason</th>
                 <th>Remove</th>
+                <th>Dismiss</th>
               </tr>
             </thead>
             <tbody>
