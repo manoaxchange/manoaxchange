@@ -1,9 +1,11 @@
 import { Selector } from 'testcafe';
 import { navBar } from './navbar.component';
+import { PAGE_IDS } from '../imports/ui/utilities/PageIDs';
+import { COMPONENT_IDS } from '../imports/ui/utilities/ComponentIDs';
 
 class SignupPage {
   constructor() {
-    this.pageId = '#signup-page';
+    this.pageId = `#${PAGE_IDS.SIGNUP}`;
     this.pageSelector = Selector(this.pageId);
   }
 
@@ -13,12 +15,16 @@ class SignupPage {
   }
 
   /** Signs up a new user, then checks to see that they are logged in by checking the navbar. */
-  async signupUser(testController, username, password) {
+  async signupUser(testController, credentials) {
     await this.isDisplayed(testController);
-    await testController.typeText('#signup-form-email', username);
-    await testController.typeText('#signup-form-password', password);
-    await testController.click('#signup-form-submit input.btn.btn-primary');
-    await navBar.isLoggedIn(testController, username);
+    await testController.typeText(`#${COMPONENT_IDS.SIGNUP_FORM_FIRSTNAME}`, credentials.firstName);
+    await testController.typeText(`#${COMPONENT_IDS.SIGNUP_FORM_LASTNAME}`, credentials.lastName);
+    await testController.typeText(`#${COMPONENT_IDS.SIGNUP_FORM_EMAIL}`, credentials.username);
+    await testController.typeText(`#${COMPONENT_IDS.SIGNUP_FORM_PASSWORD}`, credentials.password);
+    await testController.typeText(`#${COMPONENT_IDS.SIGNUP_FORM_PICTURE}`, credentials.image);
+    await testController.typeText(`#${COMPONENT_IDS.SIGNUP_FORM_BIO}`, credentials.biography);
+    await testController.click(`#${COMPONENT_IDS.SIGNUP_FORM_SUBMIT} input.btn.btn-primary`);
+    await navBar.isLoggedIn(testController, credentials.username);
   }
 }
 

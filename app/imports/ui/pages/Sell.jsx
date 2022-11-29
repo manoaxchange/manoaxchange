@@ -7,6 +7,7 @@ import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { CATEGORIES_ARRAY, Items } from '../../api/items/Items';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -50,12 +51,12 @@ const Sell = () => {
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <Card>
               <Card.Body>
-                <TextField name="name" />
-                <NumField name="price" decimal />
-                <LongTextField name="description" />
-                <TextField name="image" />
-                <SelectField name="category" />
-                <SubmitField value="Submit" />
+                <TextField id={COMPONENT_IDS.SELL_FORM_NAME} name="name" />
+                <NumField id={COMPONENT_IDS.SELL_FORM_PRICE} name="price" decimal />
+                <LongTextField id={COMPONENT_IDS.SELL_FORM_DESCRIPTION} name="description" />
+                <TextField id={COMPONENT_IDS.SELL_FORM_IMAGE} name="image" />
+                <SelectField id={COMPONENT_IDS.SELL_FORM_CATEGORY} name="category" />
+                <SubmitField id={COMPONENT_IDS.SELL_FORM_SUBMIT} value="Submit" />
                 <ErrorsField />
               </Card.Body>
             </Card>

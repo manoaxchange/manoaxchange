@@ -9,6 +9,7 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField } from 'uniforms-bootstrap5';
 import { Profiles } from '../../api/profiles/Profiles';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /**
  * SignUp component is similar to signin component, but we create a new user instead.
@@ -65,14 +66,14 @@ const SignUp = ({ location }) => {
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
             <Card>
               <Card.Body>
-                <TextField name="firstName" placeholder="First name" />
-                <TextField name="lastName" placeholder="Last name" />
-                <TextField name="email" placeholder="E-mail address" />
-                <TextField name="password" placeholder="Password" type="password" />
-                <TextField name="picture" placeholder="Image URL" />
-                <LongTextField name="bio" placeholder="Biography" />
+                <TextField id={COMPONENT_IDS.SIGNUP_FORM_FIRSTNAME} name="firstName" placeholder="First name" />
+                <TextField id={COMPONENT_IDS.SIGNUP_FORM_LASTNAME} name="lastName" placeholder="Last name" />
+                <TextField id={COMPONENT_IDS.SIGNUP_FORM_EMAIL} name="email" placeholder="E-mail address" />
+                <TextField id={COMPONENT_IDS.SIGNUP_FORM_PASSWORD} name="password" placeholder="Password" type="password" />
+                <TextField id={COMPONENT_IDS.SIGNUP_FORM_PICTURE} name="picture" placeholder="Image URL" />
+                <LongTextField id={COMPONENT_IDS.SIGNUP_FORM_BIO} name="bio" placeholder="Biography" />
                 <ErrorsField />
-                <SubmitField />
+                <SubmitField id={COMPONENT_IDS.SIGNUP_FORM_SUBMIT} />
               </Card.Body>
             </Card>
           </AutoForm>

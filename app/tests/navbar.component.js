@@ -74,6 +74,11 @@ class NavBar {
     await testController.click(`#${COMPONENT_IDS.NAVBAR_USER_DROPDOWN}`);
     await testController.click(`#${COMPONENT_IDS.NAVBAR_USER_DROPDOWN_MY_PROFILE}`);
   }
+
+  /** Pull down login menu, go to sign up page. */
+  async gotoSellPage(testController) {
+    await testController.click(`#${COMPONENT_IDS.NAVBAR_SELL}`);
+  }
 }
 
 export const navBar = new NavBar();
