@@ -23,7 +23,7 @@ import MyItems from '../pages/MyItems';
 import UserProfile from '../pages/UserProfile';
 import EditUserProfile from '../pages/EditUserProfile';
 import Playground from '../pages/Playground';
-// import Sellers from '../pages/sellers';
+import Sellings from '../pages/Sellings';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -41,10 +41,10 @@ const App = () => (
         <Route path="/sell" element={<ProtectedRoute><Sell /></ProtectedRoute>} />
         <Route path="/item" element={<ProtectedRoute><Item /></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
-        {/* <Route path="/sellers" element={<ProtectedRoute><Sellers /></ProtectedRoute>} /> */}
+        <Route path="/sellings" element={<ProtectedRoute><Sellings /></ProtectedRoute>} />
         <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
         <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
-        <Route path="/edit/:_id" element={<ProtectedRoute><EditUserProfile /></ProtectedRoute>} />
+        <Route path="/profile/edit/:_id" element={<ProtectedRoute><EditUserProfile /></ProtectedRoute>} />
         <Route path="/admin" element={<AdminProtectedRoute><ListReportsAdmin /></AdminProtectedRoute>} />
         <Route path="/play" element={<Playground />} />
         <Route path="/notauthorized" element={<NotAuthorized />} />

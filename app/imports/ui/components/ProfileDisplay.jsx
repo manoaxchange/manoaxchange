@@ -1,7 +1,6 @@
 import { Card, Col, Image } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 /* Component for layout out a Profile Card. */
 const ProfileDisplay = ({ profile }) => (
@@ -19,7 +18,6 @@ const ProfileDisplay = ({ profile }) => (
           Overall Rating: [User Rating]
         </Card.Text>
       </Card.Body>
-      <Link to={`/edit/${profile._id}`}>Edit Profile</Link>
     </Card>
   </Col>
 );
@@ -31,6 +29,7 @@ ProfileDisplay.propTypes = {
     bio: PropTypes.string,
     picture: PropTypes.string,
     _id: PropTypes.string,
+    owner: PropTypes.string,
   }).isRequired,
 };
 

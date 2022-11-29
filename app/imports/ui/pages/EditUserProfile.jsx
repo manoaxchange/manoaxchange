@@ -23,6 +23,7 @@ const EditUserProfile = () => {
     const rdy = subscription.ready();
     // Get the Stuff documents
     const document = Profiles.collection.findOne(_id);
+    console.log(document);
     return {
       doc: document,
       ready: rdy,
