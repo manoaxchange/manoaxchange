@@ -29,10 +29,17 @@ Meteor.publish(Items.userPublicationName, function () {
   return this.ready();
 });
 
+// Meteor.publish(Profiles.userPublicationName, function () {
+//   if (this.userId) {
+//     const username = Meteor.users.findOne(this.userId).username;
+//     return Profiles.collection.find({ owner: username });
+//   }
+//   return this.ready();
+// });
+
 Meteor.publish(Profiles.userPublicationName, function () {
   if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Profiles.collection.find({ owner: username });
+    return Profiles.collection.find();
   }
   return this.ready();
 });

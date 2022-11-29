@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 const MessageModal = ({ show, handleClose, item }) => {
-  const currentUser = useTracker(() => Meteor.user().username, []);
+  const currentUser = useTracker(() => (Meteor.user() ? Meteor.user().username : ''), []);
   const seller = item.owner;
   const sendMessage = async (event) => {
     event.preventDefault();

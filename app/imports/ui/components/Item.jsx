@@ -21,7 +21,7 @@ const Item = ({ item }) => {
       <Row>
         <Col>
           <h2 className> {`${item.name}`} </h2>
-          <Image className="imagefix" /> {`${item.image}`}
+          <Image src={item.image} className="imagefix" />
         </Col>
         <Col>
           <div className="descmargin">
