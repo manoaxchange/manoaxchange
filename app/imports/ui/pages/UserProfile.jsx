@@ -11,6 +11,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 const UserProfile = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, profiles } = useTracker(() => {
+    const currentUser = (Meteor.user() ? Meteor.user().username : '');
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     // Get access to Stuff documents.
@@ -18,7 +19,7 @@ const UserProfile = () => {
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Stuff documents
-    const profileItems = Profiles.collection.find({}).fetch();
+    const profileItems = Profiles.collection.find({ owner: currentUser }).fetch();
     return {
       profiles: profileItems,
       ready: rdy,

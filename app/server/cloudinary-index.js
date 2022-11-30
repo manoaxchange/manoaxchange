@@ -4,6 +4,9 @@ const cors = require('cors');
 const { Meteor } = require('meteor/meteor');
 const cloudinary = require('./cloudinary/cloudinary');
 
+/* The code in this file and other Cloudinary files has been adapted from:
+ * https://www.youtube.com/watch?v=_M4gZfIFGZw&t=4222s&ab_channel=AmeenWebSchool
+ */
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
