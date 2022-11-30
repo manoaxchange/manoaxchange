@@ -4,6 +4,7 @@ import { signoutPage } from './signout.page';
 import { navBar } from './navbar.component';
 import { shopPage } from './shop.page';
 import { userProfilePage } from './userprofile.page';
+import { editUserProfilePage } from './edituserprofile.page';
 import { myItemsPage } from './myitems.page';
 import { reportsAdminPage } from './reportsadmin.page';
 import { signupPage } from './signup.page';
@@ -66,9 +67,33 @@ test('Test that the form on the Signup page works', async (testController) => {
   await signupPage.signupUser(testController, newUserCredentials);
 });
 
-test.only('Test that the form on the Sell page works', async (testController) => {
+test('Test that the form on the Edit Profile page works', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.gotoUserProfilePage(testController);
+  await userProfilePage.gotoUpdateProfile(testController);
+  await editUserProfilePage.updateProfile(testController, 'Nicholas');
+});
+
+test('Test that the form on the Sell page works', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoSellPage(testController);
   await sellPage.sellItem(testController, newItemCredentials);
+});
+
+test('Test that the Edit Item form on the My Items page works', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.gotoMyItemsPage(testController);
+  await myItemsPage.updateItem(testController, newItemCredentials.name);
+});
+
+test.only('Test that the Report form on the Shop page works', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.gotoShopPage(testController);
+  await shopPage.flagItem(testController, newItemCredentials.name);
+  await navBar.gotoReportsAdminPage(testController);
+  await reportsAdminPage.checkFlagItem(testController);
 });

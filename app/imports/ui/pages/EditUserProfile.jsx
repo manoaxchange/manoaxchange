@@ -9,6 +9,7 @@ import swal from 'sweetalert';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Profiles } from '../../api/profiles/Profiles';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 const bridge = new SimpleSchema2Bridge(Profiles.schema);
 
@@ -47,12 +48,12 @@ const EditUserProfile = () => {
           <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
             <Card>
               <Card.Body>
-                <TextField name="firstName" />
+                <TextField id={COMPONENT_IDS.EDIT_PROFILE_FORM_FIRSTNAME} name="firstName" />
                 <TextField name="lastName" />
                 <TextField name="picture" />
                 <LongTextField name="bio" />
                 <ErrorsField />
-                <SubmitField value="Submit" />
+                <SubmitField id={COMPONENT_IDS.EDIT_PROFILE_FORM_SUBMIT} value="Submit" />
                 <HiddenField name="owner" />
               </Card.Body>
             </Card>

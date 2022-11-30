@@ -5,6 +5,7 @@ import { AutoForm, ErrorsField, LongTextField, NumField, SelectField, SubmitFiel
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
 import { Items } from '../../../api/items/Items';
+import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 
 const bridge = new SimpleSchema2Bridge(Items.schema);
 
@@ -26,7 +27,7 @@ const EditModal = ({ show, handleClose, item }) => {
           <Modal.Title>Edit</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <TextField name="name" />
+          <TextField id={COMPONENT_IDS.EDIT_ITEM_FORM_NAME} name="name" />
           <NumField name="price" decimal />
           <LongTextField name="description" />
           <TextField name="image" />
@@ -34,7 +35,7 @@ const EditModal = ({ show, handleClose, item }) => {
           <ErrorsField />
         </Modal.Body>
         <Modal.Footer>
-          <SubmitField value="Save" />
+          <SubmitField id={COMPONENT_IDS.EDIT_ITEM_FORM_SUBMIT} value="Save" />
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
