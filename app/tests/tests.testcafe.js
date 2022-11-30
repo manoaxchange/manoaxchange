@@ -27,7 +27,7 @@ const newItemCredentials = { name: 'Rotten Potato', price: '1', description: 'ro
 fixture('meteor-react-bootstrap-template localhost test with default db')
   .page('http://localhost:3000');
 
-test.only('Test that landing page shows up', async (testController) => {
+test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
 });
 
