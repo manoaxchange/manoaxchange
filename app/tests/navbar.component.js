@@ -46,10 +46,10 @@ class NavBar {
   /** Pull down login menu, go to sign up page. */
   async gotoSignUpPage(testController) {
     await this.ensureLogout(testController);
-    const visible = await Selector('#basic-navbar-nav').visible;
-    if (!visible) {
-      await testController.click('button.navbar-toggler');
-    }
+    // const visible = await Selector('#basic-navbar-nav').visible;
+    // if (!visible) {
+    //   await testController.click('button.navbar-toggler');
+    // }
     await testController.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN}`);
     await testController.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGNUP}`);
   }
