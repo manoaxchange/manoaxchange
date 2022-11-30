@@ -9,11 +9,10 @@ class ReportsAdminPage {
 
   /** Asserts that this page is currently displayed. */
   async isDisplayed(testController) {
-    // This is first test to be run. Wait 10 seconds to avoid timeouts with GitHub Actions.
     await testController.wait(3000).expect(this.pageSelector.exists).ok();
   }
 
-  /** Blah blah blah. */
+  /** Checks if the page is displayed, then checks if there is at least 1 row (representing an item) in the reports table. */
   async checkFlagItem(testController) {
     await this.isDisplayed(testController);
     const rowCount = Selector('tr').count;

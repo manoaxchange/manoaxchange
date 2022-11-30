@@ -10,11 +10,10 @@ class MyItemsPage {
 
   /** Asserts that this page is currently displayed. */
   async isDisplayed(testController) {
-    // This is first test to be run. Wait 10 seconds to avoid timeouts with GitHub Actions.
     await testController.wait(3000).expect(this.pageSelector.exists).ok();
   }
 
-  /** Blah Blah Blah */
+  /** Checks if the page is displayed, then selects the edit button using the passed itemName, then changes the name field, then selects the edit button using the updated name field, then restores original value. */
   async updateItem(testController, itemName) {
     await this.isDisplayed(testController);
     const cardSelector = await Selector('div.w-100').withText(itemName).find('button.btn-primary');

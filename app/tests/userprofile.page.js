@@ -9,11 +9,10 @@ class UserProfilePage {
 
   /** Asserts that this page is currently displayed. */
   async isDisplayed(testController) {
-    // This is first test to be run. Wait 10 seconds to avoid timeouts with GitHub Actions.
     await testController.wait(3000).expect(this.pageSelector.exists).ok();
   }
 
-  /** Asserts that this page is currently displayed. */
+  /** Checks if the page is displayed, then selects the Edit Profile button. */
   async gotoUpdateProfile(testController) {
     await this.isDisplayed(testController);
     await testController.click('button.btn-danger');

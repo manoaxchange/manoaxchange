@@ -11,10 +11,10 @@ class SellPage {
 
   /** Asserts that this page is currently displayed. */
   async isDisplayed(testController) {
-    // This is first test to be run. Wait 10 seconds to avoid timeouts with GitHub Actions.
     await testController.wait(3000).expect(this.pageSelector.exists).ok();
   }
 
+  /** Checks if the page is displayed, then fills in the form using the passed credentials, then checks the My Item page if there is at least 3 cards (default is 2). */
   async sellItem(testController, credentials) {
     await this.isDisplayed(testController);
     await testController.typeText(`#${COMPONENT_IDS.SELL_FORM_NAME}`, credentials.name);
@@ -30,7 +30,7 @@ class SellPage {
     await testController.click('button.swal-button--confirm');
     await navBar.gotoMyItemsPage(testController);
     const cardCount = Selector('.card').count;
-    await testController.expect(cardCount).gte(2);
+    await testController.expect(cardCount).gte(3);
   }
 }
 

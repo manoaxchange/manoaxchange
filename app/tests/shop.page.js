@@ -10,11 +10,17 @@ class ShopPage {
 
   /** Asserts that this page is currently displayed. */
   async isDisplayed(testController) {
-    // This is first test to be run. Wait 10 seconds to avoid timeouts with GitHub Actions.
     await testController.wait(3000).expect(this.pageSelector.exists).ok();
   }
 
-  /** Blah Blah Blah */
+  /** Checks if the page is displayed, finds the name of the first item in the Shop page, then selects it. */
+  async gotoItemPage(testController) {
+    await this.isDisplayed(testController);
+    const firstItemSelector = Selector('div.w-100').find('b');
+    await testController.click(firstItemSelector);
+  }
+
+  /** Checks if the page is displayed, then finds the card of the correct item using the passed itemName, then selects the flag (aka report) button. */
   async flagItem(testController, itemName) {
     await this.isDisplayed(testController);
     const cardSelector = await Selector('div.w-100').withText(itemName).find('button.btn-primary');

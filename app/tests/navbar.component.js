@@ -54,28 +54,24 @@ class NavBar {
     await testController.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGNUP}`);
   }
 
-  /** Pull down login menu, go to sign up page. */
   async gotoShopPage(testController) {
     await testController.click(`#${COMPONENT_IDS.NAVBAR_SHOP}`);
   }
 
-  /** Pull down login menu, go to sign up page. */
   async gotoMyItemsPage(testController) {
     await testController.click(`#${COMPONENT_IDS.NAVBAR_MY_ITEMS}`);
   }
 
-  /** Pull down login menu, go to sign up page. */
   async gotoReportsAdminPage(testController) {
     await testController.click(`#${COMPONENT_IDS.NAVBAR_ADMIN}`);
   }
 
-  /** Pull down login menu, go to sign up page. */
+  /** Pull down login menu, go to User Profile page. */
   async gotoUserProfilePage(testController) {
     await testController.click(`#${COMPONENT_IDS.NAVBAR_USER_DROPDOWN}`);
     await testController.click(`#${COMPONENT_IDS.NAVBAR_USER_DROPDOWN_MY_PROFILE}`);
   }
 
-  /** Pull down login menu, go to sign up page. */
   async gotoSellPage(testController) {
     await testController.click(`#${COMPONENT_IDS.NAVBAR_SELL}`);
   }
