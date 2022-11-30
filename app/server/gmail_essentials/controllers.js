@@ -2,12 +2,13 @@ const { Meteor } = require('meteor/meteor');
 const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
 
-const type = Meteor.settings.gmailAuth.type;
-const user = Meteor.settings.gmailAuth.user;
+const type = Meteor.settings.gmailAuth.TYPE;
+const user = Meteor.settings.gmailAuth.USER;
 const clientId = Meteor.settings.gmailAuth.CLIENT_ID;
 const clientSecret = Meteor.settings.gmailAuth.CLIENT_SECRET;
 const clientRedirectUrl = Meteor.settings.REDIRECT_URL;
 const refreshToken = Meteor.settings.gmailAuth.REFRESH_TOKEN;
+const gmailEmail = Meteor.settings.gmailAuth.EMAIL;
 
 const oAuth2Client = new google.auth.OAuth2(
   clientId,
@@ -37,7 +38,7 @@ async function sendMail(req, res) {
     const body = req.body;
 
     const mailOptions = {
-      from: 'ManoaXchange <manoaxchange@gmail.com>',
+      from: `ManoaXchange <${gmailEmail}>`,
       to: body.to,
       subject: body.subject,
       text: body.text,
