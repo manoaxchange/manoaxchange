@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Form, Image } from 'react-bootstrap';
 import axios from 'axios';
-import CloudImg from '../components/CloudImg';
 
 const Playground = () => {
 
