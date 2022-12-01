@@ -25,6 +25,7 @@ import EditUserProfile from '../pages/EditUserProfile';
 import Playground from '../pages/Playground';
 import Sellings from '../pages/Sellings';
 import SellerPage from '../pages/sellerPage';
+import ProfilePage from '../pages/ProfilePage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -42,6 +43,7 @@ const App = () => (
         <Route path="/sell" element={<ProtectedRoute><Sell /></ProtectedRoute>} />
         <Route path="/item" element={<ProtectedRoute><Item /></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
+        <Route path="/profileother/:_id" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
         <Route path="/sellings" element={<ProtectedRoute><Sellings /></ProtectedRoute>} />
         <Route path="/sellers" element={<ProtectedRoute><SellerPage /></ProtectedRoute>} />
         <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
