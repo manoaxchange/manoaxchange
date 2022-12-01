@@ -18,7 +18,7 @@ const credentials = { username: 'kawn@hawaii.edu', password: 'changeme' };
 
 /** Credentials for a new user creating an account. */
 const newUserCredentials = { firstName: 'Peter', lastName: 'Griffin',
-  username: 'pgrif@hawaii.edu', password: 'changeme', image: 'https://www.clipartmax.com/png/middle/282-2827413_peter-griffin-family-guy-peter-face.png', biography: 'A Character From Family Guy' };
+  username: `user-${new Date().getTime()}@hawaii.edu`, password: 'changeme', image: 'https://www.clipartmax.com/png/middle/282-2827413_peter-griffin-family-guy-peter-face.png', biography: 'A Character From Family Guy' };
 
 /** Credentials for a new item creating a new item to sell. */
 const newItemCredentials = { name: 'Rotten Potato', price: '1', description: 'rotten potato from minecraft',
