@@ -39,7 +39,7 @@ const Playground = () => {
       image: image,
     });
     try {
-      setImgId(result.data.public_id);
+      setImgId(result.data.secure_url);
     } catch (error) {
       console.log(error);
     }
@@ -65,7 +65,7 @@ const Playground = () => {
       <h1>Uploaded Image</h1>
       <Image src={image} />
       <h1>Image from Cloudinary</h1>
-      <CloudImg uploadedImg={imgId} />
+      <Image src={imgId} />
     </div>
   );
 };
