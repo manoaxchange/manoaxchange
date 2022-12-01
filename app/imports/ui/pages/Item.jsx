@@ -9,7 +9,7 @@ import ItemDetails from '../components/itemPage/ItemDetails';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
 /* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-const ListItem = () => {
+const Item = () => {
   const { _id } = useParams();
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, items } = useTracker(() => {
@@ -35,4 +35,4 @@ const ListItem = () => {
   ) : <LoadingSpinner />);
 };
 
-export default ListItem;
+export default Item;

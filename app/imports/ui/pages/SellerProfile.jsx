@@ -8,7 +8,7 @@ import { Profiles } from '../../api/profiles/Profiles';
 import ProfileDisplay from '../components/ProfileDisplay';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
-const ProfilePage = () => {
+const SellerProfile = () => {
   const { _id } = useParams();
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, profiles } = useTracker(() => {
@@ -44,4 +44,4 @@ const ProfilePage = () => {
   ) : <LoadingSpinner />);
 };
 
-export default ProfilePage;
+export default SellerProfile;

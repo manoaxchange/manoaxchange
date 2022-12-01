@@ -8,7 +8,7 @@ import { Items } from '../../api/items/Items';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
-const Sellers = () => {
+const Sellings = () => {
   const [search, setSearch] = useState('');
 
   const { items } = useTracker(() => {
@@ -43,4 +43,4 @@ const Sellers = () => {
   ) : <LoadingSpinner />);
 };
 
-export default Sellers;
+export default Sellings;
