@@ -6,7 +6,7 @@ import ItemRemoveModal from './ItemRemoveModal';
 import DismissModal from './DismissModal';
 
 /** Renders a single row in the List Stuff (Admin) table. See pages/ListStuffAdmin.jsx. */
-const ReportsAdmin = ({ report }) => {
+const ReportsTable = ({ report }) => {
   const [showReport, setShowReport] = useState(false);
   const handleClose = () => setShowReport(false);
   const handleShow = () => setShowReport(true);
@@ -39,7 +39,7 @@ const ReportsAdmin = ({ report }) => {
 };
 
 // Require a document to be passed to this component.
-ReportsAdmin.propTypes = {
+ReportsTable.propTypes = {
   report: PropTypes.shape({
     owner: PropTypes.string,
     itemName: PropTypes.string,
@@ -49,4 +49,4 @@ ReportsAdmin.propTypes = {
   }).isRequired,
 };
 
-export default ReportsAdmin;
+export default ReportsTable;

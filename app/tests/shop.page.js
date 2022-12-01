@@ -25,7 +25,7 @@ class ShopPage {
     await this.isDisplayed(testController);
     const cardSelector = await Selector('div.w-100').withText(itemName).find('button.btn-primary');
     await testController.click(cardSelector);
-    await testController.typeText(`#${COMPONENT_IDS.REPORT_FORM_DESCRIPTION}`, 'Inappropriate Item.');
+    await testController.typeText(`#${COMPONENT_IDS.REPORT_FORM_DESCRIPTION}`, 'Inappropriate ItemDetails.');
     await testController.click(`#${COMPONENT_IDS.REPORT_FORM_SUBMIT}`);
     await testController.click('button.swal-button--confirm');
   }

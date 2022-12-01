@@ -3,7 +3,7 @@ import { Card, Image, Col, Row, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 /* Component for layout out a Profile Card. */
-const SellersPage = ({ profile }) => (
+const SellerDisplay = ({ profile }) => (
   <Row>
     <Col>
       <Card className="h-100">
@@ -22,7 +22,7 @@ const SellersPage = ({ profile }) => (
   </Row>
 );
 
-SellersPage.propTypes = {
+SellerDisplay.propTypes = {
   profile: PropTypes.shape({
     firstName: PropTypes.string,
     lastName: PropTypes.string,
@@ -33,4 +33,4 @@ SellersPage.propTypes = {
   }).isRequired,
 };
 
-export default SellersPage;
+export default SellerDisplay;

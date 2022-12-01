@@ -5,7 +5,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Profiles } from '../../api/profiles/Profiles';
-import ProfileDisplay from '../components/ProfileDisplay';
+import ProfileDisplay from '../components/profile/ProfileDisplay';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
 const UserProfile = () => {

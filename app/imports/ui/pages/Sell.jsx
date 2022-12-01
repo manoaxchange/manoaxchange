@@ -35,7 +35,7 @@ const Sell = () => {
         if (error) {
           swal('Error', error.message, 'error');
         } else {
-          swal('Success', 'Item is now in the shop!', 'success');
+          swal('Success', 'ItemDetails is now in the shop!', 'success');
           formRef.reset();
         }
       },

@@ -3,12 +3,12 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Col, Container, Row, Table } from 'react-bootstrap';
 import { Reports } from '../../api/reports/Reports';
-import ReportsAdmin from '../components/reports/ReportsAdmin';
+import ReportsTable from '../components/reports/ReportsTable';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
 /* Renders a table containing all of the Stuff documents. Use <StuffItemAdmin> to render each row. */
-const ListReportsAdmin = () => {
+const AdminReports = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, reports } = useTracker(() => {
     // Get access to Stuff documents.
@@ -38,7 +38,7 @@ const ListReportsAdmin = () => {
               </tr>
             </thead>
             <tbody>
-              {reports.map((report) => <ReportsAdmin report={report} />)}
+              {reports.map((report) => <ReportsTable report={report} />)}
             </tbody>
           </Table>
         </Col>
@@ -47,4 +47,4 @@ const ListReportsAdmin = () => {
   ) : <LoadingSpinner />);
 };
 
-export default ListReportsAdmin;
+export default AdminReports;
