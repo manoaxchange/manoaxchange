@@ -3,7 +3,7 @@ import { Container, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import SidebarFull from '../components/shop/SidebarFull';
 import { Items } from '../../api/items/Items';
-import Item from '../components/shop/Item';
+import ItemCard from '../components/shop/ItemCard';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
 const ALL = 'All';
@@ -49,7 +49,7 @@ const Shop = () => {
         <h1 className="py-2">{`${title}`}</h1>
         <Row>
           {showItems.length > 0
-            ? showItems.map(item => <Item key={item._id} item={item} />)
+            ? showItems.map(item => <ItemCard key={item._id} item={item} />)
             : <div> No items found </div>}
         </Row>
       </Container>

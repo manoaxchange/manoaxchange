@@ -2,7 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import ItemsCarousel from '../components/ItemsCarousel';
+import ItemsCarousel from '../components/landing/ItemsCarousel';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
 const show = {

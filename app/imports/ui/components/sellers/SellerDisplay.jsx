@@ -1,9 +1,10 @@
 import React from 'react';
 import { Card, Image, Col, Row, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 /* Component for layout out a Profile Card. */
-const SellersPage = ({ profile }) => (
+const SellerDisplay = ({ profile }) => (
   <Row>
     <Col>
       <Card className="h-100">
@@ -15,14 +16,16 @@ const SellersPage = ({ profile }) => (
           <Card.Text>
             {profile.bio}
           </Card.Text>
-          <Button variant="success" className="d-inline-block" href="/sellings">View Items</Button>
+          <Link className="text-decoration-none" to={`/profileother/${profile._id}`}>
+            <Button variant="success" className="d-inline-block" href="/profileother/:_id">View profile</Button>
+          </Link>
         </Card.Body>
       </Card>
     </Col>
   </Row>
 );
 
-SellersPage.propTypes = {
+SellerDisplay.propTypes = {
   profile: PropTypes.shape({
     firstName: PropTypes.string,
     lastName: PropTypes.string,
@@ -33,4 +36,4 @@ SellersPage.propTypes = {
   }).isRequired,
 };
 
-export default SellersPage;
+export default SellerDisplay;

@@ -19,7 +19,7 @@ class MyItemsPage {
     const cardSelector = await Selector('div.w-100').withText(itemName).find('button.btn-primary');
     await testController.click(cardSelector);
 
-    const newItemName = 'New Item Name';
+    const newItemName = 'New ItemDetails Name';
     await testController.selectText(`#${COMPONENT_IDS.EDIT_ITEM_FORM_NAME}`).pressKey('delete');
     await testController.typeText(`#${COMPONENT_IDS.EDIT_ITEM_FORM_NAME}`, newItemName);
     await testController.click(`#${COMPONENT_IDS.EDIT_ITEM_FORM_SUBMIT} input.btn.btn-primary`);

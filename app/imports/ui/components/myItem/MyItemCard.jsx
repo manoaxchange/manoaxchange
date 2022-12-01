@@ -3,9 +3,9 @@ import { Button, Card, Col, Image } from 'react-bootstrap';
 import { CurrencyDollar, PencilSquare, Trash3Fill } from 'react-bootstrap-icons';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import DeleteModal from './myItem/DeleteModal';
-import EditModal from './myItem/EditModal';
-import SoldModal from './myItem/SoldModal';
+import DeleteModal from './DeleteModal';
+import EditModal from './EditModal';
+import SoldModal from './SoldModal';
 
 const blackButton = {
   background: 'none',
@@ -14,7 +14,7 @@ const blackButton = {
   padding: 0,
 };
 
-const MyItem = ({ item }) => {
+const MyItemCard = ({ item }) => {
   const [showDelete, setShowDelete] = useState(false);
   const handleShowDelete = () => setShowDelete(true);
   const handleCloseDelete = () => setShowDelete(false);
@@ -42,7 +42,7 @@ const MyItem = ({ item }) => {
         </Card.Body>
         <Card.Footer className="d-flex justify-content-between gap-2">
           <Link className="text-decoration-none" to={`/item/${item._id}`}>
-            <a className="text-decoration-none text-dark" href="/item"><b>{`${item.name}`}</b></a>
+            <a className="text-decoration-none text-dark" href="/Users/yoshi/github/manoaxchange/app/imports/ui/pages/Item"><b>{`${item.name}`}</b></a>
           </Link>
           {item.sold
             ? <b className="text-danger">SOLD</b>
@@ -56,7 +56,7 @@ const MyItem = ({ item }) => {
   );
 };
 
-MyItem.propTypes = {
+MyItemCard.propTypes = {
   item: PropTypes.shape({
     name: PropTypes.string,
     price: PropTypes.number,
@@ -66,4 +66,4 @@ MyItem.propTypes = {
   }).isRequired,
 };
 
-export default MyItem;
+export default MyItemCard;

@@ -12,7 +12,7 @@ const blackButton = {
   padding: 0,
 };
 
-const Item = ({ item }) => {
+const ItemCard = ({ item }) => {
   const [showReport, setShowReport] = useState(false);
   const handleShowReport = () => setShowReport(true);
   const handleCloseReport = () => setShowReport(false);
@@ -38,7 +38,7 @@ const Item = ({ item }) => {
 };
 
 // Require a document to be passed to this component.
-Item.propTypes = {
+ItemCard.propTypes = {
   item: PropTypes.shape({
     name: PropTypes.string,
     price: PropTypes.number,
@@ -48,4 +48,4 @@ Item.propTypes = {
   }).isRequired,
 };
 
-export default Item;
+export default ItemCard;

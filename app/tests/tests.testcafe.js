@@ -45,7 +45,7 @@ test('Test that the Shop page displays', async (testController) => {
   await shopPage.isDisplayed(testController);
 });
 
-test('Test that the Item page displays', async (testController) => {
+test('Test that the ItemDetails page displays', async (testController) => {
   await navBar.gotoShopPage(testController);
   await shopPage.isDisplayed(testController);
   await shopPage.gotoItemPage(testController);
@@ -71,7 +71,7 @@ test('Test that the My Items page displays', async (testController) => {
   await myItemsPage.isDisplayed(testController);
 });
 
-test('Test that the Reports Admin page displays', async (testController) => {
+test('Test that the ReportsTable Admin page displays', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoReportsAdminPage(testController);
@@ -115,7 +115,7 @@ test('Test that the form on the Sell page works', async (testController) => {
   await sellPage.sellItem(testController, newItemCredentials);
 });
 
-test('Test that the Edit Item form on the My Items page works', async (testController) => {
+test('Test that the Edit ItemDetails form on the My Items page works', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoMyItemsPage(testController);

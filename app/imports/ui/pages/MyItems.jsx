@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import MyItem from '../components/MyItem';
+import MyItemCard from '../components/myItem/MyItemCard';
 import SearchBar from '../components/SearchBar';
 import { Items } from '../../api/items/Items';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -36,7 +36,7 @@ const MyItems = () => {
     <Container id={PAGE_IDS.MY_ITEMS} className="py-3">
       <SearchBar handleSearch={handleSearch} />
       <Row>
-        {items.map(item => <MyItem key={`item-${item._id}`} item={item} />)}
+        {items.map(item => <MyItemCard key={`item-${item._id}`} item={item} />)}
       </Row>
     </Container>
   ) : <LoadingSpinner />);

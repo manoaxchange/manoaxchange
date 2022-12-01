@@ -15,7 +15,7 @@ import SignOut from '../pages/SignOut';
 import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
-import ListReportsAdmin from '../pages/ListReportsAdmin';
+import AdminReports from '../pages/AdminReports';
 import Shop from '../pages/Shop';
 import Sell from '../pages/Sell';
 import Item from '../pages/Item';
@@ -24,7 +24,8 @@ import UserProfile from '../pages/UserProfile';
 import EditUserProfile from '../pages/EditUserProfile';
 import Playground from '../pages/Playground';
 import Sellings from '../pages/Sellings';
-import SellerPage from '../pages/sellerPage';
+import Sellers from '../pages/Sellers';
+import SellerProfile from '../pages/SellerProfile';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -42,12 +43,13 @@ const App = () => (
         <Route path="/sell" element={<ProtectedRoute><Sell /></ProtectedRoute>} />
         <Route path="/item" element={<ProtectedRoute><Item /></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
+        <Route path="/profileother/:_id" element={<ProtectedRoute><SellerProfile /></ProtectedRoute>} />
         <Route path="/sellings" element={<ProtectedRoute><Sellings /></ProtectedRoute>} />
-        <Route path="/sellers" element={<ProtectedRoute><SellerPage /></ProtectedRoute>} />
+        <Route path="/sellers" element={<ProtectedRoute><Sellers /></ProtectedRoute>} />
         <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
         <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
         <Route path="/profile/edit/:_id" element={<ProtectedRoute><EditUserProfile /></ProtectedRoute>} />
-        <Route path="/admin" element={<AdminProtectedRoute><ListReportsAdmin /></AdminProtectedRoute>} />
+        <Route path="/admin" element={<AdminProtectedRoute><AdminReports /></AdminProtectedRoute>} />
         <Route path="/play" element={<Playground />} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />

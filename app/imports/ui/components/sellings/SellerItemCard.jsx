@@ -4,7 +4,7 @@ import { CurrencyDollar } from 'react-bootstrap-icons';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import SoldModal from './myItem/SoldModal';
+import SoldModal from '../myItem/SoldModal';
 
 const blackButton = {
   background: 'none',
@@ -33,7 +33,7 @@ const Sellers = ({ item }) => {
         </Card.Body>
         <Card.Footer className="d-flex justify-content-between gap-2">
           <Link className="text-decoration-none" to={`/item/${item._id}`}>
-            <a className="text-decoration-none text-dark" href="/item"><b>{`${item.name}`}</b></a>
+            <a className="text-decoration-none text-dark" href="/Users/yoshi/github/manoaxchange/app/imports/ui/pages/Item"><b>{`${item.name}`}</b></a>
           </Link>
           {item.sold
             ? <b className="text-danger">SOLD</b>

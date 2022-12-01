@@ -15,7 +15,7 @@ const SoldModal = ({ show, handleClose, item }) => {
     Items.collection.update(item._id, { $set: { sold } }, (error) => (
       error
         ? swal('Error', error.message, 'error')
-        : swal('Success', 'Item has been sold', 'success')
+        : swal('Success', 'ItemDetails has been sold', 'success')
     ));
   };
 

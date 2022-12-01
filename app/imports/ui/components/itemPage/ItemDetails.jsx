@@ -3,10 +3,10 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import MessageModal from './MessageModal';
-import ReportModal from './ReportModal';
+import MessageModal from '../MessageModal';
+import ReportModal from '../ReportModal';
 
-const Item = ({ item }) => {
+const ItemDetails = ({ item }) => {
   const currentUser = useTracker(() => Meteor.user(), []);
   const [show, setShow] = useState(false);
   const handleShow = () => { setShow(true); };
@@ -47,7 +47,7 @@ const Item = ({ item }) => {
   );
 };
 
-Item.propTypes = {
+ItemDetails.propTypes = {
   item: PropTypes.shape({
     name: PropTypes.string,
     price: PropTypes.number,
@@ -56,4 +56,4 @@ Item.propTypes = {
   }).isRequired,
 };
 
-export default Item;
+export default ItemDetails;

@@ -16,7 +16,7 @@ const EditModal = ({ show, handleClose, item }) => {
     Items.collection.update(item._id, { $set: { name, image, description, price } }, (error) => (
       error
         ? swal('Error', error.message, 'error')
-        : swal('Success', 'Item updated successfully', 'success')
+        : swal('Success', 'ItemDetails updated successfully', 'success')
     ));
   };
 
