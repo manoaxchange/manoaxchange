@@ -6,7 +6,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import { Profiles } from '../../api/profiles/Profiles';
 import SellerDisplay from '../components/sellers/SellerDisplay';
 
-const sellers = () => {
+const Sellers = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, profiles } = useTracker(() => {
     // Note that this subscription will get cleaned up
@@ -25,10 +25,10 @@ const sellers = () => {
   return (ready ? (
     <Container className="py-3">
       <Row xs={1} md={2} lg={4} className="g-2">
-        {profiles.map((profile) => <SellerDisplay key={profile.owner} profile={profile} />)}
+        {profiles.map((profile) => <SellerDisplay key={profile._id} profile={profile} />)}
       </Row>
     </Container>
   ) : <LoadingSpinner />);
 };
 
-export default sellers;
+export default Sellers;
