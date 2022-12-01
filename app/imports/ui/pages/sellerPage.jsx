@@ -25,7 +25,7 @@ const sellerPage = () => {
   return (ready ? (
     <Container className="py-3">
       <Row xs={1} md={2} lg={4} className="g-2">
-        {profiles.map((profile) => <SellersPage profile={profile.owner} profile={profile} />)}
+        {profiles.map((profile) => <SellersPage key={profile._id} profile={profile} />)}
       </Row>
     </Container>
   ) : <LoadingSpinner />);
