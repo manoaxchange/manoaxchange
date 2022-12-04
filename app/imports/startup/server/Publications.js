@@ -4,6 +4,7 @@ import { Stuffs } from '../../api/stuff/Stuff';
 import { Items } from '../../api/items/Items';
 import { Reports } from '../../api/reports/Reports';
 import { Profiles } from '../../api/profiles/Profiles';
+import { Ratings } from '../../api/ratings/Ratings';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -42,6 +43,11 @@ Meteor.publish(Profiles.userPublicationName, function () {
     return Profiles.collection.find();
   }
   return this.ready();
+});
+
+// publish all ratings
+Meteor.publish(null, function () {
+  return Ratings.collection.find();
 });
 
 // Admin-level publication.

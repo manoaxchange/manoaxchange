@@ -1,4 +1,6 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
+import { useTracker } from 'meteor/react-meteor-data';
 import { Button, Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { AutoForm, ErrorsField, RadioField, SubmitField } from 'uniforms-bootstrap5';
@@ -6,14 +8,14 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
 import { Profiles } from '../../../api/profiles/Profiles';
 import { Ratings } from '../../../api/ratings/Ratings';
-import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 
 const bridge = new SimpleSchema2Bridge(Ratings.schema);
 
-const RatingModal = ({ show, handleClose, profile, rating }) => {
+const RatingModal = ({ show, handleClose, rating }) => {
+  const currentUser = useTracker(() => (Meteor.user() ? Meteor.user().username : ''), []);
   const submit = (data) => {
     const { profileName, userName, value } = data;
-    const ratedBefore = Ratings.collection.find({ userName: rating.userName, profileName: rating.profileName }).count();
+    const ratedBefore = Ratings.collection.find({ userName: currentUser, profileName: profile }).count();
     if (ratedBefore === 1) {
       handleClose();
       Ratings.collection.update(rating._id, { $set: { profileName, userName, value } }, (error) => (
@@ -28,12 +30,13 @@ const RatingModal = ({ show, handleClose, profile, rating }) => {
           ? swal('Error', error.message, 'error')
           : swal('Success', 'ItemDetails updated successfully', 'success')
       ));
+      Profiles.collection.update(profile._id, { $set: {} }, (error) => (
+        error
+          ? swal('Error', error.message, 'error')
+          : swal('Success', 'ItemDetails updated successfully', 'success')
+      ));
     }
-    Profiles.collection.update(profile._id, { $set: { profileName, userName, value } }, (error) => (
-      error
-        ? swal('Error', error.message, 'error')
-        : swal('Success', 'ItemDetails updated successfully', 'success')
-    ));
+
   };
 
   return (
@@ -45,7 +48,7 @@ const RatingModal = ({ show, handleClose, profile, rating }) => {
         <Modal.Body>
           <RadioField name="rating" inline showInlineError labelClassName="px-5" />
           <ErrorsField />
-          <SubmitField id={COMPONENT_IDS.EDIT_ITEM_FORM_SUBMIT} value="Save" />
+          <SubmitField value="Save" />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
@@ -64,7 +67,7 @@ RatingModal.propTypes = {
   profile: PropTypes.shape({
     owner: PropTypes.string,
     ratingCount: PropTypes.number,
-    ratingValue: PropTypes.number,
+    ratingTotal: PropTypes.number,
     _id: PropTypes.string,
   }).isRequired,
   rating: PropTypes.shape({
