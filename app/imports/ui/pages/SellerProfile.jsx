@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Col, Container, Row, Button } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -7,23 +7,31 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import { Profiles } from '../../api/profiles/Profiles';
 import ProfileDisplay from '../components/profile/ProfileDisplay';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import { Ratings } from '../../api/ratings/Ratings';
+import RatingModal from '../components/sellers/RatingModal';
 
 const SellerProfile = () => {
+  const [show, setShow] = useState(false);
+  const handleShow = () => { setShow(true); };
+  const handleClose = () => { setShow(false); };
   const { _id } = useParams();
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const { ready, profiles } = useTracker(() => {
+  const { ready, profiles, ratings } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     // Get access to Stuff documents.
     const subscription = Meteor.subscribe(Profiles.userPublicationName);
+    const subscription2 = Meteor.subscribe(Ratings.userPublicationName);
     // Determine if the subscription is ready
-    const rdy = subscription.ready();
+    const rdy = subscription.ready() && subscription2.ready();
     // Get the Stuff documents
     const profileItems = Profiles.collection.find({ _id: _id }).fetch();
+    const ratingDocs = Ratings.collection.filter({ profileName: _id });
     console.log(profileItems, profileItems);
     console.log('_id', _id);
     return {
       profiles: profileItems,
+      ratings: ratingDocs,
       ready: rdy,
     };
   }, [_id]);
@@ -39,7 +47,9 @@ const SellerProfile = () => {
       <Container className="d-flex justify-content-evenly py-3">
         <Button className="d-inline-block">Message</Button>
         <Button variant="success" className="d-inline-block" href="/sellings">Selling Page</Button>
+        <Button className="d-inline-block" onclick={handleShow}>Rate Profile</Button>
       </Container>
+      <RatingModal handleClose={handleClose} show={show} rating={ratings} profile={profiles} />
     </Container>
   ) : <LoadingSpinner />);
 };

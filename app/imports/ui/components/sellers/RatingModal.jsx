@@ -11,11 +11,11 @@ import { Ratings } from '../../../api/ratings/Ratings';
 
 const bridge = new SimpleSchema2Bridge(Ratings.schema);
 
-const RatingModal = ({ show, handleClose, rating }) => {
+const RatingModal = ({ show, handleClose, rating, profile }) => {
   const currentUser = useTracker(() => (Meteor.user() ? Meteor.user().username : ''), []);
+  const ratedBefore = Ratings.collection.find({ userName: currentUser, profileName: profile }).count();
   const submit = (data) => {
     const { profileName, userName, value } = data;
-    const ratedBefore = Ratings.collection.find({ userName: currentUser, profileName: profile }).count();
     if (ratedBefore === 1) {
       handleClose();
       Ratings.collection.update(rating._id, { $set: { profileName, userName, value } }, (error) => (
@@ -36,7 +36,6 @@ const RatingModal = ({ show, handleClose, rating }) => {
           : swal('Success', 'ItemDetails updated successfully', 'success')
       ));
     }
-
   };
 
   return (
@@ -48,7 +47,7 @@ const RatingModal = ({ show, handleClose, rating }) => {
         <Modal.Body>
           <RadioField name="rating" inline showInlineError labelClassName="px-5" />
           <ErrorsField />
-          <SubmitField value="Save" />
+          {ratedBefore ? <SubmitField>Change Rating</SubmitField> : <SubmitField>Add Rating</SubmitField>}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

@@ -18,8 +18,8 @@ class ProfilesCollection {
       bio: { type: String, optional: true },
       picture: { type: String, optional: true },
       owner: { type: String },
-      ratingCount: { type: Number, optional: true },
-      ratingTotal: { type: Number, optional: true },
+      ratingCount: { type: Number, optional: true, defaultValue: 0 },
+      ratingTotal: { type: Number, optional: true, defaultValue: 0 },
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);

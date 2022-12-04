@@ -15,7 +15,7 @@ const ProfileDisplay = ({ profile }) => (
           Biography: {profile.bio}
         </Card.Text>
         <Card.Text>
-          Overall Rating: [User Rating]
+          Overall Rating: {profile.ratingCount / profile.ratingTotal}
         </Card.Text>
       </Card.Body>
     </Card>
@@ -30,6 +30,8 @@ ProfileDisplay.propTypes = {
     picture: PropTypes.string,
     _id: PropTypes.string,
     owner: PropTypes.string,
+    ratingCount: PropTypes.number,
+    ratingTotal: PropTypes.number,
   }).isRequired,
 };
 
