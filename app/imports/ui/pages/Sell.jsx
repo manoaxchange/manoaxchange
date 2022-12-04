@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Col, Container, Form, Row, Image } from 'react-bootstrap';
-import { AutoForm, ErrorsField, LongTextField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, HiddenField, LongTextField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
 import SimpleSchema from 'simpl-schema';
@@ -12,6 +12,7 @@ import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
+  image: String,
   price: Number,
   description: String,
   name: String,
@@ -93,6 +94,7 @@ const Sell = () => {
                     onChange={(event) => { previewFile(event.target.files[0]); }}
                   />
                 </div>
+                <HiddenField name="image" value={imagePreview ? 'contains image' : null} />
                 <SubmitField id={COMPONENT_IDS.SELL_FORM_SUBMIT} value="Submit" />
                 <ErrorsField />
               </Card.Body>
