@@ -25,7 +25,6 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 
 const Sell = () => {
   const [imagePreview, setImagePreview] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null);
 
   // Allows file to be read and used as src for image
   const previewFile = (file) => {
@@ -56,7 +55,7 @@ const Sell = () => {
     const { price, description, name, category } = data;
     const image = await postImage();
     // await promise.then((d) => { image = d; });
-    console.log('submitted image url', image);
+    console.log('submitted image url');
     const owner = Meteor.user().username;
     Items.collection.insert(
       { image, price, description, name, owner, category },
@@ -78,14 +77,7 @@ const Sell = () => {
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center"><h2>Sell Item</h2></Col>
-          <AutoForm
-            ref={ref => { fRef = ref; }}
-            schema={bridge}
-            onSubmit={data => {
-              postImage();
-              submit(data, fRef);
-            }}
-          >
+          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => { submit(data, fRef); }}>
             <Card>
               <Card.Body>
                 <TextField id={COMPONENT_IDS.SELL_FORM_NAME} name="name" />
@@ -98,9 +90,7 @@ const Sell = () => {
                     type="file"
                     size="sm"
                     accept="image/jpeg,image/jpg,image/png"
-                    onChange={(event) => {
-                      previewFile(event.target.files[0]);
-                    }}
+                    onChange={(event) => { previewFile(event.target.files[0]); }}
                   />
                 </div>
                 <SubmitField id={COMPONENT_IDS.SELL_FORM_SUBMIT} value="Submit" />
