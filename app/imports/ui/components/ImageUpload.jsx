@@ -18,8 +18,10 @@ const ImageUpload = ({ handleImagePreview }) => {
           const reader = new FileReader();
           reader.readAsDataURL(result);
           console.log('result', result);
+          // returns reader.result to parent
           reader.onloadend = () => {
             setImagePreview(reader.result);
+            return handleImagePreview(reader.result);
           };
         },
         error(err) {
@@ -29,6 +31,7 @@ const ImageUpload = ({ handleImagePreview }) => {
       console.log('compressed file result', compressedFile);
     } else {
       setImagePreview('');
+      handleImagePreview('');
     }
   };
 
@@ -41,7 +44,6 @@ const ImageUpload = ({ handleImagePreview }) => {
         accept="image/jpeg,image/jpg,image/png"
         onChange={(event) => {
           previewFile(event.target.files[0]);
-          return handleImagePreview(imagePreview);
         }}
       />
     </div>
