@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { Card, Col, Container, Form, Row, Image, Button } from 'react-bootstrap';
+import { Card, Col, Container, Row, Button } from 'react-bootstrap';
 import { AutoForm, ErrorsField, HiddenField, LongTextField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import Compressor from 'compressorjs';
 import { CATEGORIES_ARRAY, Items } from '../../api/items/Items';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import LoadingSpinner from '../components/LoadingSpinner';
 import apifunctions from '../services/apifunctions.js';
+import ImageUpload from '../components/ImageUpload';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -28,39 +28,11 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 
 const Sell = () => {
   const [imagePreview, setImagePreview] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const handleImagePreview = (val) => setImagePreview(val);
 
+  const [loading, setLoading] = useState(false);
   const handleShowLoading = () => setLoading(true);
   const handleNoLoading = () => setLoading(false);
-  // const test = new Compressor(imagePreview, {
-  //   quality: 0.6,
-  // });
-  // console.log('compression test', test);
-  // Allows file to be read and used as src for image
-  const previewFile = (file) => {
-    if (file) {
-      console.log('original file', file);
-      const compressedFile = new Compressor(file, {
-        strict: true,
-        quality: 0.8,
-        checkOrientation: false,
-        success(result) {
-          const reader = new FileReader();
-          reader.readAsDataURL(result);
-          console.log('result', result);
-          reader.onloadend = () => {
-            setImagePreview(reader.result);
-          };
-        },
-        error(err) {
-          console.log(err.message);
-        },
-      });
-      console.log('compressed file result', compressedFile);
-    } else {
-      setImagePreview('');
-    }
-  };
 
   // On submit, insert the data.
   const submit = async (data, formRef) => {
@@ -98,15 +70,7 @@ const Sell = () => {
                 <NumField id={COMPONENT_IDS.SELL_FORM_PRICE} name="price" decimal />
                 <LongTextField id={COMPONENT_IDS.SELL_FORM_DESCRIPTION} name="description" />
                 <SelectField id={COMPONENT_IDS.SELL_FORM_CATEGORY} name="category" />
-                <div className="h-25 mb-3">
-                  {imagePreview ? <Image className="w-100" src={imagePreview} /> : ''}
-                  <Form.Control
-                    type="file"
-                    size="sm"
-                    accept="image/jpeg,image/jpg,image/png"
-                    onChange={(event) => { previewFile(event.target.files[0]); }}
-                  />
-                </div>
+                <ImageUpload handleImagePreview={handleImagePreview} />
                 <HiddenField name="image" value={imagePreview ? 'contains image' : null} />
                 {loading
                   ? <Button><LoadingSpinner /></Button>
