@@ -1,13 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, Image, Col, Row, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 /* Component for layout out a Profile Card. */
-const [showRatingForm, setShowRatingForm] = useState(false);
-const handleShow = () => { setShowRatingForm(true); };
-const handleClose = () => { setShowRatingForm(false); };
-
 const SellerDisplay = ({ profile }) => (
   <Row>
     <Col>

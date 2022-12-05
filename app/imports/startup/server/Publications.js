@@ -50,6 +50,14 @@ Meteor.publish(null, function () {
   return Ratings.collection.find();
 });
 
+// publish all ratings
+Meteor.publish(Ratings.userPublicationName, function () {
+  if (this.userId) {
+    return Ratings.collection.find();
+  }
+  return this.ready();
+});
+
 // Admin-level publication.
 // If logged in and with admin role, then publish all documents from all users. Otherwise publish nothing.
 Meteor.publish(Stuffs.adminPublicationName, function () {

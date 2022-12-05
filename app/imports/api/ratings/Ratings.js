@@ -14,7 +14,7 @@ class RatingsCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       profileId: { type: String },
-      userId: { type: String },
+      userEmail: { type: String },
       value: { type: Number, allowedValues: [1, 2, 3, 4, 5] },
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.

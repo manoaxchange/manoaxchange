@@ -26,7 +26,8 @@ const SellerProfile = () => {
     const rdy = subscription.ready() && subscription2.ready();
     // Get the Stuff documents
     const profileItems = Profiles.collection.find({ _id: _id }).fetch();
-    const ratingDocs = Ratings.collection.filter({ profileName: _id });
+    const ratingDocs = Ratings.collection.find({ profileName: _id }).fetch();
+    console.log(ratingDocs);
     console.log(profileItems, profileItems);
     console.log('_id', _id);
     return {
@@ -47,7 +48,7 @@ const SellerProfile = () => {
       <Container className="d-flex justify-content-evenly py-3">
         <Button className="d-inline-block">Message</Button>
         <Button variant="success" className="d-inline-block" href="/sellings">Selling Page</Button>
-        <Button className="d-inline-block" onclick={handleShow}>Rate Profile</Button>
+        <Button className="d-inline-block" onClick={handleShow}>Rate Profile</Button>
       </Container>
       <RatingModal handleClose={handleClose} show={show} rating={ratings} profile={profiles} />
     </Container>

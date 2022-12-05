@@ -13,19 +13,19 @@ const bridge = new SimpleSchema2Bridge(Ratings.schema);
 
 const RatingModal = ({ show, handleClose, rating, profile }) => {
   const currentUser = useTracker(() => (Meteor.user() ? Meteor.user().username : ''), []);
-  const ratedBefore = Ratings.collection.find({ userName: currentUser, profileName: profile }).count();
+  const ratedBefore = Ratings.collection.find({ userEmail: currentUser, profileId: profile }).count();
   const submit = (data) => {
-    const { profileName, userName, value } = data;
+    const { profileId, userEmail, value } = data;
     if (ratedBefore === 1) {
       handleClose();
-      Ratings.collection.update(rating._id, { $set: { profileName, userName, value } }, (error) => (
+      Ratings.collection.update(rating._id, { $set: { profileId, userEmail, value } }, (error) => (
         error
           ? swal('Error', error.message, 'error')
           : swal('Success', 'ItemDetails updated successfully', 'success')
       ));
     } else {
       handleClose();
-      Ratings.collection.add({ profileName, userName, value }, (error) => (
+      Ratings.collection.add({ profileId, userEmail, value }, (error) => (
         error
           ? swal('Error', error.message, 'error')
           : swal('Success', 'ItemDetails updated successfully', 'success')
@@ -70,8 +70,8 @@ RatingModal.propTypes = {
     _id: PropTypes.string,
   }).isRequired,
   rating: PropTypes.shape({
-    profileName: PropTypes.string,
-    userName: PropTypes.string,
+    profileId: PropTypes.string,
+    userEmail: PropTypes.string,
     value: PropTypes.number,
     _id: PropTypes.string,
   }).isRequired,
