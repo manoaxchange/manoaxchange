@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, Navigate } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
-import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
-import { Meteor } from 'meteor/meteor';
+import { Alert, Button, Card, Col, Container, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField, HiddenField } from 'uniforms-bootstrap5';
 import { Profiles } from '../../api/profiles/Profiles';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+import ImageUpload from '../components/ImageUpload';
+import LoadingSpinner from '../components/LoadingSpinner';
+import apifunctions from '../services/apifunctions.js';
 
 /**
  * SignUp component is similar to signin component, but we create a new user instead.
@@ -17,6 +19,13 @@ import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 const SignUp = ({ location }) => {
   const [error, setError] = useState('');
   const [redirectToReferer, setRedirectToRef] = useState(false);
+
+  const [imagePreview, setImagePreview] = useState(null);
+  const handleImagePreview = (val) => setImagePreview(val);
+
+  const [loading, setLoading] = useState(false);
+  const handleShowLoading = () => setLoading(true);
+  const handleNoLoading = () => setLoading(false);
 
   const schema = new SimpleSchema({
     email: String,
@@ -29,8 +38,10 @@ const SignUp = ({ location }) => {
   const bridge = new SimpleSchema2Bridge(schema);
 
   /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
-  const submit = (data) => {
-    const { email, password, firstName, lastName, picture, bio } = data;
+  const submit = async (data) => {
+    handleShowLoading();
+    const { email, password, firstName, lastName, bio } = data;
+    const picture = await apifunctions.postImage(imagePreview);
     if (email.endsWith('@hawaii.edu')) {
       Accounts.createUser({ email, username: email, password }, (err) => {
         if (err) {
@@ -41,9 +52,11 @@ const SignUp = ({ location }) => {
       Profiles.collection.insert(
         { firstName, lastName, picture, bio, owner },
       );
+      handleNoLoading();
       console.log('user has been registered');
       setRedirectToRef(true);
     } else {
+      handleNoLoading();
       setError('Invalid email address.');
     }
   };
@@ -68,10 +81,14 @@ const SignUp = ({ location }) => {
                 <TextField id={COMPONENT_IDS.SIGNUP_FORM_LASTNAME} name="lastName" placeholder="Last name" />
                 <TextField id={COMPONENT_IDS.SIGNUP_FORM_EMAIL} name="email" placeholder="E-mail address" />
                 <TextField id={COMPONENT_IDS.SIGNUP_FORM_PASSWORD} name="password" placeholder="Password" type="password" />
-                <TextField id={COMPONENT_IDS.SIGNUP_FORM_PICTURE} name="picture" placeholder="Image URL" />
+                <ImageUpload handleImagePreview={handleImagePreview} />
+                {/* <TextField id={COMPONENT_IDS.SIGNUP_FORM_PICTURE} name="picture" placeholder="Image URL" /> */}
+                <HiddenField name="picture" value={imagePreview ? 'contains image' : null} />
                 <LongTextField id={COMPONENT_IDS.SIGNUP_FORM_BIO} name="bio" placeholder="Biography" />
                 <ErrorsField />
-                <SubmitField id={COMPONENT_IDS.SIGNUP_FORM_SUBMIT} />
+                {loading
+                  ? <Button><LoadingSpinner /></Button>
+                  : <SubmitField id={COMPONENT_IDS.SIGNUP_FORM_SUBMIT} />}
               </Card.Body>
             </Card>
           </AutoForm>
