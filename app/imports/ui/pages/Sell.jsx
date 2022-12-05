@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { Card, Col, Container, Form, Row, Image } from 'react-bootstrap';
+import { Card, Col, Container, Form, Row, Image, Button } from 'react-bootstrap';
 import { AutoForm, ErrorsField, HiddenField, LongTextField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import axios from 'axios';
 import { CATEGORIES_ARRAY, Items } from '../../api/items/Items';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+import LoadingSpinner from '../components/LoadingSpinner';
+import apifunctions from '../services/apifunctions.js';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -26,6 +27,10 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 
 const Sell = () => {
   const [imagePreview, setImagePreview] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleShowLoading = () => setLoading(true);
+  const handleNoLoading = () => setLoading(false);
 
   // Allows file to be read and used as src for image
   const previewFile = (file) => {
@@ -37,36 +42,23 @@ const Sell = () => {
     };
   };
 
-  const postImage = async () => {
-    const response = await axios.post('/api/cloudinary/upload', {
-      image: imagePreview,
-    });
-    try {
-      const data = response.data.secure_url;
-      console.log('data from postImage():', data);
-      return data;
-    } catch (error) {
-      console.log(error);
-      return null;
-    }
-  };
-
   // On submit, insert the data.
   const submit = async (data, formRef) => {
+    handleShowLoading();
     const { price, description, name, category } = data;
-    const image = await postImage();
-    // await promise.then((d) => { image = d; });
-    console.log('submitted image url');
+    const image = await apifunctions.postImage(imagePreview);
     const owner = Meteor.user().username;
     Items.collection.insert(
       { image, price, description, name, owner, category },
       (error) => {
         if (error) {
+          handleNoLoading();
           swal('Error', error.message, 'error');
         } else {
           swal('Success', 'Item is now in the shop!', 'success');
           formRef.reset();
           setImagePreview(null);
+          handleNoLoading();
         }
       },
     );
@@ -95,7 +87,9 @@ const Sell = () => {
                   />
                 </div>
                 <HiddenField name="image" value={imagePreview ? 'contains image' : null} />
-                <SubmitField id={COMPONENT_IDS.SELL_FORM_SUBMIT} value="Submit" />
+                {loading
+                  ? <Button><LoadingSpinner /></Button>
+                  : <SubmitField id={COMPONENT_IDS.SELL_FORM_SUBMIT} value="Submit" />}
                 <ErrorsField />
               </Card.Body>
             </Card>
