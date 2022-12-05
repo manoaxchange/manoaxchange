@@ -5,6 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import Compressor from 'compressorjs';
 import { CATEGORIES_ARRAY, Items } from '../../api/items/Items';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
@@ -31,15 +32,29 @@ const Sell = () => {
 
   const handleShowLoading = () => setLoading(true);
   const handleNoLoading = () => setLoading(false);
-
+  // const test = new Compressor(imagePreview, {
+  //   quality: 0.6,
+  // });
+  // console.log('compression test', test);
   // Allows file to be read and used as src for image
   const previewFile = (file) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
+    if (file) {
+      console.log('original file', file);
+      const compressedFile = new Compressor(file, {
+        quality: 0.6,
+        success(result) {
+          const reader = new FileReader();
+          reader.readAsDataURL(result);
 
-    reader.onloadend = () => {
-      setImagePreview(reader.result);
-    };
+          reader.onloadend = () => {
+            setImagePreview(reader.result);
+          };
+        },
+      });
+      console.log('compressed file result', compressedFile);
+    } else {
+      setImagePreview('');
+    }
   };
 
   // On submit, insert the data.
@@ -67,6 +82,7 @@ const Sell = () => {
   let fRef = null;
   return (
     <Container id={PAGE_IDS.SELL} className="py-3">
+      {console.log('image preview', imagePreview)}
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center"><h2>Sell Item</h2></Col>
