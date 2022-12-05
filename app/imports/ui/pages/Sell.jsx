@@ -41,14 +41,19 @@ const Sell = () => {
     if (file) {
       console.log('original file', file);
       const compressedFile = new Compressor(file, {
-        quality: 0.6,
+        strict: true,
+        quality: 0.8,
+        checkOrientation: false,
         success(result) {
           const reader = new FileReader();
           reader.readAsDataURL(result);
-
+          console.log('result', result);
           reader.onloadend = () => {
             setImagePreview(reader.result);
           };
+        },
+        error(err) {
+          console.log(err.message);
         },
       });
       console.log('compressed file result', compressedFile);
