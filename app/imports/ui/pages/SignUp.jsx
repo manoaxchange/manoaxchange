@@ -29,22 +29,20 @@ const SignUp = ({ location }) => {
   const bridge = new SimpleSchema2Bridge(schema);
 
   /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
-  const submit = (doc1, doc2) => {
-    const { email, password } = doc1;
+  const submit = (data) => {
+    const { email, password, firstName, lastName, picture, bio } = data;
     if (email.endsWith('@hawaii.edu')) {
       Accounts.createUser({ email, username: email, password }, (err) => {
         if (err) {
           setError(err.reason);
-        } else {
-          setError('');
-          setRedirectToRef(true);
         }
       });
-      const { firstName, lastName, picture, bio } = doc2;
-      const owner = Meteor.user().username;
+      const owner = email;
       Profiles.collection.insert(
-        { username: firstName, lastName, picture, bio, owner },
+        { firstName, lastName, picture, bio, owner },
       );
+      console.log('user has been registered');
+      setRedirectToRef(true);
     } else {
       setError('Invalid email address.');
     }
