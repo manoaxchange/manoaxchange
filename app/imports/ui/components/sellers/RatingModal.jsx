@@ -2,7 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { AutoForm, ErrorsField, RadioField, SubmitField, HiddenField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, RadioField, SubmitField } from 'uniforms-bootstrap5';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
@@ -16,14 +16,13 @@ const formSchema = new SimpleSchema({
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 const RatingModal = ({ show, handleClose, rating, profile }) => {
-  const ratedBefore = Ratings.collection.find({ userEmail: Meteor.user().username, profileId: profile }).count();
   const submit = (data) => {
     const userEmail = Meteor.user().username;
     const profileId = profile._id;
     const { value } = data;
-    console.log(ratedBefore);
+    console.log(rating);
     console.log(profileId, userEmail, value);
-    if (ratedBefore === 1) {
+    if (rating) {
       handleClose();
       Ratings.collection.update(rating._id, { $set: { profileId, userEmail, value } }, (error) => (
         error
@@ -46,10 +45,9 @@ const RatingModal = ({ show, handleClose, rating, profile }) => {
     }
   };
 
-  let fRef = null;
   return (
     <Modal show={show} onHide={handleClose}>
-      <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)} model={rating}>
+      <AutoForm schema={bridge} onSubmit={data => submit(data)} model={rating}>
         <Modal.Header closeButton>
           <Modal.Title>Rate Profile</Modal.Title>
         </Modal.Header>

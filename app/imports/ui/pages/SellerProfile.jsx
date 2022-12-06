@@ -31,10 +31,12 @@ const SellerProfile = () => {
     // Get the Stuff documents
     const profileItems = Profiles.collection.find({ _id: _id }).fetch();
     const sellerItems = Items.collection.find({ owner: profileItems[0].owner }).fetch();
-    const ratingDocs = Ratings.collection.find({ profileName: _id }).fetch();
+    let ratingDocs = Ratings.collection.find({}).fetch();
+    console.log(ratingDocs);
+    ratingDocs = Ratings.collection.find({ userEmail: Meteor.user().username }).fetch();
+    console.log(ratingDocs);
     console.log(profileItems, profileItems);
     console.log(sellerItems, sellerItems);
-    console.log(ratingDocs);
     console.log('_id', _id);
     return {
       profiles: profileItems,
