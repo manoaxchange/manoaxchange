@@ -23,7 +23,6 @@ import MyItems from '../pages/MyItems';
 import UserProfile from '../pages/UserProfile';
 import EditUserProfile from '../pages/EditUserProfile';
 import Playground from '../pages/Playground';
-import Sellings from '../pages/Sellings';
 import Sellers from '../pages/Sellers';
 import SellerProfile from '../pages/SellerProfile';
 
@@ -44,7 +43,6 @@ const App = () => (
         <Route path="/item" element={<ProtectedRoute><Item /></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
         <Route path="/profileother/:_id" element={<ProtectedRoute><SellerProfile /></ProtectedRoute>} />
-        <Route path="/sellings" element={<ProtectedRoute><Sellings /></ProtectedRoute>} />
         <Route path="/sellers" element={<ProtectedRoute><Sellers /></ProtectedRoute>} />
         <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
         <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
