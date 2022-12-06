@@ -13,8 +13,8 @@ class RatingsCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      profileId: { type: String },
-      userEmail: { type: String },
+      profileId: { type: String, optional: true },
+      userEmail: { type: String, optional: true },
       value: { type: Number, allowedValues: [1, 2, 3, 4, 5] },
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.

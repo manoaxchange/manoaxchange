@@ -50,7 +50,7 @@ const SellerProfile = () => {
         <Button variant="success" className="d-inline-block" href="/sellings">Selling Page</Button>
         <Button className="d-inline-block" onClick={handleShow}>Rate Profile</Button>
       </Container>
-      <RatingModal handleClose={handleClose} show={show} rating={ratings} profile={profiles} />
+      {profiles.map((profile) => <RatingModal key={profile._id} handleClose={handleClose} show={show} rating={ratings.filter(rating => (rating.profileId === profile._id))} profile={profile} />)}
     </Container>
   ) : <LoadingSpinner />);
 };

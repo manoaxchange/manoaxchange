@@ -1,21 +1,28 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { useTracker } from 'meteor/react-meteor-data';
-import { Button, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { AutoForm, ErrorsField, RadioField, SubmitField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, RadioField, SubmitField, HiddenField } from 'uniforms-bootstrap5';
+import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
 import { Profiles } from '../../../api/profiles/Profiles';
 import { Ratings } from '../../../api/ratings/Ratings';
 
-const bridge = new SimpleSchema2Bridge(Ratings.schema);
+const formSchema = new SimpleSchema({
+  value: { type: Number, allowedValues: [1, 2, 3, 4, 5] },
+});
+
+const bridge = new SimpleSchema2Bridge(formSchema);
 
 const RatingModal = ({ show, handleClose, rating, profile }) => {
-  const currentUser = useTracker(() => (Meteor.user() ? Meteor.user().username : ''), []);
-  const ratedBefore = Ratings.collection.find({ userEmail: currentUser, profileId: profile }).count();
+  const ratedBefore = Ratings.collection.find({ userEmail: Meteor.user().username, profileId: profile }).count();
   const submit = (data) => {
-    const { profileId, userEmail, value } = data;
+    const userEmail = Meteor.user().username;
+    const profileId = profile._id;
+    const { value } = data;
+    console.log(ratedBefore);
+    console.log(profileId, userEmail, value);
     if (ratedBefore === 1) {
       handleClose();
       Ratings.collection.update(rating._id, { $set: { profileId, userEmail, value } }, (error) => (
@@ -25,35 +32,33 @@ const RatingModal = ({ show, handleClose, rating, profile }) => {
       ));
     } else {
       handleClose();
-      Ratings.collection.add({ profileId, userEmail, value }, (error) => (
+      Ratings.collection.insert({ profileId, userEmail, value }, (error) => (
         error
           ? swal('Error', error.message, 'error')
           : swal('Success', 'ItemDetails updated successfully', 'success')
       ));
-      Profiles.collection.update(profile._id, { $set: {} }, (error) => (
+      /*Profiles.collection.update(profile._id, (error) => (
         error
           ? swal('Error', error.message, 'error')
           : swal('Success', 'ItemDetails updated successfully', 'success')
       ));
+       */
     }
   };
 
+  let fRef = null;
   return (
     <Modal show={show} onHide={handleClose}>
-      <AutoForm schema={bridge} onSubmit={data => submit(data)}>
+      <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)} model={rating}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit</Modal.Title>
+          <Modal.Title>Rate Profile</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <RadioField name="rating" inline showInlineError labelClassName="px-5" />
+          <RadioField name="value" inline showInlineError labelClassName="px-5" />
           <ErrorsField />
-          {ratedBefore ? <SubmitField>Change Rating</SubmitField> : <SubmitField>Add Rating</SubmitField>}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <ErrorsField />
+          <SubmitField />
         </Modal.Footer>
       </AutoForm>
     </Modal>
