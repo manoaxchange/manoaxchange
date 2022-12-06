@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { AutoForm, ErrorsField, LongTextField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, HiddenField, LongTextField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
 import { Items } from '../../../api/items/Items';
@@ -49,6 +49,7 @@ const EditModal = ({ show, handleClose, item }) => {
           <LongTextField name="description" />
           <ImageUpload handleImagePreview={handleImagePreview} />
           <SelectField name="category" />
+          <HiddenField name="image" value={imagePreview ? 'contains image' : null} />
           <ErrorsField />
         </Modal.Body>
         <Modal.Footer>
@@ -58,7 +59,6 @@ const EditModal = ({ show, handleClose, item }) => {
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <ErrorsField />
         </Modal.Footer>
       </AutoForm>
     </Modal>
