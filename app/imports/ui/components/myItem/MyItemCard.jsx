@@ -29,7 +29,7 @@ const MyItemCard = ({ item }) => {
 
   return (
     <Col xs={12} lg={4} xl={3} className="d-flex my-3">
-      <Card className="w-100" style={{ minHeight: '300px' }}>
+      <Card className="w-100" style={{ minHeight: '300px' }} id="item-card">
         <Card.Header className="d-flex justify-content-end align-items-center gap-2">
           {item.sold
             ? ''
@@ -46,12 +46,14 @@ const MyItemCard = ({ item }) => {
           />
         </Card.Body>
         <Card.Footer className="d-flex justify-content-between gap-2">
+          <div className="d-flex justify-content-between align-items-center">
+            {item.sold
+              ? <b className="text-danger h4 d-flex mb-0" style={{ fontWeight: 'normal' }}>SOLD</b>
+              : <div className="h4 d-flex mb-0" style={{ fontWeight: 'normal' }}>${item.price}</div>}
+          </div>
           <Link className="text-decoration-none text-dark" to={`/item/${item._id}`}>
-            <b>{`${item.name}`}</b>
+            {item.name.length < 20 ? item.name : `${item.name.substring(0, 20).trim()}...`}
           </Link>
-          {item.sold
-            ? <b className="text-danger">SOLD</b>
-            : <b>{`$${item.price}`}</b>}
         </Card.Footer>
       </Card>
       <DeleteModal handleClose={handleCloseDelete} show={showDelete} item={item} />

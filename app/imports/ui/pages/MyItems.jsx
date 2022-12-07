@@ -10,7 +10,6 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 
 const MyItems = () => {
   const [search, setSearch] = useState('');
-  const [showItems, setShowItems] = useState([]);
 
   const { items } = useTracker(() => {
     const user = Meteor.user();
@@ -28,22 +27,21 @@ const MyItems = () => {
 
   useEffect(() => {
     console.log('rendered');
-    document.title = 'ManoaXchange - Shop';
-    setShowItems(items.filter(item => item.name.toLowerCase().includes(search.toLowerCase())));
-  }, [items.length, search]);
-
-  const itemsReady = () => !!items;
+    document.title = 'ManoaXchange - My Items';
+  }, []);
 
   console.log('items:', items);
   console.log('search:', search);
 
   const handleSearch = (input) => { setSearch(`${input}`); };
 
-  return (itemsReady() ? (
+  const filterItems = (array) => array.filter(item => item.name.toLowerCase().includes(search.toLowerCase()));
+
+  return (items ? (
     <Container id={PAGE_IDS.MY_ITEMS} className="py-3">
       <SearchBar handleSearch={handleSearch} />
       <Row>
-        {showItems.map(item => <MyItemCard key={`item-${item._id}`} item={item} />)}
+        {filterItems(items).map(item => <MyItemCard key={`item-${item._id}`} item={item} />)}
       </Row>
     </Container>
   ) : <LoadingSpinner />);
