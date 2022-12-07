@@ -37,12 +37,17 @@ const MyItemCard = ({ item }) => {
               <Button key="sold" onClick={handleShowSold} style={blackButton}><CurrencyDollar /></Button>]}
           <Button key="delete" onClick={handleShowDelete} style={blackButton}><Trash3Fill /></Button>
         </Card.Header>
-        <Card.Body className="d-flex align-items-center">
-          <Image width="100%" height="100%" src={item.image} style={{ objectFit: 'contain' }} />
+        <Card.Body className="d-flex align-items-center justify-content-center">
+          <Image
+            width="100%"
+            height="100%"
+            src={item.image}
+            style={{ objectFit: 'contain' }}
+          />
         </Card.Body>
         <Card.Footer className="d-flex justify-content-between gap-2">
-          <Link className="text-decoration-none" to={`/item/${item._id}`}>
-            <a className="text-decoration-none text-dark" href="/Users/yoshi/github/manoaxchange/app/imports/ui/pages/Item"><b>{`${item.name}`}</b></a>
+          <Link className="text-decoration-none text-dark" to={`/item/${item._id}`}>
+            <b>{`${item.name}`}</b>
           </Link>
           {item.sold
             ? <b className="text-danger">SOLD</b>
