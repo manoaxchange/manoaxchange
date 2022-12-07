@@ -31,9 +31,7 @@ const SellerProfile = () => {
     // Get the Stuff documents
     const profileItems = Profiles.collection.find({ _id: _id }).fetch();
     const sellerItems = Items.collection.find({ owner: profileItems[0].owner }).fetch();
-    let ratingDocs = Ratings.collection.find({}).fetch();
-    console.log(ratingDocs);
-    ratingDocs = Ratings.collection.find({ userEmail: Meteor.user().username }).fetch();
+    const ratingDocs = Ratings.collection.find({ profileId: _id }).fetch();
     console.log(ratingDocs);
     console.log(profileItems, profileItems);
     console.log(sellerItems, sellerItems);
@@ -68,7 +66,7 @@ const SellerProfile = () => {
           {items.map((item) => <Selling key={`item-${item._id}`} item={item} />)}
         </Row>
       </Container>
-      {profiles.map((profile) => <RatingModal key={profile._id} handleClose={handleClose} show={show} rating={ratings.filter(rating => (rating.profileId === profile._id))} profile={profile} />)}
+      {profiles.map((profile) => <RatingModal key={profile._id} handleClose={handleClose} show={show} rating={ratings.filter((rating) => (rating.userEmail === Meteor.user().username))} profile={profile} />)}
     </Container>
   ) : <LoadingSpinner />);
 };

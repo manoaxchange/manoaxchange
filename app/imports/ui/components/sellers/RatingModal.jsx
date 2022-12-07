@@ -16,25 +16,34 @@ const formSchema = new SimpleSchema({
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 const RatingModal = ({ show, handleClose, rating, profile }) => {
+  const ratedBefore = Ratings.collection.find({ userEmail: Meteor.user().username, profileId: profile._id });
+  console.log(ratedBefore);
+  console.log(ratedBefore._id);
+  console.log(ratedBefore.count());
+  console.log(rating);
+  if (rating.value === 0) {
+    console.log('rating is empty');
+  } else {
+    console.log('rating is not empty');
+  }
   const submit = (data) => {
     const userEmail = Meteor.user().username;
     const profileId = profile._id;
     const { value } = data;
-    console.log(rating);
     console.log(profileId, userEmail, value);
-    if (rating) {
+    if (ratedBefore.count() === 1) {
       handleClose();
       Ratings.collection.update(rating._id, { $set: { profileId, userEmail, value } }, (error) => (
         error
           ? swal('Error', error.message, 'error')
-          : swal('Success', 'ItemDetails updated successfully', 'success')
+          : swal('Success', 'Rating updated successfully', 'success')
       ));
     } else {
       handleClose();
       Ratings.collection.insert({ profileId, userEmail, value }, (error) => (
         error
           ? swal('Error', error.message, 'error')
-          : swal('Success', 'ItemDetails updated successfully', 'success')
+          : swal('Success', 'Rating added successfully', 'success')
       ));
       /*Profiles.collection.update(profile._id, (error) => (
         error
@@ -45,9 +54,10 @@ const RatingModal = ({ show, handleClose, rating, profile }) => {
     }
   };
 
+  let fRef = null;
   return (
     <Modal show={show} onHide={handleClose}>
-      <AutoForm schema={bridge} onSubmit={data => submit(data)} model={rating}>
+      <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)} model={rating}>
         <Modal.Header closeButton>
           <Modal.Title>Rate Profile</Modal.Title>
         </Modal.Header>
