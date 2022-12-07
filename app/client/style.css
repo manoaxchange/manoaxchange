@@ -70,6 +70,17 @@ textarea.form-control {
 #item-card {
   transition-duration: 500ms;
 }
+
 #item-card:hover {
   box-shadow: gray 3px 4px 10px;
+}
+
+.shop-nav-item {
+  border-top: 1px solid #ECECEC;
+  border-bottom: 1px solid #ECECEC;
+}
+
+.shop-nav-item:hover {
+  border-top: solid 1px var(--bs-border-color-translucent);
+  border-bottom: solid 1px var(--bs-border-color-translucent);
 }
