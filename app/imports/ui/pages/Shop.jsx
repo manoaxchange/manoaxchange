@@ -30,7 +30,7 @@ const Shop = () => {
     console.log('rendered');
     document.title = 'ManoaXchange - Shop';
     if (search.length > 0) {
-      setShowItems(items.filter(item => item.name.toLowerCase().includes(search)));
+      setShowItems(items.filter(item => item.name.toLowerCase().includes(search.toLowerCase())));
       setTitle(ALL);
     } else if (title === ALL) {
       setShowItems(items);
