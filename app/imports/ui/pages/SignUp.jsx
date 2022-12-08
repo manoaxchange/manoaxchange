@@ -7,6 +7,7 @@ import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField, HiddenField } from 'uniforms-bootstrap5';
 import { Profiles } from '../../api/profiles/Profiles';
+import { Ratings } from '../../api/ratings/Ratings';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import ImageUpload from '../components/ImageUpload';
@@ -49,9 +50,10 @@ const SignUp = ({ location }) => {
         }
       });
       const owner = email;
-      Profiles.collection.insert(
+      const newProfile = Profiles.collection.insert(
         { firstName, lastName, picture, bio, owner },
       );
+      Ratings.collection.insert({ profileId: newProfile });
       handleNoLoading();
       console.log('user has been registered');
       setRedirectToRef(true);
