@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
@@ -25,18 +25,23 @@ const MyItems = () => {
     };
   });
 
-  const itemsReady = () => !!items;
+  useEffect(() => {
+    console.log('rendered');
+    document.title = 'ManoaXchange - My Items';
+  }, []);
 
   console.log('items:', items);
   console.log('search:', search);
 
   const handleSearch = (input) => { setSearch(`${input}`); };
 
-  return (itemsReady() ? (
+  const filterItems = (array) => array.filter(item => item.name.toLowerCase().includes(search.toLowerCase()));
+
+  return (items ? (
     <Container id={PAGE_IDS.MY_ITEMS} className="py-3">
       <SearchBar handleSearch={handleSearch} />
       <Row>
-        {items.map(item => <MyItemCard key={`item-${item._id}`} item={item} />)}
+        {filterItems(items).map(item => <MyItemCard key={`item-${item._id}`} item={item} />)}
       </Row>
     </Container>
   ) : <LoadingSpinner />);

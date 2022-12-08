@@ -15,10 +15,10 @@ const SearchBar = ({ handleSearch }) => {
         <Form.Control
           placeholder="Search"
           aria-label="Search"
-          aria-describedby="basic-addon2"
+          aria-describedby="search-btn"
           onChange={(event) => setFilter(event.target.value)}
         />
-        <Button variant="outline-secondary" id="button-addon2" type="submit">
+        <Button variant="outline-secondary" style={{ border: '1px solid rgb(0, 0, 0, 0.175)' }} type="submit">
           <Search />
         </Button>
       </InputGroup>

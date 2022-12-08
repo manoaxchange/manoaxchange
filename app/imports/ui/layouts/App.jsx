@@ -23,7 +23,6 @@ import MyItems from '../pages/MyItems';
 import UserProfile from '../pages/UserProfile';
 import EditUserProfile from '../pages/EditUserProfile';
 import Playground from '../pages/Playground';
-// import Sellings from '../pages/Sellings';
 import Sellers from '../pages/Sellers';
 import SellerProfile from '../pages/SellerProfile';
 

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Col, Container, Row, Card } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Col, Container, Row, Card, Button } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { AutoForm, ErrorsField, HiddenField, LongTextField, SubmitField, TextField } from 'uniforms-bootstrap5';
@@ -10,10 +10,19 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import { Profiles } from '../../api/profiles/Profiles';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+import apifunctions from '../services/apifunctions';
+import ImageUpload from '../components/ImageUpload';
 
 const bridge = new SimpleSchema2Bridge(Profiles.schema);
 
 const EditUserProfile = () => {
+  const [imagePreview, setImagePreview] = useState(null);
+  const handleImagePreview = (val) => setImagePreview(val);
+
+  const [loading, setLoading] = useState(false);
+  const handleShowLoading = () => setLoading(true);
+  const handleNoLoading = () => setLoading(false);
+
   const { _id } = useParams();
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, doc } = useTracker(() => {
@@ -31,11 +40,19 @@ const EditUserProfile = () => {
     };
   }, [_id]);
 
-  const submit = (data) => {
-    const { firstName, lastName, picture, bio } = data;
-    Profiles.collection.update(_id, { $set: { firstName, lastName, picture, bio } }, (error) => (error ?
-      swal('Error', error.message, 'error') :
-      swal('Success', 'Profile updated successfully', 'success')));
+  const submit = async (data) => {
+    handleShowLoading();
+    const { firstName, lastName, bio } = data;
+    const picture = await apifunctions.postImage(imagePreview);
+    Profiles.collection.update(_id, { $set: { firstName, lastName, picture, bio } }, (error) => {
+      if (error) {
+        handleNoLoading();
+        return swal('Error', error.message, 'error');
+      }
+      handleNoLoading();
+      setImagePreview(null);
+      return swal('Success', 'Profile updated successfully', 'success');
+    });
   };
 
   return (ready ? (
@@ -50,10 +67,13 @@ const EditUserProfile = () => {
               <Card.Body>
                 <TextField id={COMPONENT_IDS.EDIT_PROFILE_FORM_FIRSTNAME} name="firstName" />
                 <TextField name="lastName" />
-                <TextField name="picture" />
+                <HiddenField name="picture" value={imagePreview ? 'contains image' : null} />
+                <ImageUpload handleImagePreview={handleImagePreview} />
                 <LongTextField name="bio" />
                 <ErrorsField />
-                <SubmitField id={COMPONENT_IDS.EDIT_PROFILE_FORM_SUBMIT} value="Submit" />
+                {loading
+                  ? <Button><LoadingSpinner /></Button>
+                  : <SubmitField id={COMPONENT_IDS.EDIT_PROFILE_FORM_SUBMIT} value="Submit" />}
                 <HiddenField name="owner" />
               </Card.Body>
             </Card>

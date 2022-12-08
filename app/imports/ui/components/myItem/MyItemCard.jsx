@@ -1,60 +1,33 @@
-import React, { useState } from 'react';
-import { Button, Card, Col, Image } from 'react-bootstrap';
-import { CurrencyDollar, PencilSquare, Trash3Fill } from 'react-bootstrap-icons';
+import React from 'react';
+import { Card, Col, Image } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import DeleteModal from './DeleteModal';
-import EditModal from './EditModal';
-import SoldModal from './SoldModal';
+import ActionDropdown from './ActionDropdown';
 
-const blackButton = {
-  background: 'none',
-  color: 'black',
-  border: 'none',
-  padding: 0,
-};
-
-const MyItemCard = ({ item }) => {
-  const [showDelete, setShowDelete] = useState(false);
-  const handleShowDelete = () => setShowDelete(true);
-  const handleCloseDelete = () => setShowDelete(false);
-
-  const [showEdit, setShowEdit] = useState(false);
-  const handleShowEdit = () => setShowEdit(true);
-  const handleCloseEdit = () => setShowEdit(false);
-
-  const [showSold, setShowSold] = useState(false);
-  const handleShowSold = () => setShowSold(true);
-  const handleCloseSold = () => setShowSold(false);
-
-  return (
-    <Col xs={12} lg={4} xl={3} className="d-flex my-3">
-      <Card className="w-100" style={{ minHeight: '300px' }}>
-        <Card.Header className="d-flex justify-content-end align-items-center gap-2">
+const MyItemCard = ({ item }) => (
+  <Col xs={12} lg={4} xl={3} className="d-flex my-3">
+    <Card className="w-100" style={{ minHeight: '300px' }} id="item-card">
+      <Card.Header className="d-flex justify-content-end align-items-center gap-2">
+        <ActionDropdown item={item} />
+      </Card.Header>
+      <Card.Body className="d-flex align-items-center justify-content-center h-100 w-100">
+        <Link to={`/item/${item._id}`}>
+          <Image width="100%" height="100%" src={item.image} style={{ objectFit: 'cover' }} />
+        </Link>
+      </Card.Body>
+      <Card.Footer className="d-flex flex-column">
+        <div className="d-flex justify-content-between align-items-center">
           {item.sold
-            ? ''
-            : [<Button key="edit" onClick={handleShowEdit} style={blackButton}><PencilSquare /></Button>,
-              <Button key="sold" onClick={handleShowSold} style={blackButton}><CurrencyDollar /></Button>]}
-          <Button key="delete" onClick={handleShowDelete} style={blackButton}><Trash3Fill /></Button>
-        </Card.Header>
-        <Card.Body className="d-flex align-items-center">
-          <Image width="100%" height="100%" src={item.image} style={{ objectFit: 'contain' }} />
-        </Card.Body>
-        <Card.Footer className="d-flex justify-content-between gap-2">
-          <Link className="text-decoration-none" to={`/item/${item._id}`}>
-            <a className="text-decoration-none text-dark" href="/Users/yoshi/github/manoaxchange/app/imports/ui/pages/Item"><b>{`${item.name}`}</b></a>
-          </Link>
-          {item.sold
-            ? <b className="text-danger">SOLD</b>
-            : <b>{`$${item.price}`}</b>}
-        </Card.Footer>
-      </Card>
-      <DeleteModal handleClose={handleCloseDelete} show={showDelete} item={item} />
-      <EditModal handleClose={handleCloseEdit} show={showEdit} item={item} />
-      <SoldModal handleClose={handleCloseSold} show={showSold} item={item} />
-    </Col>
-  );
-};
+            ? <b className="text-danger h4 d-flex mb-0" style={{ fontWeight: 'normal' }}>SOLD</b>
+            : <div className="h4 d-flex mb-0" style={{ fontWeight: 'normal' }}>${item.price}</div>}
+        </div>
+        <Link className="text-decoration-none text-dark" to={`/item/${item._id}`}>
+          {item.name.length < 20 ? item.name : `${item.name.substring(0, 20).trim()}...`}
+        </Link>
+      </Card.Footer>
+    </Card>
+  </Col>
+);
 
 MyItemCard.propTypes = {
   item: PropTypes.shape({
