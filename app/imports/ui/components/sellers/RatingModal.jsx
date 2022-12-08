@@ -16,42 +16,42 @@ const formSchema = new SimpleSchema({
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 const RatingModal = ({ show, handleClose, rating, profile }) => {
-  const ratedBefore = Ratings.collection.find({ userEmail: Meteor.user().username, profileId: profile._id });
-  console.log(ratedBefore);
-  console.log(ratedBefore._id);
-  console.log(ratedBefore.count());
-  console.log(rating);
-  if (rating.value === 0) {
-    console.log('rating is empty');
-  } else {
-    console.log('rating is not empty');
-  }
   const submit = (data) => {
+    console.log(typeof rating);
+    console.log(rating[0]);
+    console.log(typeof profile);
+    console.log(profile);
     const userEmail = Meteor.user().username;
     const profileId = profile._id;
     const { value } = data;
     console.log(profileId, userEmail, value);
-    if (ratedBefore.count() === 1) {
+    console.log(rating._id, rating.userEmail, rating.value);
+    if (rating[0].value === 0) {
       handleClose();
-      Ratings.collection.update(rating._id, { $set: { profileId, userEmail, value } }, (error) => (
-        error
-          ? swal('Error', error.message, 'error')
-          : swal('Success', 'Rating updated successfully', 'success')
-      ));
-    } else {
-      handleClose();
-      Ratings.collection.insert({ profileId, userEmail, value }, (error) => (
+      Ratings.collection.update(rating[0]._id, { $set: { profileId, userEmail, value } }, (error) => (
         error
           ? swal('Error', error.message, 'error')
           : swal('Success', 'Rating added successfully', 'success')
       ));
-      /*Profiles.collection.update(profile._id, (error) => (
+      Ratings.collection.insert({ profileId: profile._id }, (error => (
+        error
+          ? swal('Error', error.message, 'error')
+          : swal('Success', 'Rating added successfully', 'success')
+      )));
+    } else {
+      handleClose();
+      Ratings.collection.update(rating[0]._id, { $set: { value } }, (error) => (
+        error
+          ? swal('Error', error.message, 'error')
+          : swal('Success', 'Rating updated successfully', 'success')
+      ));
+    }
+    /* Profiles.collection.update(profile._id, (error) => (
         error
           ? swal('Error', error.message, 'error')
           : swal('Success', 'ItemDetails updated successfully', 'success')
       ));
        */
-    }
   };
 
   let fRef = null;

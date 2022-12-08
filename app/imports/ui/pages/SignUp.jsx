@@ -8,6 +8,7 @@ import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField } from 'uniforms-bootstrap5';
 import { Profiles } from '../../api/profiles/Profiles';
+import { Ratings } from '../../api/ratings/Ratings';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
@@ -42,9 +43,10 @@ const SignUp = ({ location }) => {
       });
       const { firstName, lastName, picture, bio } = doc2;
       const owner = Meteor.user().username;
-      Profiles.collection.insert(
+      const newProfile = Profiles.collection.insert(
         { username: firstName, lastName, picture, bio, owner },
       );
+      Ratings.collection.insert({ profileId: newProfile });
     } else {
       setError('Invalid email address.');
     }

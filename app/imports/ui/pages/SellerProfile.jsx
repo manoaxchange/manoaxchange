@@ -43,6 +43,12 @@ const SellerProfile = () => {
       ready: rdy,
     };
   }, [_id]);
+
+  const matchingRatingDoc = ratings.map((rating) => rating.userEmail === 'empty' || rating.userEmail === Meteor.user().username);
+  console.log(matchingRatingDoc);
+  const matchingRatingDoc2 = ratings.filter((rating) => rating.userEmail === 'empty' || rating.userEmail === Meteor.user().username);
+  console.log(matchingRatingDoc2);
+
   return (ready ? (
     <Container id={PAGE_IDS.USER_PROFILE} className="py-3">
       <Row className="justify-content-center">
@@ -66,7 +72,7 @@ const SellerProfile = () => {
           {items.map((item) => <Selling key={`item-${item._id}`} item={item} />)}
         </Row>
       </Container>
-      {profiles.map((profile) => <RatingModal key={profile._id} handleClose={handleClose} show={show} rating={ratings.filter((rating) => (rating.userEmail === Meteor.user().username))} profile={profile} />)}
+      {profiles.map((profile) => <RatingModal key={profile._id} handleClose={handleClose} show={show} rating={ratings.filter((rating) => rating.userEmail === 'empty' || rating.userEmail === Meteor.user().username)} profile={profile} />)}
     </Container>
   ) : <LoadingSpinner />);
 };
