@@ -27,16 +27,20 @@ const RatingModal = ({ show, handleClose, rating, profile }) => {
     console.log(rating._id, rating.userEmail, rating.value);
     if (rating[0].value === 0) {
       handleClose();
-      Ratings.collection.update(rating[0]._id, { $set: { profileId, userEmail, value } }, (error) => (
-        error
-          ? swal('Error', error.message, 'error')
-          : swal('Success', 'Rating added successfully', 'success')
-      ));
-      Ratings.collection.insert({ profileId: profile._id }, (error => (
-        error
-          ? swal('Error', error.message, 'error')
-          : swal('Success', 'Rating added successfully', 'success')
-      )));
+      if (userEmail === profile.owner) {
+        swal('Error', 'Cannot rate your own profile', 'error');
+      } else {
+        Ratings.collection.update(rating[0]._id, { $set: { profileId, userEmail, value } }, (error) => (
+          error
+            ? swal('Error', error.message, 'error')
+            : swal('Success', 'Rating added successfully', 'success')
+        ));
+        Ratings.collection.insert({ profileId: profile._id }, (error => (
+          error
+            ? swal('Error', error.message, 'error')
+            : swal('Success', 'Rating added successfully', 'success')
+        )));
+      }
     } else {
       handleClose();
       Ratings.collection.update(rating[0]._id, { $set: { value } }, (error) => (
