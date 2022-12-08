@@ -37,9 +37,12 @@ body {
 }
 
 .buttonspace{
-  margin: 5%;
+  margin: 3%;
 }
+.itemfont{
+  font-family: 'didot', serif;
 
+}
 .textspace{
   margin: 2%;
 }
