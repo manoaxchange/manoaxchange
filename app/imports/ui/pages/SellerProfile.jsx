@@ -44,11 +44,6 @@ const SellerProfile = () => {
     };
   }, [_id]);
 
-  const matchingRatingDoc = ratings.map((rating) => rating.userEmail === 'empty' || rating.userEmail === Meteor.user().username);
-  console.log(matchingRatingDoc);
-  const matchingRatingDoc2 = ratings.filter((rating) => rating.userEmail === 'empty' || rating.userEmail === Meteor.user().username);
-  console.log(matchingRatingDoc2);
-
   return (ready ? (
     <Container id={PAGE_IDS.USER_PROFILE} className="py-3">
       <Row className="justify-content-center">

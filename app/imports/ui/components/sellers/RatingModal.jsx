@@ -6,7 +6,6 @@ import { AutoForm, ErrorsField, RadioField, SubmitField } from 'uniforms-bootstr
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
-import { Profiles } from '../../../api/profiles/Profiles';
 import { Ratings } from '../../../api/ratings/Ratings';
 
 const formSchema = new SimpleSchema({
@@ -46,12 +45,6 @@ const RatingModal = ({ show, handleClose, rating, profile }) => {
           : swal('Success', 'Rating updated successfully', 'success')
       ));
     }
-    /* Profiles.collection.update(profile._id, (error) => (
-        error
-          ? swal('Error', error.message, 'error')
-          : swal('Success', 'ItemDetails updated successfully', 'success')
-      ));
-       */
   };
 
   let fRef = null;
