@@ -66,8 +66,17 @@ body {
   background-size: cover;
 }
 
+/* uniforms */
 textarea.form-control {
   height: 200px;
+}
+
+input.form-control {
+  border-radius: 0;
+}
+
+input.btn.btn-primary {
+  border-radius: 0;
 }
 
 #item-card {
@@ -101,4 +110,9 @@ div button.dropdown-toggle.btn:focus {
 
 .enlarge:hover {
   transform: scale(1.03);
+}
+
+.custom-card {
+  padding: 2rem;
+  border: 1px var(--bs-border-color-translucent) solid;
 }

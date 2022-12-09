@@ -43,23 +43,19 @@ const SignIn = () => {
   return (
     <Container id="signin-page" className="py-3">
       <Row className="justify-content-center">
-        <Col xs={5}>
+        <Col xs={14} md={8} lg={6} xl={5} xxl={4}>
           <Col className="text-center">
-            <h2>Login to your account</h2>
+            <h2>L O G I N</h2>
           </Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
-            <Card>
-              <Card.Body>
-                <TextField id="signin-form-email" name="email" placeholder="E-mail address" />
-                <TextField id="signin-form-password" name="password" placeholder="Password" type="password" />
-                <ErrorsField />
-                <SubmitField id="signin-form-submit" />
-              </Card.Body>
-            </Card>
+            <div className="custom-card">
+              <TextField id="signin-form-email" name="email" placeholder="E-mail address" />
+              <TextField id="signin-form-password" name="password" placeholder="Password" type="password" />
+              <ErrorsField />
+              <SubmitField id="signin-form-submit" className="pt-3" />
+            </div>
           </AutoForm>
-          <Alert variant="light">
-            <Link to="/signup">Click here to Register</Link>
-          </Alert>
+          <Link to="/signup">Click here to Register</Link>
           {error === '' ? (
             ''
           ) : (
