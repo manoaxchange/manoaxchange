@@ -20,7 +20,7 @@ const ItemDetails = ({ item }) => {
     <Container className="py-3">
       <Row>
         <Col>
-          <Image src={item.image} className="imagefix" />
+          <Image src={item.image} className="imagefix" width="100%" height="100%" style={{ objectFit: 'contain' }} />
         </Col>
         <Col>
           <div>
