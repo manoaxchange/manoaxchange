@@ -20,11 +20,10 @@ const credentials = { username: 'kawn@hawaii.edu', password: 'changeme' };
 
 /** Credentials for a new user creating an account. */
 const newUserCredentials = { firstName: 'Peter', lastName: 'Griffin',
-  username: `user-${new Date().getTime()}@hawaii.edu`, password: 'changeme', image: 'https://www.clipartmax.com/png/middle/282-2827413_peter-griffin-family-guy-peter-face.png', biography: 'A Character From Family Guy' };
+  username: `user-${new Date().getTime()}@hawaii.edu`, password: 'changeme', biography: 'A Character From Family Guy' };
 
 /** Credentials for a new item creating a new item to sell. */
-const newItemCredentials = { name: 'Rotten Potato', price: '1', description: 'rotten potato from minecraft',
-  image: 'https://static.wikia.nocookie.net/minecraft_gamepedia/images/c/c0/Poisonous_Potato_JE3_BE2.png/revision/latest/scale-to-width-down/160?cb=20200521233152' };
+const newItemCredentials = { name: 'Rotten Potato', price: '1', description: 'rotten potato from minecraft' };
 
 fixture('meteor-react-bootstrap-template localhost test with default db')
   .page('http://localhost:3000');
@@ -47,7 +46,7 @@ test('Test that the Shop page displays', async (testController) => {
   await shopPage.isDisplayed(testController);
 });
 
-test.only('Test that the ItemDetails page displays', async (testController) => {
+test('Test that the ItemDetails page displays', async (testController) => {
   await navBar.gotoShopPage(testController);
   await shopPage.isDisplayed(testController);
   await shopPage.gotoItemPage(testController);
@@ -143,7 +142,8 @@ test('Test that the Report form on the Shop page works', async (testController) 
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoShopPage(testController);
-  await shopPage.flagItem(testController, newItemCredentials.name);
+  await shopPage.gotoItemPage(testController);
+  await itemPage.reportItem(testController);
   await navBar.gotoReportsAdminPage(testController);
   await reportsAdminPage.checkFlagItem(testController);
 });

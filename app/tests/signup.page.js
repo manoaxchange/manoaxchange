@@ -21,7 +21,6 @@ class SignupPage {
     await testController.typeText(`#${COMPONENT_IDS.SIGNUP_FORM_LASTNAME}`, credentials.lastName);
     await testController.typeText(`#${COMPONENT_IDS.SIGNUP_FORM_EMAIL}`, credentials.username);
     await testController.typeText(`#${COMPONENT_IDS.SIGNUP_FORM_PASSWORD}`, credentials.password);
-    await testController.typeText(`#${COMPONENT_IDS.SIGNUP_FORM_PICTURE}`, credentials.image);
     await testController.typeText(`#${COMPONENT_IDS.SIGNUP_FORM_BIO}`, credentials.biography);
     await testController.click(`#${COMPONENT_IDS.SIGNUP_FORM_SUBMIT} input.btn.btn-primary`);
     await navBar.isLoggedIn(testController, credentials.username);

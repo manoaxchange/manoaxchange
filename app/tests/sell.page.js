@@ -20,7 +20,6 @@ class SellPage {
     await testController.typeText(`#${COMPONENT_IDS.SELL_FORM_NAME}`, credentials.name);
     await testController.typeText(`#${COMPONENT_IDS.SELL_FORM_PRICE}`, credentials.price);
     await testController.typeText(`#${COMPONENT_IDS.SELL_FORM_DESCRIPTION}`, credentials.description);
-    await testController.typeText(`#${COMPONENT_IDS.SELL_FORM_IMAGE}`, credentials.image);
     const categorySelector = Selector(`#${COMPONENT_IDS.SELL_FORM_CATEGORY}`);
     await testController.click(categorySelector);
     const categoryOption = categorySelector.find('option');
