@@ -43,7 +43,10 @@ const EditUserProfile = () => {
   const submit = async (data) => {
     handleShowLoading();
     const { firstName, lastName, bio } = data;
-    const picture = await apifunctions.postImage(imagePreview);
+    let picture = doc.picture;
+    if (imagePreview !== null) {
+      picture = await apifunctions.postImage(imagePreview);
+    }
     Profiles.collection.update(_id, { $set: { firstName, lastName, picture, bio } }, (error) => {
       if (error) {
         handleNoLoading();

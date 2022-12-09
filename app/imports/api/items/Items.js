@@ -31,7 +31,7 @@ class ItemsCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      image: String,
+      image: { type: String, optional: true },
       price: Number,
       description: String,
       name: String,

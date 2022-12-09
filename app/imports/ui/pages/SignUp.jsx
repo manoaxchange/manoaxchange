@@ -33,7 +33,7 @@ const SignUp = ({ location }) => {
     password: String,
     firstName: String,
     lastName: String,
-    picture: String,
+    picture: { type: String, optional: true },
     bio: String,
   });
   const bridge = new SimpleSchema2Bridge(schema);
@@ -42,7 +42,10 @@ const SignUp = ({ location }) => {
   const submit = async (data) => {
     handleShowLoading();
     const { email, password, firstName, lastName, bio } = data;
-    const picture = await apifunctions.postImage(imagePreview);
+    let picture = 'https://freesvg.org/img/abstract-user-flat-4.png';
+    if (imagePreview !== null) {
+      picture = await apifunctions.postImage(imagePreview);
+    }
     if (email.endsWith('@hawaii.edu')) {
       Accounts.createUser({ email, username: email, password }, (err) => {
         if (err) {

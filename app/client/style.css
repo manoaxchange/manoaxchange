@@ -1,10 +1,11 @@
 /* Use Open Sans as the default sans serif font. */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700|Source+Code+Pro:300,400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,500,700|Source+Code+Pro:300,400,500,700|Quicksand:300,400,500");
 
 /* Set up some CSS variables to theme the application. */
 :root {
   --matr-navbar-bg: #ECECEC;
   --matr-navbar-bg-rgb: 236, 236, 236;
+  --bs-body-font-family: 'Lato', sans-serif !important;
 }
 
 /* Change bootstrap variable values.
@@ -37,9 +38,11 @@ body {
 }
 
 .buttonspace{
-  margin: 5%;
+  margin: 3%;
 }
-
+.itemfont{
+  font-family: 'Lucida Bright', Georgia, serif;
+}
 .textspace{
   margin: 2%;
 }
@@ -83,4 +86,19 @@ textarea.form-control {
 .shop-nav-item:hover {
   border-top: solid 1px var(--bs-border-color-translucent);
   border-bottom: solid 1px var(--bs-border-color-translucent);
+}
+
+div button.dropdown-toggle.btn {
+  background-color: transparent;
+  border: none;
+  color: var(--bs-border-color-translucent);
+  padding-right: 0;
+}
+
+div button.dropdown-toggle.btn:focus {
+  background-color: transparent;
+}
+
+.enlarge:hover {
+  transform: scale(1.03);
 }

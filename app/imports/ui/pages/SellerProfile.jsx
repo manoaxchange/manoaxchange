@@ -54,7 +54,6 @@ const SellerProfile = () => {
         </Col>
       </Row>
       <Container className="d-flex justify-content-evenly py-3">
-        <Button className="d-inline-block">Message</Button>
         <Button className="d-inline-block" onClick={handleShow}>Rate Profile</Button>
       </Container>
       <Container>

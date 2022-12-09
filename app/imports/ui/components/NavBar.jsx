@@ -15,21 +15,24 @@ const NavBar = () => {
 
   return (
     <Navbar variant="dark" bg="dark" expand="lg" style={{ borderBottom: '1px solid gray' }}>
-      <Container>
-        <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LOGO} as={NavLink} to="/">
-          <h2>ManoaXchange</h2>
+      <Container fluid>
+        <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LOGO} as={NavLink} to="/" className="pr-3">
+          <div style={{ fontFamily: 'Quicksand', fontSize: '23px', paddingBottom: '2px', paddingRight: '6rm' }}>
+            m&nbsp;a&nbsp;n&nbsp;o&nbsp;a&nbsp;x&nbsp;c&nbsp;h&nbsp;a&nbsp;n&nbsp;g&nbsp;e
+          </div>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto justify-content-start">
+          <Nav className="me-auto d-flex justify-content-end">
             <Nav.Link id={COMPONENT_IDS.NAVBAR_SHOP} as={NavLink} to="/shop" key="shop">Shop</Nav.Link>
             {currentUser ? ([
+              <Nav.Link id="list-stuff-nav" as={NavLink} to="/sellers" key="sellers">Sellers</Nav.Link>,
               <Nav.Link id={COMPONENT_IDS.NAVBAR_SELL} as={NavLink} to="/sell" key="sell">Sell</Nav.Link>,
               <Nav.Link id={COMPONENT_IDS.NAVBAR_MY_ITEMS} as={NavLink} to="/myitems" key="myitems">My Items</Nav.Link>,
               <Nav.Link id={COMPONENT_IDS.NAVBAR_SELLERS} as={NavLink} to="/sellers" key="sellers">Sellers</Nav.Link>,
             ]) : ''}
             {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-              <Nav.Link id={COMPONENT_IDS.NAVBAR_ADMIN} as={NavLink} to="/admin" key="admin">Admin</Nav.Link>
+              <Nav.Link id={COMPONENT_IDS.NAVBAR_ADMIN} as={NavLink} to="/admin" key="admin">ADMIN</Nav.Link>
             ) : ''}
           </Nav>
           <Nav className="justify-content-end">
