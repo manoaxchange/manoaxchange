@@ -16,7 +16,7 @@ class ProfilesCollection {
       firstName: { type: String, optional: true },
       lastName: { type: String, optional: true },
       bio: { type: String, optional: true },
-      picture: { type: String, optional: false },
+      picture: { type: String, optional: true },
       owner: { type: String },
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.

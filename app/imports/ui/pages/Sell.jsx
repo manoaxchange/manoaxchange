@@ -14,7 +14,7 @@ import ImageUpload from '../components/ImageUpload';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  image: String,
+  image: { type: String, optional: true },
   price: Number,
   description: String,
   name: String,
@@ -38,7 +38,10 @@ const Sell = () => {
   const submit = async (data, formRef) => {
     handleShowLoading();
     const { price, description, name, category } = data;
-    const image = await apifunctions.postImage(imagePreview);
+    let image = 'https://via.placeholder.com/500.png?text=Item';
+    if (imagePreview !== null) {
+      image = await apifunctions.postImage(imagePreview);
+    }
     const owner = Meteor.user().username;
     Items.collection.insert(
       { image, price, description, name, owner, category },
@@ -72,10 +75,10 @@ const Sell = () => {
                 <SelectField id={COMPONENT_IDS.SELL_FORM_CATEGORY} name="category" />
                 <ImageUpload handleImagePreview={handleImagePreview} />
                 <HiddenField name="image" value={imagePreview ? 'contains image' : null} />
+                <ErrorsField />
                 {loading
                   ? <Button><LoadingSpinner /></Button>
                   : <SubmitField id={COMPONENT_IDS.SELL_FORM_SUBMIT} value="Submit" />}
-                <ErrorsField />
               </Card.Body>
             </Card>
           </AutoForm>

@@ -23,7 +23,10 @@ const EditModal = ({ show, handleClose, item }) => {
   const submit = async (data) => {
     handleShowLoading();
     const { name, description, price } = data;
-    const image = await apifunctions.postImage(imagePreview);
+    let image = item.image;
+    if (imagePreview !== null) {
+      image = await apifunctions.postImage(imagePreview);
+    }
     Items.collection.update(item._id, { $set: { name, image, description, price } }, (error) => {
       if (error) {
         handleNoLoading();
