@@ -52,7 +52,7 @@ ItemDetails.propTypes = {
     price: PropTypes.number,
     description: PropTypes.string,
     image: PropTypes.string,
-    owner: PropTypes.string
+    owner: PropTypes.string,
   }).isRequired,
 };
 
