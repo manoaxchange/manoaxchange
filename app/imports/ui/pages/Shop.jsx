@@ -5,6 +5,7 @@ import SidebarFull from '../components/shop/SidebarFull';
 import { Items } from '../../api/items/Items';
 import ItemCard from '../components/shop/ItemCard';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import ItemCard2 from '../components/shop/ItemCard2';
 
 const ALL = 'All';
 
@@ -49,8 +50,9 @@ const Shop = () => {
         <h1 className="py-2">{`${title}`}</h1>
         <Row>
           {showItems.length > 0
-            ? showItems.map(item => <ItemCard key={item._id} item={item} />)
+            ? showItems.map(item => <ItemCard2 key={item._id} item={item} />)
             : <div> No items found </div>}
+          {/*<ItemCard2 item={showItems[0]} />*/}
         </Row>
       </Container>
     </div>
