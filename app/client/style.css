@@ -38,9 +38,11 @@ body {
 }
 
 .buttonspace{
-  margin: 5%;
+  margin: 3%;
 }
-
+.itemfont{
+  font-family: 'Lucida Bright', Georgia, serif;
+}
 .textspace{
   margin: 2%;
 }

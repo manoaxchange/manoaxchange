@@ -20,24 +20,21 @@ const ItemDetails = ({ item }) => {
     <Container className="py-3">
       <Row>
         <Col>
-          <h2 className> {`${item.name}`} </h2>
           <Image src={item.image} className="imagefix" />
         </Col>
         <Col>
-          <div className="descmargin">
-            <div className="itemdes">
-              <Button className="px-5 buttonspace" variant="success"> Favorite </Button>
-              <Button className="px-5 buttonspace" variant="danger" onClick={handleShowReport}> Report </Button>
-            </div>
-            <div className="rounded border">
-              <p className="textspace"> {`${item.description}`} </p>
-            </div>
-            <div className="parent py-3">
-              <div className="child">
-                <h2 className="child pb-3"> ${`${item.price}`} </h2>
-                {currentUser ? <Button onClick={handleShow}> Message Seller </Button> : ''}
-              </div>
-            </div>
+          <div>
+            <h2 className="itemfont"> {`${item.name}`} </h2>
+            <h2 className="itemfont"> ${`${item.price}`} </h2>
+            <hr />
+          </div>
+          <div>
+            <p className="textspace itemfont"> {`${item.description}`} </p>
+          </div>
+          <div>
+            {currentUser ? <Button onClick={handleShow}> Message Seller </Button> : ''}
+            <Button className=" buttonspace" variant="success"> Favorite </Button>
+            <Button className=" buttonspace" variant="danger" onClick={handleShowReport}> Report </Button>
           </div>
         </Col>
       </Row>
