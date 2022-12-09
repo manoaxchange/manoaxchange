@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Items } from '../../api/items/Items';
 import { Profiles } from '../../api/profiles/Profiles';
+import { Ratings } from '../../api/ratings/Ratings';
 
 /* eslint-disable no-console */
 
@@ -17,8 +18,10 @@ const addDefaultItems = (data) => {
 };
 
 const addDefaultProfiles = (data) => {
-  console.log(`  Adding: ${data.email} (${data.owner})`);
-  Profiles.collection.insert(data);
+  console.log(`  Adding: ${data.firstName} ${data.lastName} (${data.owner})`);
+  const newProfile = Profiles.collection.insert(data);
+  console.log(`  Additionally adding a rating to id ${newProfile} (${data.owner})`);
+  Ratings.collection.insert({ profileId: newProfile });
 };
 
 // Initialize the StuffsCollection if empty.
