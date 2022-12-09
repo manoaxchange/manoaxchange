@@ -3,7 +3,6 @@ import { Container, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import SidebarFull from '../components/shop/SidebarFull';
 import { Items } from '../../api/items/Items';
-import ItemCard from '../components/shop/ItemCard';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import ItemCard2 from '../components/shop/ItemCard2';
 
@@ -44,15 +43,13 @@ const Shop = () => {
   console.log('search:', search);
   return (
     <div id={PAGE_IDS.SHOP} className="d-flex">
-      {/* temporarily set the background to dark to test padding */}
       <SidebarFull handleCategoryType={handleCategoryType} handleSearch={handleSearch} />
       <Container fluid className="min-vh-100">
-        <h1 className="py-2">{`${title}`}</h1>
+        <h1 className="py-2 d-flex justify-content-center">{`${title}`}</h1>
         <Row>
           {showItems.length > 0
             ? showItems.map(item => <ItemCard2 key={item._id} item={item} />)
             : <div> No items found </div>}
-          {/*<ItemCard2 item={showItems[0]} />*/}
         </Row>
       </Container>
     </div>
