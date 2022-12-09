@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const ItemCard2 = ({ item }) => (
   <Col xs={12} lg={4} xl={3} className="d-flex my-3">
     <div className="w-100" style={{ height: '300px' }}>
-      <div className="d-flex flex-column align-items-center justify-content-center">
+      <div className="d-flex flex-column align-items-center justify-content-center enlarge">
         <Link to={`/item/${item._id}`} style={{ height: '230px', width: '230px', border: '1px solid rgb(0, 0, 0, 0.175)', backgroundColor: 'lightgray' }}>
           <Image width="100%" height="100%" src={item.image} style={{ objectFit: 'contain' }} />
         </Link>

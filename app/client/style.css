@@ -96,3 +96,7 @@ div button.dropdown-toggle.btn {
 div button.dropdown-toggle.btn:focus {
   background-color: transparent;
 }
+
+.enlarge:hover {
+  transform: scale(1.03);
+}
