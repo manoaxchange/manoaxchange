@@ -58,8 +58,16 @@ class NavBar {
     await testController.click(`#${COMPONENT_IDS.NAVBAR_SHOP}`);
   }
 
+  async gotoSellPage(testController) {
+    await testController.click(`#${COMPONENT_IDS.NAVBAR_SELL}`);
+  }
+
   async gotoMyItemsPage(testController) {
     await testController.click(`#${COMPONENT_IDS.NAVBAR_MY_ITEMS}`);
+  }
+
+  async gotoSellersPage(testController) {
+    await testController.click(`#${COMPONENT_IDS.NAVBAR_SELLERS}`);
   }
 
   async gotoReportsAdminPage(testController) {
@@ -70,10 +78,6 @@ class NavBar {
   async gotoUserProfilePage(testController) {
     await testController.click(`#${COMPONENT_IDS.NAVBAR_USER_DROPDOWN}`);
     await testController.click(`#${COMPONENT_IDS.NAVBAR_USER_DROPDOWN_MY_PROFILE}`);
-  }
-
-  async gotoSellPage(testController) {
-    await testController.click(`#${COMPONENT_IDS.NAVBAR_SELL}`);
   }
 }
 

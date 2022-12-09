@@ -4,6 +4,7 @@ export const COMPONENT_IDS = {
   NAVBAR_SHOP: 'navbar-shop',
   NAVBAR_SELL: 'navbar-sell',
   NAVBAR_MY_ITEMS: 'navbar-my-items',
+  NAVBAR_SELLERS: 'navbar-sellers',
   NAVBAR_ADMIN: 'navbar-admin',
   NAVBAR_LOGIN_DROPDOWN: 'navbar-login-dropdown',
   NAVBAR_LOGIN_DROPDOWN_SIGNIN: 'navbar-login-dropdown-signin',
@@ -33,4 +34,6 @@ export const COMPONENT_IDS = {
   EDIT_ITEM_FORM_SUBMIT: 'edit-item-form-submit',
   REPORT_FORM_DESCRIPTION: 'report-form-description',
   REPORT_FORM_SUBMIT: 'report-form-submit',
+  RATING_FORM_VALUE: 'rating-form-value',
+  RATING_FORM_SUBMIT: 'rating-form-submit',
 };

@@ -7,6 +7,7 @@ import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
 import { Ratings } from '../../../api/ratings/Ratings';
+import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 
 const formSchema = new SimpleSchema({
   value: { type: Number, allowedValues: [1, 2, 3, 4, 5] },
@@ -59,11 +60,11 @@ const RatingModal = ({ show, handleClose, rating, profile }) => {
           <Modal.Title>Rate Profile</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <RadioField name="value" inline showInlineError labelClassName="px-5" />
+          <RadioField id={COMPONENT_IDS.RATING_FORM_VALUE} name="value" inline showInlineError labelClassName="px-5" />
           <ErrorsField />
         </Modal.Body>
         <Modal.Footer>
-          <SubmitField />
+          <SubmitField id={COMPONENT_IDS.RATING_FORM_SUBMIT} />
         </Modal.Footer>
       </AutoForm>
     </Modal>

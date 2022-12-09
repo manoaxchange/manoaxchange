@@ -16,7 +16,7 @@ class ShopPage {
   /** Checks if the page is displayed, finds the name of the first item in the Shop page, then selects it. */
   async gotoItemPage(testController) {
     await this.isDisplayed(testController);
-    const firstItemSelector = Selector('div.w-100').find('b');
+    const firstItemSelector = Selector('a').find('img');
     await testController.click(firstItemSelector);
   }
 

@@ -1,9 +1,9 @@
 import { Selector } from 'testcafe';
 import { PAGE_IDS } from '../imports/ui/utilities/PageIDs';
 
-class SellingsPage {
+class SellersPage {
   constructor() {
-    this.pageId = `#${PAGE_IDS.SELLINGS}`;
+    this.pageId = `#${PAGE_IDS.SELLERS}`;
     this.pageSelector = Selector(this.pageId);
   }
 
@@ -11,6 +11,11 @@ class SellingsPage {
   async isDisplayed(testController) {
     await testController.wait(3000).expect(this.pageSelector.exists).ok();
   }
+
+  async gotoSellerProfilePage(testController) {
+    await this.isDisplayed(testController);
+    await testController.click('a.btn.btn-success');
+  }
 }
 
-export const sellingsPage = new SellingsPage();
+export const sellersPage = new SellersPage();

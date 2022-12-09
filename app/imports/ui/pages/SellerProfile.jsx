@@ -45,7 +45,7 @@ const SellerProfile = () => {
   }, [_id]);
 
   return (ready ? (
-    <Container id={PAGE_IDS.USER_PROFILE} className="py-3">
+    <Container id={PAGE_IDS.SELLERS_PROFILE} className="py-3">
       <Row className="justify-content-center">
         <Col md={7}>
           <Col className="text-center">

@@ -10,6 +10,8 @@ import { myItemsPage } from './myitems.page';
 import { reportsAdminPage } from './reportsadmin.page';
 import { signupPage } from './signup.page';
 import { sellPage } from './sell.page';
+import { sellerProfilePage } from './sellerprofile.page';
+import { sellersPage } from './sellers.page';
 
 /* global fixture:false, test:false */
 
@@ -45,7 +47,7 @@ test('Test that the Shop page displays', async (testController) => {
   await shopPage.isDisplayed(testController);
 });
 
-test('Test that the ItemDetails page displays', async (testController) => {
+test.only('Test that the ItemDetails page displays', async (testController) => {
   await navBar.gotoShopPage(testController);
   await shopPage.isDisplayed(testController);
   await shopPage.gotoItemPage(testController);
@@ -69,6 +71,21 @@ test('Test that the My Items page displays', async (testController) => {
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoMyItemsPage(testController);
   await myItemsPage.isDisplayed(testController);
+});
+
+test('Test that the Sellers page displays', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.gotoSellersPage(testController);
+  await sellersPage.isDisplayed(testController);
+});
+
+test('Test that the Seller Profile page displays', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.gotoSellersPage(testController);
+  await sellersPage.gotoSellerProfilePage(testController);
+  await sellerProfilePage.isDisplayed(testController);
 });
 
 test('Test that the ReportsTable Admin page displays', async (testController) => {
