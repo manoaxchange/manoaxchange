@@ -135,5 +135,5 @@ div button.dropdown-toggle.btn:focus {
 }
 
 .underline:hover {
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid black;
 }
