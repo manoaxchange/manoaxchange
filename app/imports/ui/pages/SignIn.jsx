@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
-import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
+import { Alert, Button, Col, Container, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, TextField } from 'uniforms-bootstrap5';
 
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
@@ -43,23 +43,22 @@ const SignIn = () => {
   return (
     <Container id="signin-page" className="py-3">
       <Row className="justify-content-center">
-        <Col xs={5}>
-          <Col className="text-center">
-            <h2>Login to your account</h2>
+        <Col xs={14} md={8} lg={6} xl={5} xxl={4}>
+          <Col className="text-center py-3">
+            <h2>L O G I N</h2>
           </Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
-            <Card>
-              <Card.Body>
-                <TextField id="signin-form-email" name="email" placeholder="E-mail address" />
-                <TextField id="signin-form-password" name="password" placeholder="Password" type="password" />
-                <ErrorsField />
-                <SubmitField id="signin-form-submit" />
-              </Card.Body>
-            </Card>
+            <div className="custom-card">
+              <TextField id="signin-form-email" name="email" placeholder="E-mail address" />
+              <TextField id="signin-form-password" name="password" placeholder="Password" type="password" />
+              <ErrorsField />
+              <Button type="submit" variant="dark" className="mt-2 px-5">Sign In</Button>
+            </div>
           </AutoForm>
-          <Alert variant="light">
-            <Link to="/signup">Click here to Register</Link>
-          </Alert>
+          <div className="d-flex justify-content-center py-3">
+            <div>Don&apos;t have an account?&nbsp;</div>
+            <Link to="/signup">Click here to register.</Link>
+          </div>
           {error === '' ? (
             ''
           ) : (

@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, Navigate } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
-import { Alert, Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { Alert, Button, Col, Container, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField, HiddenField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, TextField, LongTextField, HiddenField } from 'uniforms-bootstrap5';
 import { Profiles } from '../../api/profiles/Profiles';
 import { Ratings } from '../../api/ratings/Ratings';
 import { PAGE_IDS } from '../utilities/PageIDs';
@@ -75,33 +75,29 @@ const SignUp = ({ location }) => {
   return (
     <Container id={PAGE_IDS.SIGNUP} className="py-3">
       <Row className="justify-content-center">
-        <Col xs={5}>
+        <Col xs={14} md={8} lg={6}>
           <Col className="text-center">
-            <h2>Register your account</h2>
+            <h2>R E G I S T E R</h2>
           </Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
-            <Card>
-              <Card.Body>
-                <TextField id={COMPONENT_IDS.SIGNUP_FORM_FIRSTNAME} name="firstName" placeholder="First name" />
-                <TextField id={COMPONENT_IDS.SIGNUP_FORM_LASTNAME} name="lastName" placeholder="Last name" />
-                <TextField id={COMPONENT_IDS.SIGNUP_FORM_EMAIL} name="email" placeholder="E-mail address" />
-                <TextField id={COMPONENT_IDS.SIGNUP_FORM_PASSWORD} name="password" placeholder="Password" type="password" />
-                <ImageUpload handleImagePreview={handleImagePreview} />
-                {/* <TextField id={COMPONENT_IDS.SIGNUP_FORM_PICTURE} name="picture" placeholder="Image URL" /> */}
-                <HiddenField name="picture" value={imagePreview ? 'contains image' : null} />
-                <LongTextField id={COMPONENT_IDS.SIGNUP_FORM_BIO} name="bio" placeholder="Biography" />
-                <ErrorsField />
-                {loading
-                  ? <Button><LoadingSpinner /></Button>
-                  : <SubmitField id={COMPONENT_IDS.SIGNUP_FORM_SUBMIT} />}
-              </Card.Body>
-            </Card>
+            <div className="custom-card">
+              <TextField id={COMPONENT_IDS.SIGNUP_FORM_FIRSTNAME} name="firstName" placeholder="First Name" label="First Name" />
+              <TextField id={COMPONENT_IDS.SIGNUP_FORM_LASTNAME} name="lastName" placeholder="Last Name" label="Last Name" />
+              <TextField id={COMPONENT_IDS.SIGNUP_FORM_EMAIL} name="email" placeholder="E-mail Address" />
+              <TextField id={COMPONENT_IDS.SIGNUP_FORM_PASSWORD} name="password" placeholder="Password" type="password" />
+              <ImageUpload handleImagePreview={handleImagePreview} />
+              <HiddenField name="picture" value={imagePreview ? 'contains image' : null} />
+              <LongTextField id={COMPONENT_IDS.SIGNUP_FORM_BIO} name="bio" placeholder="Write something about yourself..." />
+              <ErrorsField />
+              {loading
+                ? <Button variant="dark"><LoadingSpinner /></Button>
+                : <Button type="submit" variant="dark" className="mt-2 px-5" id={COMPONENT_IDS.SIGNUP_FORM_SUBMIT}>Sign Up</Button>}
+            </div>
           </AutoForm>
-          <Alert variant="light">
-            Already have an account? Login
-            {' '}
-            <Link to="/signin">here</Link>
-          </Alert>
+          <div className="d-flex justify-content-center py-3">
+            <div>Already have an account?&nbsp;</div>
+            <Link to="/signup">Click here to login.</Link>
+          </div>
           {error === '' ? (
             ''
           ) : (

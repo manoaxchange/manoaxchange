@@ -7,7 +7,7 @@ import MessageModal from '../MessageModal';
 import ReportModal from '../ReportModal';
 
 const ItemDetails = ({ item }) => {
-  const currentUser = useTracker(() => Meteor.user(), []);
+  const currentUser = useTracker(() => (Meteor.user() ? Meteor.user().username : ''), []);
   const [show, setShow] = useState(false);
   const handleShow = () => { setShow(true); };
   const handleClose = () => { setShow(false); };
@@ -32,7 +32,9 @@ const ItemDetails = ({ item }) => {
             <p className="textspace itemfont"> {`${item.description}`} </p>
           </div>
           <div>
-            {currentUser ? <Button onClick={handleShow}> Message Seller </Button> : ''}
+            {!currentUser || currentUser === item.owner
+              ? ''
+              : <Button onClick={handleShow}> Message Seller </Button>}
             <Button className=" buttonspace" variant="success"> Favorite </Button>
             <Button className=" buttonspace" variant="danger" onClick={handleShowReport}> Report </Button>
           </div>
@@ -50,6 +52,7 @@ ItemDetails.propTypes = {
     price: PropTypes.number,
     description: PropTypes.string,
     image: PropTypes.string,
+    owner: PropTypes.string,
   }).isRequired,
 };
 

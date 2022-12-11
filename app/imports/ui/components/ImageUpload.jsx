@@ -36,17 +36,24 @@ const ImageUpload = ({ handleImagePreview }) => {
   };
 
   return (
-    <div className="h-25 mb-3">
-      {imagePreview ? <Image className="w-100" src={imagePreview} /> : ''}
-      <Form.Control
-        type="file"
-        size="sm"
-        accept="image/jpeg,image/jpg,image/png"
-        onChange={(event) => {
-          previewFile(event.target.files[0]);
-        }}
-      />
-    </div>
+    <form>
+      <div>Image</div>
+      <div className="mb-3 d-flex flex-column align-items-center justify-content-center" id="ImageUpload">
+        {imagePreview ? (
+          <div style={{ height: '300px', width: '100%', border: '1px solid rgb(0,0,0,0.175)', backgroundColor: '#ECECEC' }}>
+            <Image className="w-100 h-100" src={imagePreview} style={{ objectFit: 'contain' }} />
+          </div>
+        ) : ''}
+        <Form.Control
+          type="file"
+          size="sm"
+          accept="image/jpeg,image/jpg,image/png"
+          onChange={(event) => {
+            previewFile(event.target.files[0]);
+          }}
+        />
+      </div>
+    </form>
   );
 };
 
