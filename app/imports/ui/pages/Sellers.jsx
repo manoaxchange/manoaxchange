@@ -33,8 +33,8 @@ const Sellers = () => {
 
   return (ready ? (
     <Container className="py-3">
-      <SearchBar handleSearch={handleSearch} />
-      <Row xs={1} md={2} lg={4} className="g-2">
+      <SearchBar handleSearch={handleSearch} className="w-100" />
+      <Row xs={1}>
         {filterProfiles(profiles).map((profile) => <SellerDisplay key={profile._id} profile={profile} />)}
       </Row>
     </Container>
