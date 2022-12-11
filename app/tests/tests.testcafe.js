@@ -73,7 +73,7 @@ test('Test that the My Items page displays', async (testController) => {
   await myItemsPage.isDisplayed(testController);
 });
 
-test.only('Test that the Sellers page displays', async (testController) => {
+test('Test that the Sellers page displays', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoSellersPage(testController);

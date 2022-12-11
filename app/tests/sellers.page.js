@@ -14,7 +14,7 @@ class SellersPage {
 
   async gotoSellerProfilePage(testController) {
     await this.isDisplayed(testController);
-    await testController.click('a.underline.text-dark.h3');
+    await testController.click('a.underline.text-dark.h4');
   }
 }
 
