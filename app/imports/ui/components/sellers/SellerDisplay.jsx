@@ -29,10 +29,10 @@ const SellerDisplay = ({ profile }) => {
           <Image src={profile.picture} height="100%" width="100%" style={{ objectFit: 'cover' }} />
         </Link>
         <span className="h-100 w-75 pt-1">
-          <Link style={{ textDecoration: 'none' }} className="underline text-dark h3" to={`/profileother/${profile._id}`}>
-            {`${profile.firstName} ${profile.lastName}`}
+          <Link style={{ textDecoration: 'none', fontWeight: 'lighter' }} className="underline text-dark h4" to={`/profileother/${profile._id}`}>
+            {`${profile.firstName.toUpperCase()} ${profile.lastName.toUpperCase()}`}
           </Link>
-          <div className="d-flex align-items-center gap-2 pt-3 h5">
+          <div style={{ fontWeight: 'lighter' }} className="d-flex align-items-center gap-2 pt-3 h5">
             {averageRating(ratings) ? averageRating(ratings).toFixed(2) : 'Not Rated Yet'}
             <div>({ratings.length - 1})</div>
           </div>
