@@ -26,7 +26,7 @@ const SellerDisplay = ({ profile }) => {
         style={{ borderBottom: '1px solid rgb(0,0,0,0.175)' }}
       >
         <Link style={{ height: '100px', width: '100px' }} to={`/profileother/${profile._id}`}>
-          <Image src={profile.picture} height="100%" width="100%" style={{ objectFit: 'cover' }} />
+          <Image src={profile.picture} height="100%" width="100%" style={{ objectFit: 'cover', borderRadius: '3px' }} />
         </Link>
         <span className="h-100 w-75 pt-1">
           <Link style={{ textDecoration: 'none', fontWeight: 'lighter' }} className="underline text-dark h4" to={`/profileother/${profile._id}`}>
