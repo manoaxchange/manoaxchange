@@ -26,7 +26,7 @@ const ProfileDisplay = ({ profile }) => {
   };
 
   return (
-    <div style={{ borderBottom: '2px solid #ECECEC' }}>
+    <div style={{ marginBottom: '-50px' }}>
       <div style={{ height: '225px', backgroundColor: '#ECECEC' }}> </div>
       <Container fluid className="d-flex justify-content-center">
         <div
@@ -38,8 +38,8 @@ const ProfileDisplay = ({ profile }) => {
           </div>
           <div style={{ fontWeight: 'normal' }} className="d-flex flex-column align-items-center">
             <div className="display-5">{`${profile.firstName.toUpperCase()} ${profile.lastName.toUpperCase()}`}</div>
-            <div className="display-6">
-              <span>{averageRating(ratings) ? averageRating(ratings).toFixed(2) : 'Not Rated Yet'}</span>
+            <div className="display-6 pb-2">
+              <span>{averageRating(ratings) ? averageRating(ratings).toFixed(2) : 'No Ratings'}</span>
               <span>&nbsp;({ratings.length - 1})</span>
             </div>
             {Meteor.user().username !== profile.owner
@@ -52,7 +52,13 @@ const ProfileDisplay = ({ profile }) => {
                   Rate This User
                 </button>
               ) : (
-                <Button>Edit Profile</Button>
+                <button
+                  type="button"
+                  onClick={handleShow}
+                  style={{ backgroundColor: 'transparent', border: 'none', textDecoration: 'underline' }}
+                >
+                  Edit Profile
+                </button>
               )}
           </div>
         </div>
