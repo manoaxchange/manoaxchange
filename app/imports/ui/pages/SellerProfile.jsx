@@ -30,7 +30,9 @@ const SellerProfile = () => {
     const rdy = subscription1.ready() && subscription2.ready() && subscription3.ready();
     // Get the Stuff documents
     const profileItems = Profiles.collection.find({ _id: _id }).fetch();
-    const sellerItems = Items.collection.find({ owner: profileItems[0].owner }).fetch();
+    console.log('profile items', profileItems);
+    const itemOwner = () => (profileItems.length !== 0 ? profileItems[0].owner : '');
+    const sellerItems = Items.collection.find({ owner: itemOwner() }).fetch();
     const ratingDocs = Ratings.collection.find({ profileId: _id }).fetch();
     console.log(ratingDocs);
     console.log(profileItems, profileItems);
