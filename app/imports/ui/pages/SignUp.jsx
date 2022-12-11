@@ -90,7 +90,7 @@ const SignUp = ({ location }) => {
               <LongTextField id={COMPONENT_IDS.SIGNUP_FORM_BIO} name="bio" placeholder="Write something about yourself..." />
               <ErrorsField />
               {loading
-                ? <Button><LoadingSpinner /></Button>
+                ? <Button variant="dark"><LoadingSpinner /></Button>
                 : <Button type="submit" variant="dark" className="mt-2 px-5" id={COMPONENT_IDS.SIGNUP_FORM_SUBMIT}>Sign Up</Button>}
             </div>
           </AutoForm>
