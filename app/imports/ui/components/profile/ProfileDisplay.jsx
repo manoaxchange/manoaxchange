@@ -1,4 +1,4 @@
-import { Container, Image } from 'react-bootstrap';
+import { Button, Container, Image } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
@@ -26,23 +26,34 @@ const ProfileDisplay = ({ profile }) => {
   };
 
   return (
-    <div className="py-3" style={{ backgroundColor: '#ECECEC' }}>
+    <div style={{ borderBottom: '2px solid #ECECEC' }}>
+      <div style={{ height: '225px', backgroundColor: '#ECECEC' }}> </div>
       <Container fluid className="d-flex justify-content-center">
-        <div className="h-25 d-flex flex-column justify-content-center gap-2">
-          <div style={{ height: '300px', width: '300px' }}>
-            <Image src={profile.picture} height="100%" width="100%" style={{ objectFit: 'cover', borderRadius: '3px' }} />
+        <div
+          className="d-flex flex-column align-items-center justify-content-center gap-2"
+          style={{ transform: 'translateY(-25%)' }}
+        >
+          <div style={{ height: '250px', width: '250px' }}>
+            <Image src={profile.picture} className="h-100 w-100" style={{ objectFit: 'cover', borderRadius: '50%' }} />
           </div>
-          <div>
-            <div style={{ fontWeight: 'normal' }} className="h5 d-flex justify-content-between">
-              <div>{`${profile.firstName.toUpperCase()} ${profile.lastName.toUpperCase()}`}</div>
-              <div>
-                <span>{averageRating(ratings) ? averageRating(ratings).toFixed(2) : 'Not Rated Yet'}</span>
-                <span>&nbsp;({ratings.length - 1})</span>
-              </div>
+          <div style={{ fontWeight: 'normal' }} className="d-flex flex-column align-items-center">
+            <div className="display-5">{`${profile.firstName.toUpperCase()} ${profile.lastName.toUpperCase()}`}</div>
+            <div className="display-6">
+              <span>{averageRating(ratings) ? averageRating(ratings).toFixed(2) : 'Not Rated Yet'}</span>
+              <span>&nbsp;({ratings.length - 1})</span>
             </div>
-            <button type="button" onClick={handleShow}>
-              Rate This User
-            </button>
+            {Meteor.user().username !== profile.owner
+              ? (
+                <button
+                  type="button"
+                  onClick={handleShow}
+                  style={{ backgroundColor: 'transparent', border: 'none', textDecoration: 'underline' }}
+                >
+                  Rate This User
+                </button>
+              ) : (
+                <Button>Edit Profile</Button>
+              )}
           </div>
         </div>
       </Container>

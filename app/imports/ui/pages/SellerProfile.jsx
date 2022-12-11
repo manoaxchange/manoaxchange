@@ -41,9 +41,11 @@ const SellerProfile = () => {
   return (ready ? (
     <div id={PAGE_IDS.USER_PROFILE}>
       <ProfileDisplay key={`profile-${profiles[0]._id}`} profile={profiles[0]} />
-      <Row className="w-100">
-        {items.map((item) => <ItemCard2 key={`item-${item._id}`} item={item} />)}
-      </Row>
+      <Container>
+        <Row xs={1}>
+          {items.map((item) => <ItemCard2 key={`item-${item._id}`} item={item} />)}
+        </Row>
+      </Container>
     </div>
   ) : <LoadingSpinner />);
 };
