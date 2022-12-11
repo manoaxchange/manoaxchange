@@ -2,7 +2,6 @@ import React from 'react';
 import { Image, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { StarFill } from 'react-bootstrap-icons';
 import { Ratings } from '../../../api/ratings/Ratings';
 
 /* Component for layout out a Profile. */
