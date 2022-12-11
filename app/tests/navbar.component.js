@@ -18,8 +18,7 @@ class NavBar {
     if (!visible) {
       await testController.click('button.navbar-toggler');
     }
-    await testController.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN}`);
-    await testController.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGNIN}`);
+    await testController.click(`#${COMPONENT_IDS.NAVBAR_LOGIN}`);
   }
 
   /** Check that the specified user is currently logged in. */
@@ -41,17 +40,6 @@ class NavBar {
     await testController.expect(Selector(`#${COMPONENT_IDS.NAVBAR_USER_DROPDOWN}`).exists).ok();
     await testController.click(`#${COMPONENT_IDS.NAVBAR_USER_DROPDOWN}`);
     await testController.click(`#${COMPONENT_IDS.NAVBAR_USER_DROPDOWN_SIGNOUT}`);
-  }
-
-  /** Pull down login menu, go to sign up page. */
-  async gotoSignUpPage(testController) {
-    await this.ensureLogout(testController);
-    // const visible = await Selector('#basic-navbar-nav').visible;
-    // if (!visible) {
-    //   await testController.click('button.navbar-toggler');
-    // }
-    await testController.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN}`);
-    await testController.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGNUP}`);
   }
 
   async gotoShopPage(testController) {

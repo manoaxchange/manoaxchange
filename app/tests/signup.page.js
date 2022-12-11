@@ -1,5 +1,4 @@
 import { Selector } from 'testcafe';
-import { navBar } from './navbar.component';
 import { PAGE_IDS } from '../imports/ui/utilities/PageIDs';
 import { COMPONENT_IDS } from '../imports/ui/utilities/ComponentIDs';
 
@@ -22,8 +21,7 @@ class SignupPage {
     await testController.typeText(`#${COMPONENT_IDS.SIGNUP_FORM_EMAIL}`, credentials.username);
     await testController.typeText(`#${COMPONENT_IDS.SIGNUP_FORM_PASSWORD}`, credentials.password);
     await testController.typeText(`#${COMPONENT_IDS.SIGNUP_FORM_BIO}`, credentials.biography);
-    await testController.click(`#${COMPONENT_IDS.SIGNUP_FORM_SUBMIT} input.btn.btn-primary`);
-    await navBar.isLoggedIn(testController, credentials.username);
+    await testController.click(`#${COMPONENT_IDS.SIGNUP_FORM_SUBMIT}`);
   }
 }
 

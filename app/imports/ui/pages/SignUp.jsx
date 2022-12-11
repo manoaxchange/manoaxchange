@@ -91,12 +91,12 @@ const SignUp = ({ location }) => {
               <ErrorsField />
               {loading
                 ? <Button variant="dark"><LoadingSpinner /></Button>
-                : <Button type="submit" variant="dark" className="mt-2 px-5" id={COMPONENT_IDS.SIGNUP_FORM_SUBMIT}>Sign Up</Button>}
+                : <Button id={COMPONENT_IDS.SIGNUP_FORM_SUBMIT} type="submit" variant="dark" className="mt-2 px-5">Sign Up</Button>}
             </div>
           </AutoForm>
           <div className="d-flex justify-content-center py-3">
             <div>Already have an account?&nbsp;</div>
-            <Link to="/signup">Click here to login.</Link>
+            <Link to="/signin">Click here to login.</Link>
           </div>
           {error === '' ? (
             ''

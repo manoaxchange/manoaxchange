@@ -54,7 +54,8 @@ test('Test that the ItemDetails page displays', async (testController) => {
 });
 
 test('Test that the Sign Up page displays', async (testController) => {
-  await navBar.gotoSignUpPage(testController);
+  await navBar.gotoSignInPage(testController);
+  await signinPage.gotoSignUpPage(testController);
   await signupPage.isDisplayed(testController);
 });
 
@@ -72,7 +73,7 @@ test('Test that the My Items page displays', async (testController) => {
   await myItemsPage.isDisplayed(testController);
 });
 
-test('Test that the Sellers page displays', async (testController) => {
+test.only('Test that the Sellers page displays', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoSellersPage(testController);
@@ -112,8 +113,10 @@ test('Test that the Edit User Profile page displays', async (testController) => 
 
 /** The following test functions tests whether or not a form operates correctly with legal inputs. */
 test('Test that the form on the Signup page works', async (testController) => {
-  await navBar.gotoSignUpPage(testController);
+  await navBar.gotoSignInPage(testController);
+  await signinPage.gotoSignUpPage(testController);
   await signupPage.signupUser(testController, newUserCredentials);
+  await navBar.isLoggedIn(testController, newUserCredentials.username);
 });
 
 test('Test that the form on the Edit Profile page works', async (testController) => {

@@ -5,6 +5,8 @@ import { Alert, Button, Col, Container, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, TextField } from 'uniforms-bootstrap5';
+import { PAGE_IDS } from '../utilities/PageIDs';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
@@ -41,7 +43,7 @@ const SignIn = () => {
   }
   // Otherwise return the Login form.
   return (
-    <Container id="signin-page" className="py-3">
+    <Container id={PAGE_IDS.SIGNIN} className="py-3">
       <Row className="justify-content-center">
         <Col xs={14} md={8} lg={6} xl={5} xxl={4}>
           <Col className="text-center py-3">
@@ -49,15 +51,15 @@ const SignIn = () => {
           </Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
             <div className="custom-card">
-              <TextField id="signin-form-email" name="email" placeholder="E-mail address" />
-              <TextField id="signin-form-password" name="password" placeholder="Password" type="password" />
+              <TextField id={COMPONENT_IDS.SIGNIN_FORM_EMAIL} name="email" placeholder="E-mail address" />
+              <TextField id={COMPONENT_IDS.SIGNIN_FORM_PASSWORD} name="password" placeholder="Password" type="password" />
               <ErrorsField />
-              <Button type="submit" variant="dark" className="mt-2 px-5">Sign In</Button>
+              <Button id={COMPONENT_IDS.SIGNIN_FORM_SUBMIT} type="submit" variant="dark" className="mt-2 px-5">Sign In</Button>
             </div>
           </AutoForm>
           <div className="d-flex justify-content-center py-3">
             <div>Don&apos;t have an account?&nbsp;</div>
-            <Link to="/signup">Click here to register.</Link>
+            <Link id="goto-signup" to="/signup">Click here to register.</Link>
           </div>
           {error === '' ? (
             ''

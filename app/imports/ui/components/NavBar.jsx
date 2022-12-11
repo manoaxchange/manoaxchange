@@ -44,7 +44,7 @@ const NavBar = () => {
             </Nav>
             <Nav>
               {currentUser === '' ? (
-                <Nav.Link href="/signin">
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_LOGIN} href="/signin">
                   Login
                 </Nav.Link>
               ) : (

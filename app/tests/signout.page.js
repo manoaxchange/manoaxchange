@@ -1,8 +1,9 @@
 import { Selector } from 'testcafe';
+import { PAGE_IDS } from '../imports/ui/utilities/PageIDs';
 
 class SignoutPage {
   constructor() {
-    this.pageId = '#signout-page';
+    this.pageId = `#${PAGE_IDS.SIGNOUT}`;
     this.pageSelector = Selector(this.pageId);
   }
 
