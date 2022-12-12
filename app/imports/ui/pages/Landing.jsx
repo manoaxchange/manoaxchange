@@ -82,7 +82,6 @@ const Landing = () => {
         </Container>
       </section>
       <div style={currentUser ? show : hidden}>
-        <ItemsCarousel />
       </div>
     </>
   );
