@@ -137,3 +137,12 @@ div button.dropdown-toggle.btn:focus {
 .underline:hover {
   border-bottom: 1px solid black;
 }
+
+button.navbar-toggler {
+  border: none !important;
+}
+
+button.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
