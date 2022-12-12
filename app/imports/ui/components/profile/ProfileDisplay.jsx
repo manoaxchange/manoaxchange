@@ -18,7 +18,9 @@ const ProfileDisplay = ({ profile }) => {
   const handleCloseProfile = () => setShowProfile(false);
 
   const ratings = Ratings.collection.find({ profileId: profile._id }).fetch();
+  console.log('ratings', ratings);
   const hasRatedBefore = ratings.filter(rating => rating.userEmail === Meteor.user().username);
+  console.log('has rated before', hasRatedBefore[0]);
   const averageRating = (arr) => {
     if (arr.length < 2) {
       return '';
@@ -71,7 +73,7 @@ const ProfileDisplay = ({ profile }) => {
             </div>
           </div>
         </Container>
-        <RatingModal handleClose={handleClose} profile={profile} show={show} rating={hasRatedBefore} />
+        <RatingModal handleClose={handleClose} profile={profile} show={show} rating={hasRatedBefore[0]} />
       </div>
       <Container fluid className="py-3">
         <div className="pb-3">
