@@ -54,6 +54,7 @@ const ProfileDisplay = ({ profile }) => {
               {Meteor.user().username !== profile.owner
                 ? (
                   <button
+                    id={COMPONENT_IDS.RATE_PROFILE_BUTTON}
                     type="button"
                     onClick={handleShow}
                     style={{ backgroundColor: 'transparent', border: 'none', textDecoration: 'underline' }}

@@ -43,6 +43,12 @@ class ItemPage {
     await testController.expect(Selector(`#${COMPONENT_IDS.EDIT_ITEM_FORM_NAME}`).value).eql(`${itemName}`);
   }
 
+  async messageSeller(testController) {
+    await this.isDisplayed(testController);
+    await testController.click('button.btn-dark');
+    await testController.click('button.btn-danger');
+  }
+
   async reportItem(testController) {
     await this.isDisplayed(testController);
     await testController.click('u');

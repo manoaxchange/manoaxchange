@@ -32,6 +32,7 @@ export const COMPONENT_IDS = {
   EDIT_ITEM_FORM_SUBMIT: 'edit-item-form-submit',
   REPORT_FORM_DESCRIPTION: 'report-form-description',
   REPORT_FORM_SUBMIT: 'report-form-submit',
+  RATE_PROFILE_BUTTON: 'rate-profile-button',
   RATING_FORM_VALUE: 'rating-form-value',
   RATING_FORM_SUBMIT: 'rating-form-submit',
 };

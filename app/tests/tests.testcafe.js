@@ -1,6 +1,6 @@
+import { Selector } from 'testcafe';
 import { landingPage } from './landing.page';
 import { signinPage } from './signin.page';
-import { signoutPage } from './signout.page';
 import { navBar } from './navbar.component';
 import { shopPage } from './shop.page';
 import { itemPage } from './item.page';
@@ -11,12 +11,11 @@ import { signupPage } from './signup.page';
 import { sellPage } from './sell.page';
 import { sellerProfilePage } from './sellerprofile.page';
 import { sellersPage } from './sellers.page';
-import { Selector } from 'testcafe';
 
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
-const credentials = { username: 'kawn@hawaii.edu', password: 'changeme' };
+const credentials = { username: 'gtp@hawaii.edu', password: 'changeme' };
 
 /** Credentials for a new user creating an account. */
 const newUserCredentials = { firstName: 'Peter', lastName: 'Griffin',
@@ -25,7 +24,7 @@ const newUserCredentials = { firstName: 'Peter', lastName: 'Griffin',
 /** Credentials for a new item creating a new item to sell. */
 const newItemCredentials = { name: 'Rotten Potato', price: '1', description: 'rotten potato from minecraft' };
 
-fixture('meteor-react-bootstrap-template localhost test with default db')
+fixture('manoaxchange localhost test with default db')
   .page('http://localhost:3000');
 
 test('Test that landing page shows up', async (testController) => {
@@ -143,4 +142,21 @@ test('Test that the Report form on the Shop page works', async (testController) 
   await itemPage.reportItem(testController);
   await navBar.gotoReportsAdminPage(testController);
   await reportsAdminPage.checkFlagItem(testController);
+});
+
+test('Test that the Message Modal works on the Item page', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.gotoShopPage(testController);
+  await shopPage.gotoItemPage(testController);
+  await itemPage.messageSeller(testController);
+});
+
+test.only('Test that the Rating Modal works on the Seller Profile page', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.gotoSellersPage(testController);
+  await sellersPage.gotoSellerProfilePage(testController);
+  await sellerProfilePage.rateProfile(testController);
 });
