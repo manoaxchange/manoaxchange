@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { AutoForm, ErrorsField, HiddenField, LongTextField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, HiddenField, LongTextField, NumField, SelectField, TextField } from 'uniforms-bootstrap5';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
 import { Items } from '../../../api/items/Items';
@@ -34,7 +34,7 @@ const EditModal = ({ show, handleClose, item }) => {
       }
       handleNoLoading();
       setImagePreview(null);
-      return swal('Success', 'ItemDetails updated successfully', 'success');
+      return swal('Success', 'Item updated successfully', 'success');
     });
     handleClose();
   };
@@ -57,9 +57,9 @@ const EditModal = ({ show, handleClose, item }) => {
         </Modal.Body>
         <Modal.Footer>
           {loading
-            ? <Button><LoadingSpinner /></Button>
-            : <SubmitField id={COMPONENT_IDS.EDIT_ITEM_FORM_SUBMIT} value="Save" />}
-          <Button variant="secondary" onClick={handleClose}>
+            ? <Button variant="dark"><LoadingSpinner /></Button>
+            : <Button variant="dark" id={COMPONENT_IDS.EDIT_ITEM_FORM_SUBMIT} type="submit">Save</Button>}
+          <Button variant="outline-dark" onClick={handleClose}>
             Cancel
           </Button>
         </Modal.Footer>

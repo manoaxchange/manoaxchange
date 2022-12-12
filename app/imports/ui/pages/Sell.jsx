@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Card, Col, Container, Row, Button } from 'react-bootstrap';
-import { AutoForm, ErrorsField, HiddenField, LongTextField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { Col, Container, Row, Button } from 'react-bootstrap';
+import { AutoForm, ErrorsField, HiddenField, LongTextField, NumField, SelectField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
 import SimpleSchema from 'simpl-schema';
@@ -63,24 +63,20 @@ const Sell = () => {
   return (
     <Container id={PAGE_IDS.SELL} className="py-3">
       {console.log('image preview', imagePreview)}
-      <Row className="justify-content-center">
-        <Col xs={5}>
-          <Col className="text-center"><h2>Sell Item</h2></Col>
+      <Row className="justify-content-center py-3">
+        <Col xs={14} md={8} lg={6} className="pb-3">
+          <Col className="text-center"><h2>S E L L&nbsp;&nbsp;&nbsp;I T E M</h2></Col>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => { submit(data, fRef); }}>
-            <Card>
-              <Card.Body>
-                <TextField id={COMPONENT_IDS.SELL_FORM_NAME} name="name" />
-                <NumField id={COMPONENT_IDS.SELL_FORM_PRICE} name="price" decimal />
-                <LongTextField id={COMPONENT_IDS.SELL_FORM_DESCRIPTION} name="description" />
-                <SelectField id={COMPONENT_IDS.SELL_FORM_CATEGORY} name="category" />
-                <ImageUpload handleImagePreview={handleImagePreview} />
-                <HiddenField name="image" value={imagePreview ? 'contains image' : null} />
-                <ErrorsField />
-                {loading
-                  ? <Button><LoadingSpinner /></Button>
-                  : <SubmitField id={COMPONENT_IDS.SELL_FORM_SUBMIT} value="Submit" />}
-              </Card.Body>
-            </Card>
+            <TextField id={COMPONENT_IDS.SELL_FORM_NAME} name="name" />
+            <NumField id={COMPONENT_IDS.SELL_FORM_PRICE} name="price" decimal />
+            <LongTextField id={COMPONENT_IDS.SELL_FORM_DESCRIPTION} name="description" />
+            <SelectField id={COMPONENT_IDS.SELL_FORM_CATEGORY} name="category" />
+            <ImageUpload handleImagePreview={handleImagePreview} />
+            <HiddenField name="image" value={imagePreview ? 'contains image' : null} />
+            <ErrorsField />
+            {loading
+              ? <Button variant="dark"><LoadingSpinner /></Button>
+              : <Button id={COMPONENT_IDS.SELL_FORM_SUBMIT} type="submit" variant="dark">Upload</Button> }
           </AutoForm>
         </Col>
       </Row>

@@ -59,10 +59,11 @@ body {
   margin-top: 15%;
 }
 .ocean-background {
-  background: linear-gradient(
-      rgb(0, 0, 0, 0.6),
-      rgb(0, 0, 0, 0.6)
-  ), url("images/uhmanoa.jpeg") no-repeat fixed center center;
+  /* Created with https://www.css-gradient.com */
+  background: #147A70;
+  background: -webkit-linear-gradient(top left, #147A70, #564AC5);
+  background: -moz-linear-gradient(top left, #147A70, #564AC5);
+  background: linear-gradient(to bottom right, #147A70, #564AC5);
   background-size: cover;
 }
 
@@ -113,7 +114,7 @@ a.btn {
 div button.dropdown-toggle.btn {
   background-color: transparent;
   border: none;
-  color: var(--bs-border-color-translucent);
+  color: black;
   padding-right: 0;
 }
 
@@ -136,4 +137,17 @@ div button.dropdown-toggle.btn:focus {
 
 .underline:hover {
   border-bottom: 1px solid black;
+}
+
+button.navbar-toggler {
+  border: none !important;
+}
+
+button.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+div.modal-content {
+  border-radius: 3px !important;
 }

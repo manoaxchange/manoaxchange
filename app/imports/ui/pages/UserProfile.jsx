@@ -1,8 +1,6 @@
 import React from 'react';
-import { Col, Container, Row, Button } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Link } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Profiles } from '../../api/profiles/Profiles';
 import ProfileDisplay from '../components/profile/ProfileDisplay';
@@ -26,20 +24,10 @@ const UserProfile = () => {
     };
   }, []);
   return (ready ? (
-    <Container id={PAGE_IDS.USER_PROFILE} className="py-3">
-      <Row className="justify-content-center">
-        <Col md={7}>
-          <Col className="text-center">
-            {profiles.map((profile) => <ProfileDisplay key={profile.owner} profile={profile} />)}
-          </Col>
-        </Col>
-      </Row>
-      <Container className="d-flex justify-content-evenly py-3">
-        <Button variant="danger" className="d-inline-block">
-          {profiles.map((profile) => <Link to={`/profile/edit/${profile._id}`}>Edit Profile</Link>)}
-        </Button>
-      </Container>
-    </Container>
+    <div id={PAGE_IDS.USER_PROFILE}>
+      <ProfileDisplay key={profiles[0].owner} profile={profiles[0]} />
+      <div style={{ height: '225px' }}> </div>
+    </div>
   ) : <LoadingSpinner />);
 };
 

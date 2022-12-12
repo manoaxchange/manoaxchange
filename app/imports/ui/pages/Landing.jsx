@@ -64,7 +64,7 @@ const Landing = () => {
           <div className="w-100 px-3 text-center" style={{ wordSpacing: '2px', lineHeight: 1.8, letterSpacing: '0.4px' }}>
             Sign up with your UH email! Students, faculty, and alumni are all welcome.
           </div>
-          <Button className="mt-3 mb-2" style={{ width: '180px' }} href="/signup">
+          <Button variant="light" className="mt-3 mb-2" style={{ width: '180px' }} href="/signup">
             <div
               className="h3 w-100 h-100 d-flex align-items-center justify-content-center"
               style={{ fontWeight: 'lighter' }}

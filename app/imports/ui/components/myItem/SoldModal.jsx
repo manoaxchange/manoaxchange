@@ -15,7 +15,7 @@ const SoldModal = ({ show, handleClose, item }) => {
     Items.collection.update(item._id, { $set: { sold } }, (error) => (
       error
         ? swal('Error', error.message, 'error')
-        : swal('Success', 'ItemDetails has been sold', 'success')
+        : swal('Success', 'Item has been sold', 'success')
     ));
   };
 
@@ -30,10 +30,10 @@ const SoldModal = ({ show, handleClose, item }) => {
           <HiddenField name="sold" value />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="outline-dark" onClick={handleClose}>
             Close
           </Button>
-          <SubmitField value="Mark as Sold" />
+          <Button variant="dark" type="submit">Mark as Sold </Button>
         </Modal.Footer>
       </AutoForm>
     </Modal>

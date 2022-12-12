@@ -20,7 +20,7 @@ const ActionDropdown = ({ item }) => {
 
   return (
     <>
-      <DropdownButton title="">
+      <DropdownButton title="Options">
         {item.sold
           ? ''
           : [<Dropdown.Item key="edit" onClick={handleShowEdit}>Edit</Dropdown.Item>, <Dropdown.Item key="sold" onClick={handleShowSold}>Mark as Sold</Dropdown.Item>]}

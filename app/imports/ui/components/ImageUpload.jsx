@@ -36,7 +36,7 @@ const ImageUpload = ({ handleImagePreview }) => {
   };
 
   return (
-    <form>
+    <>
       <div>Image</div>
       <div className="mb-3 d-flex flex-column align-items-center justify-content-center" id="ImageUpload">
         {imagePreview ? (
@@ -53,7 +53,7 @@ const ImageUpload = ({ handleImagePreview }) => {
           }}
         />
       </div>
-    </form>
+    </>
   );
 };
 

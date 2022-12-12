@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import MyItemCard from '../components/myItem/MyItemCard';
 import SearchBar from '../components/SearchBar';
 import { Items } from '../../api/items/Items';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import ItemCard2 from '../components/shop/ItemCard2';
 
 const MyItems = () => {
   const [search, setSearch] = useState('');
@@ -27,7 +27,7 @@ const MyItems = () => {
 
   useEffect(() => {
     console.log('rendered');
-    document.title = 'ManoaXchange - My Items';
+    document.title = 'manoaxchange - my items';
   }, []);
 
   console.log('items:', items);
@@ -41,7 +41,7 @@ const MyItems = () => {
     <Container id={PAGE_IDS.MY_ITEMS} className="py-3">
       <SearchBar handleSearch={handleSearch} />
       <Row>
-        {filterItems(items).map(item => <MyItemCard key={`item-${item._id}`} item={item} />)}
+        {filterItems(items).map(item => <ItemCard2 key={`item-${item._id}`} item={item} />)}
       </Row>
     </Container>
   ) : <LoadingSpinner />);
