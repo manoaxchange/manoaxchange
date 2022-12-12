@@ -152,14 +152,32 @@ div.modal-content {
   border-radius: 3px !important;
 }
 
+
+
 @media (max-width: 800px) {
   .responsive-side {
-    display: none;
+    display: none !important;
+  }
+
+  div#basic-navbar-nav.offcanvas.offcanvas-start.show {
+    width: 75% !important;
   }
 }
 
 @media (min-width: 800px) {
   .responsive-search {
+    display: none;
+  }
+}
+
+@media (max-width: 991px ) {
+  .responsive-nav-hide {
+    display: none;
+  }
+}
+
+@media (min-width: 991px) {
+  .responsive-nav-show {
     display: none;
   }
 }
