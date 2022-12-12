@@ -5,10 +5,6 @@ import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
-import ListStuff from '../pages/ListStuff';
-// import ListStuffAdmin from '../pages/ListStuffAdmin';
-import AddStuff from '../pages/AddStuff';
-// import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
 import SignOut from '../pages/SignOut';
@@ -21,8 +17,6 @@ import Sell from '../pages/Sell';
 import Item from '../pages/Item';
 import MyItems from '../pages/MyItems';
 import UserProfile from '../pages/UserProfile';
-import EditUserProfile from '../pages/EditUserProfile';
-import Playground from '../pages/Playground';
 import Sellers from '../pages/Sellers';
 import SellerProfile from '../pages/SellerProfile';
 
@@ -44,11 +38,7 @@ const App = () => (
         <Route path="/profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
         <Route path="/profileother/:_id" element={<ProtectedRoute><SellerProfile /></ProtectedRoute>} />
         <Route path="/sellers" element={<ProtectedRoute><Sellers /></ProtectedRoute>} />
-        <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
-        <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
-        <Route path="/profile/edit/:_id" element={<ProtectedRoute><EditUserProfile /></ProtectedRoute>} />
         <Route path="/admin" element={<AdminProtectedRoute><AdminReports /></AdminProtectedRoute>} />
-        <Route path="/play" element={<Playground />} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

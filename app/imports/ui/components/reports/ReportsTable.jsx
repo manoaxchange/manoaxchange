@@ -5,7 +5,7 @@ import { ExclamationCircleFill, XCircleFill } from 'react-bootstrap-icons';
 import ItemRemoveModal from './ItemRemoveModal';
 import DismissModal from './DismissModal';
 
-/** Renders a single row in the List Stuff (Admin) table. See pages/ListStuffAdmin.jsx. */
+/** Renders a single row in the List Stuff (Admin) table */
 const ReportsTable = ({ report }) => {
   const [showReport, setShowReport] = useState(false);
   const handleClose = () => setShowReport(false);
