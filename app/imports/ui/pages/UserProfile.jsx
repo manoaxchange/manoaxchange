@@ -26,6 +26,7 @@ const UserProfile = () => {
   return (ready ? (
     <div id={PAGE_IDS.USER_PROFILE}>
       <ProfileDisplay key={profiles[0].owner} profile={profiles[0]} />
+      <div style={{ height: '225px' }}> </div>
     </div>
   ) : <LoadingSpinner />);
 };
