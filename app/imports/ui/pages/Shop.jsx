@@ -5,6 +5,7 @@ import SidebarFull from '../components/shop/SidebarFull';
 import { Items } from '../../api/items/Items';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import ItemCard2 from '../components/shop/ItemCard2';
+import SearchBar from '../components/SearchBar';
 
 const ALL = 'All';
 
@@ -28,7 +29,7 @@ const Shop = () => {
 
   useEffect(() => {
     console.log('rendered');
-    document.title = 'ManoaXchange - Shop';
+    document.title = 'manoaxchange - shop';
     if (search.length > 0) {
       setShowItems(items.filter(item => item.name.toLowerCase().includes(search.toLowerCase())));
       setTitle(ALL);
@@ -45,6 +46,9 @@ const Shop = () => {
     <div id={PAGE_IDS.SHOP} className="d-flex">
       <SidebarFull handleCategoryType={handleCategoryType} handleSearch={handleSearch} />
       <Container fluid className="min-vh-100">
+        <div className="responsive-search py-3">
+          <SearchBar handleSearch={handleSearch} />
+        </div>
         <h1 className="py-2 d-flex justify-content-center">{`${title}`}</h1>
         <Row>
           {showItems.length > 0

@@ -7,7 +7,7 @@ import SearchBar from '../SearchBar';
 
 const SidebarFull = ({ handleCategoryType, handleSearch }) => (
   <div
-    className="px-3 py-3 text-black vh-100 sticky-top"
+    className="px-3 py-3 text-black vh-100 sticky-top responsive-side"
     style={{ width: '300px', backgroundColor: '#ECECEC', minHeight: '500px' }}
   >
     <Nav className="d-flex flex-column">

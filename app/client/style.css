@@ -151,3 +151,15 @@ button.navbar-toggler:focus {
 div.modal-content {
   border-radius: 3px !important;
 }
+
+@media (max-width: 800px) {
+  .responsive-side {
+    display: none;
+  }
+}
+
+@media (min-width: 800px) {
+  .responsive-search {
+    display: none;
+  }
+}
