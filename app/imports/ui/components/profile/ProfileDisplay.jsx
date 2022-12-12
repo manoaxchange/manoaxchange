@@ -1,16 +1,21 @@
-import { Button, Container, Image } from 'react-bootstrap';
+import { Container, Image } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { Ratings } from '../../../api/ratings/Ratings';
 import RatingModal from '../sellers/RatingModal';
+import EditUserProfile from '../../pages/EditUserProfile';
 
 /* Component for layout out a Profile Card. */
 
 const ProfileDisplay = ({ profile }) => {
   const [show, setShow] = useState(false);
-  const handleShow = () => { setShow(true); };
-  const handleClose = () => { setShow(false); };
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+
+  const [showProfile, setShowProfile] = useState(false);
+  const handleShowProfile = () => setShowProfile(true);
+  const handleCloseProfile = () => setShowProfile(false);
 
   const ratings = Ratings.collection.find({ profileId: profile._id }).fetch();
   const hasRatedBefore = ratings.filter(rating => rating.userEmail === Meteor.user().username);
@@ -55,7 +60,7 @@ const ProfileDisplay = ({ profile }) => {
                 ) : (
                   <button
                     type="button"
-                    onClick={handleShow}
+                    onClick={handleShowProfile}
                     style={{ backgroundColor: 'transparent', border: 'none', textDecoration: 'underline' }}
                   >
                     Edit Profile
@@ -73,6 +78,7 @@ const ProfileDisplay = ({ profile }) => {
         <Container className="d-flex justify-content-center pb-3">
           <div>{profile.bio}</div>
         </Container>
+        <EditUserProfile show={showProfile} handleClose={handleCloseProfile} profile={profile} />
       </Container>
     </>
   );

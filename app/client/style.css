@@ -146,3 +146,7 @@ button.navbar-toggler:focus {
   outline: none;
   box-shadow: none;
 }
+
+div.modal-content {
+  border-radius: 3px !important;
+}

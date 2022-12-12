@@ -1,8 +1,6 @@
 import React from 'react';
-import { Col, Container, Row, Button } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Link } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Profiles } from '../../api/profiles/Profiles';
 import ProfileDisplay from '../components/profile/ProfileDisplay';
