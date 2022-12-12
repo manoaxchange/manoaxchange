@@ -26,20 +26,9 @@ const UserProfile = () => {
     };
   }, []);
   return (ready ? (
-    <Container id={PAGE_IDS.USER_PROFILE} className="py-3">
-      <Row className="justify-content-center">
-        <Col md={7}>
-          <Col className="text-center">
-            {profiles.map((profile) => <ProfileDisplay key={profile.owner} profile={profile} />)}
-          </Col>
-        </Col>
-      </Row>
-      <Container className="d-flex justify-content-evenly py-3">
-        <Button variant="danger" className="d-inline-block">
-          {profiles.map((profile) => <Link to={`/profile/edit/${profile._id}`}>Edit Profile</Link>)}
-        </Button>
-      </Container>
-    </Container>
+    <div id={PAGE_IDS.USER_PROFILE}>
+      <ProfileDisplay key={profiles[0].owner} profile={profiles[0]} />
+    </div>
   ) : <LoadingSpinner />);
 };
 

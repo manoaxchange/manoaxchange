@@ -26,45 +26,55 @@ const ProfileDisplay = ({ profile }) => {
   };
 
   return (
-    <div style={{ marginBottom: '-50px' }}>
-      <div style={{ height: '225px', backgroundColor: '#ECECEC' }}> </div>
-      <Container fluid className="d-flex justify-content-center">
-        <div
-          className="d-flex flex-column align-items-center justify-content-center gap-2"
-          style={{ transform: 'translateY(-25%)' }}
-        >
-          <div style={{ height: '250px', width: '250px' }}>
-            <Image src={profile.picture} className="h-100 w-100" style={{ objectFit: 'cover', borderRadius: '50%' }} />
-          </div>
-          <div style={{ fontWeight: 'normal' }} className="d-flex flex-column align-items-center">
-            <div className="display-5">{`${profile.firstName.toUpperCase()} ${profile.lastName.toUpperCase()}`}</div>
-            <div className="display-6 pb-2">
-              <span>{averageRating(ratings) ? averageRating(ratings).toFixed(2) : 'No Ratings'}</span>
-              <span>&nbsp;({ratings.length - 1})</span>
+    <>
+      <div style={{ marginBottom: '-70px' }}>
+        <div style={{ height: '225px', backgroundColor: '#ECECEC' }}> </div>
+        <Container fluid className="d-flex justify-content-center">
+          <div
+            className="d-flex flex-column align-items-center justify-content-center gap-2"
+            style={{ transform: 'translateY(-25%)' }}
+          >
+            <div style={{ height: '250px', width: '250px' }}>
+              <Image src={profile.picture} className="h-100 w-100" style={{ objectFit: 'cover', borderRadius: '50%' }} />
             </div>
-            {Meteor.user().username !== profile.owner
-              ? (
-                <button
-                  type="button"
-                  onClick={handleShow}
-                  style={{ backgroundColor: 'transparent', border: 'none', textDecoration: 'underline' }}
-                >
-                  Rate This User
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  onClick={handleShow}
-                  style={{ backgroundColor: 'transparent', border: 'none', textDecoration: 'underline' }}
-                >
-                  Edit Profile
-                </button>
-              )}
+            <div style={{ fontWeight: 'normal' }} className="d-flex flex-column align-items-center">
+              <div className="display-5">{`${profile.firstName.toUpperCase()} ${profile.lastName.toUpperCase()}`}</div>
+              <div className="display-6 pb-2">
+                <span>{averageRating(ratings) ? averageRating(ratings).toFixed(2) : 'No Ratings'}</span>
+                <span>&nbsp;({ratings.length - 1})</span>
+              </div>
+              {Meteor.user().username !== profile.owner
+                ? (
+                  <button
+                    type="button"
+                    onClick={handleShow}
+                    style={{ backgroundColor: 'transparent', border: 'none', textDecoration: 'underline' }}
+                  >
+                    Rate This User
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={handleShow}
+                    style={{ backgroundColor: 'transparent', border: 'none', textDecoration: 'underline' }}
+                  >
+                    Edit Profile
+                  </button>
+                )}
+            </div>
           </div>
+        </Container>
+        <RatingModal handleClose={handleClose} profile={profile} show={show} rating={hasRatedBefore} />
+      </div>
+      <Container fluid className="py-3">
+        <div className="display-6 py-3 d-flex flex-column align-items-center" style={{ borderTop: '1px solid #ECECEC' }}>
+          About Me
         </div>
+        <Container className="d-flex justify-content-center pb-3">
+          <div>{profile.bio}</div>
+        </Container>
       </Container>
-      <RatingModal handleClose={handleClose} profile={profile} show={show} rating={hasRatedBefore} />
-    </div>
+    </>
   );
 };
 
