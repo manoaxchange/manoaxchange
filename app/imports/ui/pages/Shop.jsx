@@ -28,7 +28,6 @@ const Shop = () => {
   }, []);
 
   useEffect(() => {
-    console.log('rendered');
     document.title = 'manoaxchange - shop';
     if (search.length > 0) {
       setShowItems(items.filter(item => item.name.toLowerCase().includes(search.toLowerCase())));
@@ -40,8 +39,6 @@ const Shop = () => {
     }
   }, [items.length, title, search]);
 
-  console.log('title:', title);
-  console.log('search:', search);
   return (
     <div id={PAGE_IDS.SHOP} className="d-flex">
       <SidebarFull handleCategoryType={handleCategoryType} handleSearch={handleSearch} />
