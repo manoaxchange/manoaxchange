@@ -17,38 +17,25 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 
 const RatingModal = ({ show, handleClose, rating, profile }) => {
   const submit = (data) => {
-    console.log(typeof rating);
-    console.log(rating[0]);
-    console.log(typeof profile);
-    console.log(profile);
     const userEmail = Meteor.user().username;
     const profileId = profile._id;
     const { value } = data;
-    console.log(profileId, userEmail, value);
-    console.log(rating._id, rating.userEmail, rating.value);
-    if (rating[0].value === 0) {
-      handleClose();
+    if (rating) {
       if (userEmail === profile.owner) {
+        handleClose();
         swal('Error', 'Cannot rate your own profile', 'error');
-      } else {
-        Ratings.collection.update(rating[0]._id, { $set: { profileId, userEmail, value } }, (error) => (
-          error
-            ? swal('Error', error.message, 'error')
-            : swal('Success', 'Rating added successfully', 'success')
-        ));
-        Ratings.collection.insert({ profileId: profile._id }, (error => (
-          error
-            ? swal('Error', error.message, 'error')
-            : swal('Success', 'Rating added successfully', 'success')
-        )));
       }
-    } else {
-      handleClose();
-      Ratings.collection.update(rating[0]._id, { $set: { value } }, (error) => (
+      Ratings.collection.update(rating._id, { $set: { profileId, userEmail, value } }, (error) => (
         error
           ? swal('Error', error.message, 'error')
           : swal('Success', 'Rating updated successfully', 'success')
       ));
+    } else {
+      Ratings.collection.insert({ profileId: profile._id, userEmail: userEmail, value }, (error => (
+        error
+          ? swal('Error', error.message, 'error')
+          : swal('Success', 'Rating added successfully', 'success')
+      )));
     }
   };
 

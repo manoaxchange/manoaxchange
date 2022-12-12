@@ -63,8 +63,8 @@ const NavBar = () => {
                     </NavDropdown.Item>
                   </NavDropdown>
                   <div className="responsive-nav-show text-secondary" style={spaced}>
-                    <Nav.Link id={COMPONENT_IDS.NAVBAR_USER_DROPDOWN} to="/profile">my profile</Nav.Link>
-                    <Nav.Link id={COMPONENT_IDS.NAVBAR_USER_DROPDOWN_SIGNOUT} to="/signout"><BoxArrowRight />&nbsp;sign out</Nav.Link>
+                    <Nav.Link id={COMPONENT_IDS.NAVBAR_USER_DROPDOWN} as={NavLink} to="/profile">my profile</Nav.Link>
+                    <Nav.Link id={COMPONENT_IDS.NAVBAR_USER_DROPDOWN_SIGNOUT} as={NavLink} to="/signout"><BoxArrowRight />&nbsp;sign out</Nav.Link>
                   </div>
                 </div>
               )}
