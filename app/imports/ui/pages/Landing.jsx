@@ -25,7 +25,7 @@ const Landing = () => {
         <Container
           fluid
           className="d-flex flex-column align-items-center justify-content-center pb-3"
-          style={{ height: '600px' }}
+          style={{ minHeight: '600px' }}
         >
           <br />
           <h1 className="pb-3 text-center display-2">Welcome to ManoaXchange!</h1>
