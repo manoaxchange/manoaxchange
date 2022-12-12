@@ -4,7 +4,7 @@ import { Flag } from 'react-bootstrap-icons';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { AutoForm, ErrorsField, HiddenField, SubmitField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, HiddenField } from 'uniforms-bootstrap5';
 import { Items } from '../../../api/items/Items';
 import { Reports } from '../../../api/reports/Reports';
 
