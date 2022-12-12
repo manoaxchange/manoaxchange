@@ -13,8 +13,12 @@ const NavBar = () => {
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
 
+  const spaced = {
+    letterSpacing: '2px',
+  };
+
   return (
-    <Navbar variant="dark" bg="dark" expand="lg" style={{ borderBottom: '1px solid gray' }} className="overflow-visible">
+    <Navbar variant="dark" bg="dark" expand="lg" style={{ borderBottom: '1px solid gray' }} className="overflow-visible py-3">
       <Container fluid>
         <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LOGO} as={NavLink} to="/" className="pr-3">
           <div style={{ fontFamily: 'Quicksand', fontSize: '23px', paddingBottom: '2px', paddingRight: '6rm' }}>
@@ -32,11 +36,11 @@ const NavBar = () => {
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="me-auto d-flex justify-content-end">
-              <Nav.Link id={COMPONENT_IDS.NAVBAR_SHOP} as={NavLink} to="/shop" key="shop">Shop</Nav.Link>
+              <Nav.Link style={spaced} id={COMPONENT_IDS.NAVBAR_SHOP} as={NavLink} to="/shop" key="shop">shop</Nav.Link>
               {currentUser ? ([
-                <Nav.Link id="list-stuff-nav" as={NavLink} to="/sellers" key="sellers">Sellers</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_SELL} as={NavLink} to="/sell" key="sell">Sell</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_MY_ITEMS} as={NavLink} to="/myitems" key="myitems">My Items</Nav.Link>,
+                <Nav.Link style={spaced} id="list-stuff-nav" as={NavLink} to="/sellers" key="sellers">sellers</Nav.Link>,
+                <Nav.Link style={spaced} id={COMPONENT_IDS.NAVBAR_SELL} as={NavLink} to="/sell" key="sell">sell</Nav.Link>,
+                <Nav.Link style={spaced} id={COMPONENT_IDS.NAVBAR_MY_ITEMS} as={NavLink} to="/myitems" key="myitems">my items</Nav.Link>,
               ]) : ''}
               {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_ADMIN} as={NavLink} to="/admin" key="admin">ADMIN</Nav.Link>
