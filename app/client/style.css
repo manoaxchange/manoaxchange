@@ -59,10 +59,11 @@ body {
   margin-top: 15%;
 }
 .ocean-background {
-  background: linear-gradient(
-      rgb(0, 0, 0, 0.6),
-      rgb(0, 0, 0, 0.6)
-  ), url("images/uhmanoa.jpeg") no-repeat fixed center center;
+  /* Created with https://www.css-gradient.com */
+  background: #147A70;
+  background: -webkit-linear-gradient(top left, #147A70, #564AC5);
+  background: -moz-linear-gradient(top left, #147A70, #564AC5);
+  background: linear-gradient(to bottom right, #147A70, #564AC5);
   background-size: cover;
 }
 
