@@ -5,6 +5,7 @@ import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import MessageModal from '../MessageModal';
 import ReportModal from '../ReportModal';
+import ActionDropdown from '../myItem/ActionDropdown';
 
 const ItemDetails = ({ item }) => {
   const currentUser = useTracker(() => (Meteor.user() ? Meteor.user().username : ''), []);
@@ -18,25 +19,32 @@ const ItemDetails = ({ item }) => {
 
   return (
     <Container className="py-3">
-      <Row>
-        <Col>
-          <Image src={item.image} className="imagefix" width="100%" height="100%" style={{ objectFit: 'contain' }} />
+      <Row className="d-flex gap-5">
+        <Col xs={12} sm={12} md={12} lg={6} style={{ border: '1px solid lightgray', padding: '0', backgroundColor: '#ECECEC' }}>
+          <Image src={item.image} width="100%" height="100%" style={{ objectFit: 'contain' }} />
         </Col>
-        <Col>
+        <Col className="p-0 d-flex flex-column justify-content-evenly">
           <div>
-            <h2 className="itemfont"> {`${item.name}`} </h2>
-            <h2 className="itemfont"> ${`${item.price}`} </h2>
+            <div className="d-flex justify-content-between">
+              <div className="display-6"> {`${item.name.toUpperCase()}`} </div>
+              {currentUser === item.owner ? <ActionDropdown item={item} /> : ''}
+            </div>
+            <div style={{ fontSize: 'xx-large', fontWeight: 'lighter' }}> ${`${item.price}`} </div>
             <hr />
+            <p style={{ minHeight: '100px' }}> {`${item.description}`} </p>
           </div>
-          <div>
-            <p className="textspace itemfont"> {`${item.description}`} </p>
-          </div>
-          <div>
+          <div className="d-flex flex-column">
             {!currentUser || currentUser === item.owner
               ? ''
-              : <Button onClick={handleShow}> Message Seller </Button>}
-            <Button className=" buttonspace" variant="success"> Favorite </Button>
-            <Button className=" buttonspace" variant="danger" onClick={handleShowReport}> Report </Button>
+              : <Button variant="dark" onClick={handleShow}> Message Seller </Button>}
+            <hr />
+            <button
+              type="button"
+              style={{ border: 'none', backgroundColor: 'transparent', padding: 0, width: 'fit-content' }}
+              onClick={handleShowReport}
+            >
+              <u>This item is inappropriate.</u>
+            </button>
           </div>
         </Col>
       </Row>

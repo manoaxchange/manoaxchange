@@ -113,7 +113,7 @@ a.btn {
 div button.dropdown-toggle.btn {
   background-color: transparent;
   border: none;
-  color: var(--bs-border-color-translucent);
+  color: black;
   padding-right: 0;
 }
 

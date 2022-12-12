@@ -1,30 +1,35 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router';
 import { Items } from '../../../api/items/Items';
 
-const DeleteModal = ({ show, handleClose, item }) => (
-  <Modal show={show} onHide={handleClose}>
-    <Modal.Header closeButton>
-      <Modal.Title>Delete</Modal.Title>
-    </Modal.Header>
-    <Modal.Body>{`Are you sure you want to delete ${item.name}?`}</Modal.Body>
-    <Modal.Footer>
-      <Button
-        variant="danger"
-        onClick={() => {
-          Items.collection.remove(item._id);
-          handleClose();
-        }}
-      >
-        Delete
-      </Button>
-      <Button variant="secondary" onClick={handleClose}>
-        Cancel
-      </Button>
-    </Modal.Footer>
-  </Modal>
-);
+const DeleteModal = ({ show, handleClose, item }) => {
+  const navigate = useNavigate();
+  return (
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Delete</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>{`Are you sure you want to delete ${item.name}?`}</Modal.Body>
+      <Modal.Footer>
+        <Button
+          variant="dark"
+          onClick={() => {
+            Items.collection.remove(item._id);
+            navigate('/myitems');
+            handleClose();
+          }}
+        >
+          Delete
+        </Button>
+        <Button variant="outline-dark" onClick={handleClose}>
+          Cancel
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+};
 
 DeleteModal.propTypes = {
   show: PropTypes.bool.isRequired,
