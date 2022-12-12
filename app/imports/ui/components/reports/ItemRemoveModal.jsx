@@ -32,8 +32,8 @@ const ItemRemoveModal = ({ show, handleClose, report }) => {
         <HiddenField name="closed" value="true" />
         <ErrorsField />
         <Modal.Footer>
-          <SubmitField value="Remove" />
-          <Button variant="secondary" onClick={handleClose}>
+          <Button type="submit" variant="dark">Remove</Button>
+          <Button variant="outline-dark" onClick={handleClose}>
             Cancel
           </Button>
         </Modal.Footer>

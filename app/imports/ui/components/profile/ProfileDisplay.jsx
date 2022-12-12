@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { Ratings } from '../../../api/ratings/Ratings';
 import RatingModal from '../sellers/RatingModal';
-import EditUserProfile from '../../pages/EditUserProfile';
+import EditUserProfile from '../EditUserProfile';
 
 /* Component for layout out a Profile Card. */
 

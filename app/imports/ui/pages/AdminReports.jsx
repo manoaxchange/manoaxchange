@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Col, Container, Row, Table } from 'react-bootstrap';
@@ -22,6 +22,11 @@ const AdminReports = () => {
       ready: rdy,
     };
   }, []);
+
+  useEffect(() => {
+    document.title = 'manoaxchange- admin';
+  }, []);
+
   return (ready ? (
     <Container id={PAGE_IDS.REPORTS_ADMIN} className="py-3">
       <Row className="justify-content-center">

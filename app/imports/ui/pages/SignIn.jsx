@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { Alert, Button, Col, Container, Row } from 'react-bootstrap';
@@ -32,6 +32,10 @@ const SignIn = () => {
     });
     // console.log('submit2', email, password, error, redirect);
   };
+
+  useEffect(() => {
+    document.title = 'manoaxchange - sign in';
+  }, []);
 
   // Render the signin form.
   // console.log('render', error, redirect);

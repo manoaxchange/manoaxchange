@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -15,6 +15,10 @@ const hidden = {
 /* A simple static component to render some text for the landing page. */
 const Landing = () => {
   const currentUser = useTracker(() => Meteor.user(), []);
+
+  useEffect(() => {
+    document.title = 'manoaxchange - home';
+  }, []);
 
   return (
     <>
