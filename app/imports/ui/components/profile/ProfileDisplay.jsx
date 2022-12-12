@@ -19,7 +19,7 @@ const ProfileDisplay = ({ profile }) => {
   const handleCloseProfile = () => setShowProfile(false);
 
   const ratings = Ratings.collection.find({ profileId: profile._id }).fetch();
-  const hasRatedBefore = ratings.filter(rating => rating.userEmail === Meteor.user().username);
+  const hasRatedBefore = ratings.filter(rating => (rating.userEmail === Meteor.user().username) || (rating.userEmail === 'empty'));
   const averageRating = (arr) => {
     if (arr.length < 2) {
       return '';

@@ -19,6 +19,7 @@ class SellerProfilePage {
     await testController.click('input.form-check-input');
     await testController.click(`#${COMPONENT_IDS.RATING_FORM_SUBMIT}`);
     await testController.click('button.swal-button--confirm');
+    await testController.expect(Selector('div.pb-2').innerText).contains('1');
 
   }
 }

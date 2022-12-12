@@ -45,7 +45,7 @@ test('Test that the Shop page displays', async (testController) => {
   await shopPage.isDisplayed(testController);
 });
 
-test('Test that the ItemDetails page displays', async (testController) => {
+test('Test that the Item page displays', async (testController) => {
   await navBar.gotoShopPage(testController);
   await shopPage.isDisplayed(testController);
   await shopPage.gotoItemPage(testController);
@@ -56,20 +56,6 @@ test('Test that the Sign Up page displays', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.gotoSignUpPage(testController);
   await signupPage.isDisplayed(testController);
-});
-
-test('Test that the Sell page displays', async (testController) => {
-  await navBar.gotoSignInPage(testController);
-  await signinPage.signin(testController, credentials.username, credentials.password);
-  await navBar.gotoSellPage(testController);
-  await sellPage.isDisplayed(testController);
-});
-
-test('Test that the My Items page displays', async (testController) => {
-  await navBar.gotoSignInPage(testController);
-  await signinPage.signin(testController, credentials.username, credentials.password);
-  await navBar.gotoMyItemsPage(testController);
-  await myItemsPage.isDisplayed(testController);
 });
 
 test('Test that the Sellers page displays', async (testController) => {
@@ -87,7 +73,23 @@ test('Test that the Seller Profile page displays', async (testController) => {
   await sellerProfilePage.isDisplayed(testController);
 });
 
-test('Test that the ReportsTable Admin page displays', async (testController) => {
+test('Test that the Sell page displays', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.gotoSellPage(testController);
+  await sellPage.isDisplayed(testController);
+});
+
+test('Test that the My Items page displays', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.gotoMyItemsPage(testController);
+  await myItemsPage.isDisplayed(testController);
+});
+
+
+
+test('Test that the Admin Reports page displays', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoReportsAdminPage(testController);
@@ -109,7 +111,7 @@ test('Test that the form on the Signup page works', async (testController) => {
   await navBar.isLoggedIn(testController, newUserCredentials.username);
 });
 
-test('Test that the form on the Edit Profile page works', async (testController) => {
+test('Test that the Edit Profile Modal works on the User Profile page', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoUserProfilePage(testController);
@@ -126,7 +128,7 @@ test('Test that the form on the Sell page works', async (testController) => {
   await testController.expect(cardCount).gte(3);
 });
 
-test('Test that the Edit ItemDetails form on the My Items page works', async (testController) => {
+test('Test that the Edit Item Modal works on the Items page', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoMyItemsPage(testController);
@@ -134,7 +136,7 @@ test('Test that the Edit ItemDetails form on the My Items page works', async (te
   await itemPage.editItem(testController, newItemCredentials.name);
 });
 
-test('Test that the Report form on the Shop page works', async (testController) => {
+test('Test that the Report Modal works on the Item page', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoShopPage(testController);
@@ -153,7 +155,7 @@ test('Test that the Message Modal works on the Item page', async (testController
   await itemPage.messageSeller(testController);
 });
 
-test.only('Test that the Rating Modal works on the Seller Profile page', async (testController) => {
+test('Test that the Rating Modal works on the Seller Profile page', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoSellersPage(testController);
