@@ -15,7 +15,7 @@ class ReportsAdminPage {
   /** Checks if the page is displayed, then checks if there is at least 1 row (representing an item) in the reports table. */
   async checkFlagItem(testController) {
     await this.isDisplayed(testController);
-    const rowCount = Selector('tr').count;
+    const rowCount = Selector('div.col').count;
     await testController.expect(rowCount).gte(1);
   }
 }

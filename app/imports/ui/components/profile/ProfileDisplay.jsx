@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { Ratings } from '../../../api/ratings/Ratings';
 import RatingModal from '../sellers/RatingModal';
 import EditUserProfile from '../EditUserProfile';
+import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 
 /* Component for layout out a Profile Card. */
 
@@ -61,6 +62,7 @@ const ProfileDisplay = ({ profile }) => {
                   </button>
                 ) : (
                   <button
+                    id={COMPONENT_IDS.EDIT_PROFILE_BUTTON}
                     type="button"
                     onClick={handleShowProfile}
                     style={{ backgroundColor: 'transparent', border: 'none', textDecoration: 'underline' }}

@@ -37,7 +37,7 @@ test('Test that signin and signout work', async (testController) => {
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.isLoggedIn(testController, credentials.username);
   await navBar.logout(testController);
-  await signoutPage.isDisplayed(testController);
+  await landingPage.isDisplayedAfterSignOut(testController);
 });
 
 /** The following test functions tests whether not a page renders. */
@@ -123,7 +123,7 @@ test('Test that the form on the Sell page works', async (testController) => {
   await navBar.gotoSellPage(testController);
   await sellPage.sellItem(testController, newItemCredentials);
   await navBar.gotoMyItemsPage(testController);
-  const cardCount = Selector('.card').count;
+  const cardCount = Selector('div.my-3').count;
   await testController.expect(cardCount).gte(3);
 });
 
@@ -131,8 +131,8 @@ test('Test that the Edit ItemDetails form on the My Items page works', async (te
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoMyItemsPage(testController);
-  await myItemsPage.updateItem(testController, newItemCredentials.name);
-  await itemPage.updateItem(testController, newItemCredentials.name);
+  await myItemsPage.gotoItemPage(testController, newItemCredentials.name);
+  await itemPage.editItem(testController, newItemCredentials.name);
 });
 
 test('Test that the Report form on the Shop page works', async (testController) => {

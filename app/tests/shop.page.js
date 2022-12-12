@@ -23,7 +23,7 @@ class ShopPage {
   /** Checks if the page is displayed, then finds the card of the correct item using the passed itemName, then selects the flag (aka report) button. */
   async flagItem(testController, itemName) {
     await this.isDisplayed(testController);
-    const cardSelector = await Selector('div.w-100').withText(itemName).find('button.btn-primary');
+    const cardSelector = await Selector('b').withText(itemName).find('button.btn-primary');
     await testController.click(cardSelector);
     await testController.typeText(`#${COMPONENT_IDS.REPORT_FORM_DESCRIPTION}`, 'Inappropriate ItemDetails.');
     await testController.click(`#${COMPONENT_IDS.REPORT_FORM_SUBMIT}`);

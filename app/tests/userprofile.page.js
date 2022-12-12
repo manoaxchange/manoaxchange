@@ -16,10 +16,9 @@ class UserProfilePage {
   /** Checks if the page is displayed, then selects the Edit Profile button. */
   async editUserProfile(testController) {
     await this.isDisplayed(testController);
-    await testController.click('button');
+    await testController.click(`#${COMPONENT_IDS.EDIT_PROFILE_BUTTON}`);
 
-    const firstName = testController.selectText(`#${COMPONENT_IDS.EDIT_PROFILE_FORM_FIRSTNAME}`);
-    const lastName = testController.selectText(`#${COMPONENT_IDS.EDIT_PROFILE_FORM_LASTNAME}`);
+    const firstName = 'Nicholas';
     const newFirstName = 'New First Name';
 
     await testController.selectText(`#${COMPONENT_IDS.EDIT_PROFILE_FORM_FIRSTNAME}`).pressKey('delete');
@@ -28,17 +27,14 @@ class UserProfilePage {
     await testController.click('button.swal-button--confirm');
 
     // Check that the field is updated.
-    await testController.click('button.btn-outline-dark');
-    await testController.expect(Selector('div.display-6').value).eql(`${newFirstName} ${lastName}`);
+    await testController.expect(Selector(`#${COMPONENT_IDS.EDIT_PROFILE_FORM_FIRSTNAME}`).value).eql(`${newFirstName}`);
 
     // Restore original value.
-    await testController.click('button');
     await testController.selectText(`#${COMPONENT_IDS.EDIT_PROFILE_FORM_FIRSTNAME}`).pressKey('delete');
     await testController.typeText(`#${COMPONENT_IDS.EDIT_PROFILE_FORM_FIRSTNAME}`, firstName);
-    await testController.click(`#${COMPONENT_IDS.EDIT_PROFILE_FORM_SUBMIT} input.btn.btn-primary`);
+    await testController.click(`#${COMPONENT_IDS.EDIT_PROFILE_FORM_SUBMIT}`);
     await testController.click('button.swal-button--confirm');
-    await testController.click('button.btn-outline-dark');
-    await testController.expect(Selector('div.display-6').value).eql(`${firstName} ${lastName}`);
+    await testController.expect(Selector(`#${COMPONENT_IDS.EDIT_PROFILE_FORM_FIRSTNAME}`).value).eql(`${firstName}`);
   }
 }
 

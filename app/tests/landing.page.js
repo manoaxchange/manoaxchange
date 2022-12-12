@@ -12,6 +12,11 @@ class LandingPage {
     // This is first test to be run. Wait 100 seconds to avoid timeouts with GitHub Actions.
     await testController.wait(100000).expect(this.pageSelector.exists).ok();
   }
+
+  async isDisplayedAfterSignOut(testController) {
+    // This is first test to be run. Wait 100 seconds to avoid timeouts with GitHub Actions.
+    await testController.wait(3000).expect(this.pageSelector.exists).ok();
+  }
 }
 
 export const landingPage = new LandingPage();
