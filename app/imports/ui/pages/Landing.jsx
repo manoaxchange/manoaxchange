@@ -34,7 +34,7 @@ const Landing = () => {
             <Col xs={11} xl={9} className="d-flex align-items-center justify-content-center">
               <p className="w-100 py-3 px-3" style={{ wordSpacing: '2px', lineHeight: 1.8, letterSpacing: '0.4px' }}>
                 Large masses of <b>students quickly come and go</b> in the dorms of UH Manoa. This leads to lots of
-                campus specific items that are discarded by previous students.
+                campus specific items that are discarded by previous students.&nbsp;
                 <b>Our goal at ManoaXchange is to
                   promote and incentivize buying and selling goods between the students of UH Manoa
                 </b>. This allows students to reuse and repurpose items that were used by other students, thereby reducing
@@ -42,10 +42,10 @@ const Landing = () => {
               </p>
             </Col>
           </Row>
-          <Button variant="dark" className="mt-3" style={{ width: '180px' }} href="/shop">
+          <Button variant="dark" style={{ width: '180px', height: '55px' }} href="/shop">
             <div
               className="h3 w-100 h-100 d-flex align-items-center justify-content-center"
-              style={{ fontWeight: 'lighter' }}
+              style={{ fontWeight: 'lighter', margin: '0' }}
             >
               Shop Now
             </div>
@@ -65,7 +65,7 @@ const Landing = () => {
           <div className="w-100 px-3 text-center" style={{ wordSpacing: '2px', lineHeight: 1.8, letterSpacing: '0.4px' }}>
             Sign up with your UH email! Students, faculty, and alumni are all welcome.
           </div>
-          <Button variant="light" className="mt-3 mb-2" style={{ width: '180px' }} href="/signup">
+          <Button variant="light" className="mt-3 mb-2" style={{ width: '180px', height: '55px' }} href="/signup">
             <div
               className="h3 w-100 h-100 d-flex align-items-center justify-content-center"
               style={{ fontWeight: 'lighter' }}

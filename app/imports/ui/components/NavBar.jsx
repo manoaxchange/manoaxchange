@@ -29,7 +29,7 @@ const NavBar = () => {
         <Navbar.Offcanvas id="basic-navbar-nav">
           <Offcanvas.Header closeButton>
             <Offcanvas.Title>
-              <div style={{ fontFamily: 'Quicksand', fontSize: '23px' }}>
+              <div style={{ fontFamily: 'Quicksand', fontSize: '16px' }}>
                 m&nbsp;a&nbsp;n&nbsp;o&nbsp;a&nbsp;x&nbsp;c&nbsp;h&nbsp;a&nbsp;n&nbsp;g&nbsp;e
               </div>
             </Offcanvas.Title>
@@ -48,19 +48,25 @@ const NavBar = () => {
             </Nav>
             <Nav>
               {currentUser === '' ? (
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_LOGIN} href="/signin">
-                  Login
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_LOGIN} href="/signin" style={spaced}>
+                  login
                 </Nav.Link>
               ) : (
-                <NavDropdown id={COMPONENT_IDS.NAVBAR_USER_DROPDOWN} title={currentUser}>
-                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_USER_DROPDOWN_MY_PROFILE} as={NavLink} to="/profile">
-                    My Profile
-                  </NavDropdown.Item>
-                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_USER_DROPDOWN_SIGNOUT} as={NavLink} to="/signout">
-                    <BoxArrowRight />
-                    {' '} Sign out
-                  </NavDropdown.Item>
-                </NavDropdown>
+                <div>
+                  <NavDropdown id={COMPONENT_IDS.NAVBAR_USER_DROPDOWN} title={currentUser} className="responsive-nav-hide">
+                    <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_USER_DROPDOWN_MY_PROFILE} as={NavLink} to="/profile">
+                      My Profile
+                    </NavDropdown.Item>
+                    <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_USER_DROPDOWN_SIGNOUT} as={NavLink} to="/signout">
+                      <BoxArrowRight />
+                      {' '} Sign out
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                  <div className="responsive-nav-show text-secondary" style={spaced}>
+                    <Nav.Link id={COMPONENT_IDS.NAVBAR_USER_DROPDOWN} to="/profile">my profile</Nav.Link>
+                    <Nav.Link id={COMPONENT_IDS.NAVBAR_USER_DROPDOWN_SIGNOUT} to="/signout"><BoxArrowRight />&nbsp;sign out</Nav.Link>
+                  </div>
+                </div>
               )}
             </Nav>
           </Offcanvas.Body>
