@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -33,6 +33,10 @@ const SellerProfile = () => {
       ready: rdy,
     };
   }, [_id]);
+
+  useEffect(() => {
+    document.title = 'manoaxchange - seller';
+  }, []);
 
   return (ready ? (
     <div id={PAGE_IDS.SELLERS_PROFILE} className="pb-4">

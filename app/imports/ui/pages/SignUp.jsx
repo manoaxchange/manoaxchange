@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, Navigate } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
@@ -27,6 +27,10 @@ const SignUp = ({ location }) => {
   const [loading, setLoading] = useState(false);
   const handleShowLoading = () => setLoading(true);
   const handleNoLoading = () => setLoading(false);
+
+  useEffect(() => {
+    document.title = 'manoaxchange - sign up';
+  });
 
   const schema = new SimpleSchema({
     email: String,

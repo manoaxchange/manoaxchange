@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Row, Button } from 'react-bootstrap';
 import { AutoForm, ErrorsField, HiddenField, LongTextField, NumField, SelectField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
@@ -58,6 +58,10 @@ const Sell = () => {
       },
     );
   };
+
+  useEffect(() => {
+    document.title = 'manoaxchange - sell';
+  }, []);
 
   let fRef = null;
   return (

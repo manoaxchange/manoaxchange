@@ -4,12 +4,12 @@ import { AutoForm, ErrorsField, HiddenField, LongTextField, TextField } from 'un
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
 import PropTypes from 'prop-types';
-import LoadingSpinner from '../components/LoadingSpinner';
+import LoadingSpinner from './LoadingSpinner';
 import { Profiles } from '../../api/profiles/Profiles';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import apifunctions from '../services/apifunctions';
-import ImageUpload from '../components/ImageUpload';
+import ImageUpload from './ImageUpload';
 
 const bridge = new SimpleSchema2Bridge(Profiles.schema);
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -31,6 +31,10 @@ const Sellers = () => {
     const fullName = `${profile.firstName} ${profile.lastName}`;
     return fullName.toLowerCase().includes(search.toLowerCase());
   });
+
+  useEffect(() => {
+    document.title = 'manoaxchange - sellers';
+  }, []);
 
   return (ready ? (
 

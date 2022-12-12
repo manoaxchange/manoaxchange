@@ -6,10 +6,11 @@ import PropTypes from 'prop-types';
 const SearchBar = ({ handleSearch }) => {
   const [filter, setFilter] = useState('');
   return (
-    <form onSubmit={(event) => {
-      event.preventDefault();
-      return handleSearch(filter.trim());
-    }}
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        return handleSearch(filter.trim());
+      }}
     >
       <InputGroup className="mb-3" onSubmit={() => handleSearch(filter.trim())}>
         <Form.Control

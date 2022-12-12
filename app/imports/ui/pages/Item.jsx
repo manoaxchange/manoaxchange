@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Container } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -28,9 +28,14 @@ const Item = () => {
       ready: rdy,
     };
   }, [_id]);
+
+  useEffect(() => {
+    document.title = `manoaxchange - ${items[0].name}`;
+  }, [items]);
+
   return (ready ? (
     <Container id={PAGE_IDS.ITEM} className="py-3">
-      {items.map((item) => <ItemDetails key={`item-${item._id}`} item={item} />)}
+      <ItemDetails key={`item-${items[0]._id}`} item={items[0]} />
     </Container>
   ) : <LoadingSpinner />);
 };

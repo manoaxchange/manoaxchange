@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap';
-import { ExclamationCircleFill, XCircleFill } from 'react-bootstrap-icons';
+import { Button, Col, Row } from 'react-bootstrap';
 import ItemRemoveModal from './ItemRemoveModal';
 import DismissModal from './DismissModal';
 
-/** Renders a single row in the List Stuff (Admin) table. See pages/ListStuffAdmin.jsx. */
+/** Renders a single row in the List Stuff (Admin) table */
 const ReportsTable = ({ report }) => {
   const [showReport, setShowReport] = useState(false);
   const handleClose = () => setShowReport(false);
@@ -16,25 +15,22 @@ const ReportsTable = ({ report }) => {
   const handleDismissOpen = () => setShowDismiss(true);
 
   return (
-    <tr>
-      <td>{report.owner}</td>
-      <td>{report.itemName}</td>
-      <td>{report.report}</td>
-      <td>
-        {
-          report.closed
-            ? <strong className="text-danger">CLOSED</strong>
-            : <Button variant="danger" onClick={handleShow}><ExclamationCircleFill /></Button>
-        }
-      </td>
-      <td>
-        <Button onClick={handleDismissOpen}>
-          <XCircleFill />
-        </Button>
-      </td>
+    <Col className="py-3" style={{ borderBottom: '2px solid #ECECEC' }}>
+      <Row xs={12} className="d-flex justify-content-between">
+        <Col xs={12} lg={8}>
+          <div className="h5"><b>ITEM:</b>&nbsp;&nbsp;&nbsp;{report.itemName}</div>
+          <div className="h5"><b>OWNER:</b>&nbsp;&nbsp;&nbsp;{report.owner}</div>
+          <div className="h5"><b>REPORT DESCRIPTION:</b></div>
+          <div>{report.report}</div>
+        </Col>
+        <Col lg={2} className="d-flex justify-content-end">
+          <Button onClick={handleShow} variant="danger">Delete</Button>
+          <Button onClick={handleDismissOpen} variant="dark">Dismiss</Button>
+        </Col>
+      </Row>
       <ItemRemoveModal handleClose={handleClose} report={report} show={showReport} />
       <DismissModal handleClose={handleDismissClose} report={report} show={showDismiss} />
-    </tr>
+    </Col>
   );
 };
 

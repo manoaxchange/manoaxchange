@@ -3,7 +3,7 @@ import { Button, Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
-import { AutoForm, HiddenField, SubmitField } from 'uniforms-bootstrap5';
+import { AutoForm, HiddenField } from 'uniforms-bootstrap5';
 import { Items } from '../../../api/items/Items';
 
 const bridge = new SimpleSchema2Bridge(Items.schema);
