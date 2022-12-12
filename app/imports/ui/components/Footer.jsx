@@ -12,7 +12,7 @@ const Footer = () => (
           rel="noreferrer noopener"
           className="text-decoration-none link-light"
         >
-          <div style={{ fontFamily: 'Quicksand' }}>
+          <div style={{ fontFamily: 'Quicksand', fontSize: 'x-small' }}>
             m&nbsp;a&nbsp;n&nbsp;o&nbsp;a&nbsp;x&nbsp;c&nbsp;h&nbsp;a&nbsp;n&nbsp;g&nbsp;e
             &copy; 2022
           </div>
