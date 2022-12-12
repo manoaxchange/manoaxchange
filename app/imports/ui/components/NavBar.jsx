@@ -38,7 +38,6 @@ const NavBar = () => {
             <Nav className="me-auto d-flex justify-content-end">
               <Nav.Link style={spaced} id={COMPONENT_IDS.NAVBAR_SHOP} as={NavLink} to="/shop" key="shop">shop</Nav.Link>
               {currentUser ? ([
-
                 <Nav.Link style={spaced} id={COMPONENT_IDS.NAVBAR_SELLERS} as={NavLink} to="/sellers" key="sellers">sellers</Nav.Link>,
                 <Nav.Link style={spaced} id={COMPONENT_IDS.NAVBAR_SELL} as={NavLink} to="/sell" key="sell">sell</Nav.Link>,
                 <Nav.Link style={spaced} id={COMPONENT_IDS.NAVBAR_MY_ITEMS} as={NavLink} to="/myitems" key="myitems">my items</Nav.Link>,

@@ -14,25 +14,10 @@ class MyItemsPage {
   }
 
   /** Checks if the page is displayed, then selects the edit button using the passed itemName, then changes the name field, then selects the edit button using the updated name field, then restores original value. */
-  async updateItem(testController, itemName) {
+  async gotoItemPage(testController, itemName) {
     await this.isDisplayed(testController);
-    const cardSelector = await Selector('div.w-100').withText(itemName).find('button.btn-primary');
+    const cardSelector = await Selector('div.w-100').withText(itemName).find('img');
     await testController.click(cardSelector);
-    await this.selectDropdown(testController, 'Edit');
-
-    const newItemName = 'New ItemDetails Name';
-    await testController.selectText(`#${COMPONENT_IDS.EDIT_ITEM_FORM_NAME}`).pressKey('delete');
-    await testController.typeText(`#${COMPONENT_IDS.EDIT_ITEM_FORM_NAME}`, newItemName);
-    await testController.click(`#${COMPONENT_IDS.EDIT_ITEM_FORM_SUBMIT} input.btn.btn-primary`);
-    await testController.click('button.swal-button--confirm');
-
-    const newCardSelector = await (Selector('div.w-100').withText(newItemName).find('button.btn-primary'));
-    await testController.click(newCardSelector);
-    await this.selectDropdown(testController, 'Edit');
-    await testController.selectText(`#${COMPONENT_IDS.EDIT_ITEM_FORM_NAME}`).pressKey('delete');
-    await testController.typeText(`#${COMPONENT_IDS.EDIT_ITEM_FORM_NAME}`, itemName);
-    await testController.click(`#${COMPONENT_IDS.EDIT_ITEM_FORM_SUBMIT} input.btn.btn-primary`);
-    await testController.click('button.swal-button--confirm');
   }
 
   async selectDropdown(testController, text) {

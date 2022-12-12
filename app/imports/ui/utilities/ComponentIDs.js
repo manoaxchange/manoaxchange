@@ -20,6 +20,7 @@ export const COMPONENT_IDS = {
   SIGNUP_FORM_BIO: 'signup-form-bio',
   SIGNUP_FORM_SUBMIT: 'signup-form-submit',
   EDIT_PROFILE_FORM_FIRSTNAME: 'edit-profile-form-firstname',
+  EDIT_PROFILE_FORM_LASTNAME: 'edit-profile-form-lastname',
   EDIT_PROFILE_FORM_SUBMIT: 'edit-profile-form-submit',
   SELL_FORM_NAME: 'sell-form-name',
   SELL_FORM_PRICE: 'sell-form-price',

@@ -5,13 +5,13 @@ import { navBar } from './navbar.component';
 import { shopPage } from './shop.page';
 import { itemPage } from './item.page';
 import { userProfilePage } from './userprofile.page';
-import { editUserProfilePage } from './edituserprofile.page';
 import { myItemsPage } from './myitems.page';
 import { reportsAdminPage } from './reportsadmin.page';
 import { signupPage } from './signup.page';
 import { sellPage } from './sell.page';
 import { sellerProfilePage } from './sellerprofile.page';
 import { sellersPage } from './sellers.page';
+import { Selector } from 'testcafe';
 
 /* global fixture:false, test:false */
 
@@ -102,15 +102,6 @@ test('Test that the User Profile page displays', async (testController) => {
   await userProfilePage.isDisplayed(testController);
 });
 
-test('Test that the Edit User Profile page displays', async (testController) => {
-  await navBar.gotoSignInPage(testController);
-  await signinPage.signin(testController, credentials.username, credentials.password);
-  await navBar.gotoUserProfilePage(testController);
-  await userProfilePage.isDisplayed(testController);
-  await userProfilePage.gotoUpdateProfile(testController);
-  await editUserProfilePage.isDisplayed(testController);
-});
-
 /** The following test functions tests whether or not a form operates correctly with legal inputs. */
 test('Test that the form on the Signup page works', async (testController) => {
   await navBar.gotoSignInPage(testController);
@@ -123,8 +114,7 @@ test('Test that the form on the Edit Profile page works', async (testController)
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoUserProfilePage(testController);
-  await userProfilePage.gotoUpdateProfile(testController);
-  await editUserProfilePage.updateProfile(testController, 'Nicholas');
+  await userProfilePage.editUserProfile(testController);
 });
 
 test('Test that the form on the Sell page works', async (testController) => {
@@ -132,6 +122,9 @@ test('Test that the form on the Sell page works', async (testController) => {
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoSellPage(testController);
   await sellPage.sellItem(testController, newItemCredentials);
+  await navBar.gotoMyItemsPage(testController);
+  const cardCount = Selector('.card').count;
+  await testController.expect(cardCount).gte(3);
 });
 
 test('Test that the Edit ItemDetails form on the My Items page works', async (testController) => {
@@ -139,6 +132,7 @@ test('Test that the Edit ItemDetails form on the My Items page works', async (te
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoMyItemsPage(testController);
   await myItemsPage.updateItem(testController, newItemCredentials.name);
+  await itemPage.updateItem(testController, newItemCredentials.name);
 });
 
 test('Test that the Report form on the Shop page works', async (testController) => {

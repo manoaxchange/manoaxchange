@@ -1,5 +1,4 @@
 import { Selector } from 'testcafe';
-import { navBar } from './navbar.component';
 import { PAGE_IDS } from '../imports/ui/utilities/PageIDs';
 import { COMPONENT_IDS } from '../imports/ui/utilities/ComponentIDs';
 
@@ -25,11 +24,8 @@ class SellPage {
     const categoryOption = categorySelector.find('option');
     await testController.click(categoryOption.withText('Miscellaneous'));
     await testController.expect(categorySelector.value).eql('Miscellaneous');
-    await testController.click(`#${COMPONENT_IDS.SELL_FORM_SUBMIT} input.btn.btn-primary`);
+    await testController.click(`#${COMPONENT_IDS.SELL_FORM_SUBMIT}`);
     await testController.click('button.swal-button--confirm');
-    await navBar.gotoMyItemsPage(testController);
-    const cardCount = Selector('.card').count;
-    await testController.expect(cardCount).gte(3);
   }
 }
 

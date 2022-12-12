@@ -47,7 +47,7 @@ const EditUserProfile = ({ show, handleClose, profile }) => {
         </Col>
         <AutoForm schema={bridge} onSubmit={data => submit(data)} model={profile}>
           <TextField id={COMPONENT_IDS.EDIT_PROFILE_FORM_FIRSTNAME} name="firstName" />
-          <TextField name="lastName" />
+          <TextField id={COMPONENT_IDS.EDIT_PROFILE_FORM_LASTNAME} name="lastName" />
           <HiddenField name="picture" value={imagePreview ? 'contains image' : null} />
           <ImageUpload handleImagePreview={handleImagePreview} />
           <LongTextField name="bio" />
