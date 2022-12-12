@@ -42,11 +42,13 @@ const ProfileDisplay = ({ profile }) => {
             <div style={{ height: '250px', width: '250px' }}>
               <Image src={profile.picture} className="h-100 w-100" style={{ objectFit: 'cover', borderRadius: '50%' }} />
             </div>
-            <div style={{ fontWeight: 'normal' }} className="d-flex flex-column align-items-center">
-              <div className="display-5">{`${profile.firstName.toUpperCase()} ${profile.lastName.toUpperCase()}`}</div>
+            <div className="d-flex flex-column align-items-center">
+              <div className="display-6">
+                {`${profile.firstName.toUpperCase()} ${profile.lastName.toUpperCase()}`}
+              </div>
               <div className="display-6 pb-2">
-                <span>{averageRating(ratings) ? averageRating(ratings).toFixed(2) : 'No Ratings'}</span>
-                <span>&nbsp;({ratings.length - 1})</span>
+                {averageRating(ratings) ? averageRating(ratings).toFixed(2) : 'No Ratings'}
+                &nbsp;({ratings.length - 1})
               </div>
               {Meteor.user().username !== profile.owner
                 ? (
@@ -72,12 +74,14 @@ const ProfileDisplay = ({ profile }) => {
         <RatingModal handleClose={handleClose} profile={profile} show={show} rating={hasRatedBefore} />
       </div>
       <Container fluid className="py-3">
-        <div className="display-6 py-3 d-flex flex-column align-items-center" style={{ borderTop: '1px solid #ECECEC' }}>
-          About Me
+        <div className="pb-3">
+          <div className="display-6 py-3 d-flex flex-column align-items-center" style={{ borderTop: '2px solid #ECECEC' }}>
+            ABOUT ME
+          </div>
+          <Container className="d-flex justify-content-center">
+            <div>{profile.bio}</div>
+          </Container>
         </div>
-        <Container className="d-flex justify-content-center pb-3">
-          <div>{profile.bio}</div>
-        </Container>
         <EditUserProfile show={showProfile} handleClose={handleCloseProfile} profile={profile} />
       </Container>
     </>

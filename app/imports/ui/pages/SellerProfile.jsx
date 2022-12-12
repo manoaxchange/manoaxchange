@@ -38,8 +38,8 @@ const SellerProfile = () => {
     <div id={PAGE_IDS.USER_PROFILE} className="pb-4">
       <ProfileDisplay key={`profile-${profiles[0]._id}`} profile={profiles[0]} />
       <Container fluid style={{ minHeight: '450px' }}>
-        <div className="text-center display-4 py-4" style={{ borderTop: '1px solid #ECECEC' }}>
-          <b>S H O P</b>
+        <div className="text-center display-5 py-4" style={{ borderTop: '2px solid #ECECEC' }}>
+          SHOP
         </div>
         <Row xs={1}>
           {items.length > 0 ? (
