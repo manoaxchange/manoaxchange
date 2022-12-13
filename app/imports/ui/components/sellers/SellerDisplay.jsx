@@ -11,11 +11,7 @@ const SellerDisplay = ({ profile }) => {
     if (arr.length < 2) {
       return '';
     }
-    const temp = arr.slice(0, -1);
-    if (temp.length === 1) {
-      return temp[0].value;
-    }
-    return temp.reduce((prev, curr) => prev.value + curr.value) / temp.length;
+    return arr.reduce((prev, curr) => prev + curr.value, 0) / (arr.length - 1);
   };
 
   return (

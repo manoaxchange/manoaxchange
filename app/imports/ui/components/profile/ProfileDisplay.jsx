@@ -24,13 +24,11 @@ const ProfileDisplay = ({ profile }) => {
   console.log('has rated before', hasRatedBefore[0]);
   const averageRating = (arr) => {
     if (arr.length < 2) {
-      return '';
+      return 'No Ratings';
     }
-    const temp = arr.slice(0, -1);
-    if (temp.length === 1) {
-      return temp[0].value;
-    }
-    return temp.reduce((prev, curr) => prev.value + curr.value) / temp.length;
+
+    const temp = arr.reduce((prev, curr) => prev + curr.value, 0) / (arr.length - 1);
+    return temp.toFixed(2);
   };
 
   return (
@@ -50,7 +48,7 @@ const ProfileDisplay = ({ profile }) => {
                 {`${profile.firstName.toUpperCase()} ${profile.lastName.toUpperCase()}`}
               </div>
               <div className="display-6 pb-2">
-                {averageRating(ratings) ? averageRating(ratings).toFixed(2) : 'No Ratings'}
+                {averageRating(ratings)}
                 &nbsp;({ratings.length - 1})
               </div>
               {Meteor.user().username !== profile.owner
