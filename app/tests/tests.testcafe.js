@@ -87,8 +87,6 @@ test('Test that the My Items page displays', async (testController) => {
   await myItemsPage.isDisplayed(testController);
 });
 
-
-
 test('Test that the Admin Reports page displays', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
